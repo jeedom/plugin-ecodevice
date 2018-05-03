@@ -1,0 +1,101 @@
+{
+    "plugins\/ecodevice\/desktop\/php\/ecodevice_compteur.php": {
+        "Général": "General",
+        "Nom du compteur": "Nombre del contador",
+        "Nom de l'ecodevice": "Nombre del Ecodevice",
+        "Objet parent": "Objeto padre",
+        "Aucun": "Ninguno",
+        "Catégorie": "Categoría",
+        "Activer": "Activar",
+        "Visible": "Visible",
+        "Indicateurs": "Indicadores",
+        "Nom": "Nombre",
+        "Sous-Type": "Sub-Tipo",
+        "Valeur": "Valor",
+        "Unité": "Unidad",
+        "Paramètres": "Parámetros",
+        "Sauvegarder": "Salvar",
+        "Type": "Type",
+        "Sans": "Sans",
+        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
+        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde."
+    },
+    "plugins\/ecodevice\/desktop\/php\/ecodevice_teleinfo.php": {
+        "Général": "General",
+        "Nom du teleinfo": "Nombre del teleinfo",
+        "Nom de l'ecodevice": "Nombre del Ecodevice",
+        "Objet parent": "Objeto padre",
+        "Aucun": "Ninguno",
+        "Catégorie": "Categoría",
+        "Activer": "Activar",
+        "Visible": "Visible",
+        "Tarification :": "tarificación :",
+        "Indicateurs": "Indicadores",
+        "Nom": "Nombre",
+        "Sous-Type": "Sub-Tipo",
+        "Valeur": "Valor",
+        "Unité": "Unidad",
+        "Paramètres": "Parámetros",
+        "Sauvegarder": "Salvar",
+        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde."
+    },
+    "plugins\/ecodevice\/desktop\/php\/ecodevice.php": {
+        "Ajouter un Ecodev": "Agregar un Ecodev",
+        "Compteur": "Medidor",
+        "Téléinfo": "Teleinfo",
+        "Mes Ecodevices": "Mis Ecodevices",
+        "Général": "General",
+        "Nom de l'ecodevice": "Nombre del comando",
+        "Objet parent": "Objeto padre",
+        "Aucun": "Ninguno",
+        "Catégorie": "Categoría",
+        "Activer": "Activar",
+        "Configurer push": "Configurar push",
+        "Visible": "Visible",
+        "IP de l'ecodevice": "Ip del ecodevice",
+        "Port de l'ecodevice": "Puerto del ecodevice",
+        "Compte de l'ecodevice": "Cuenta del ecodevice",
+        "Password de l'ecodevice": "Contraseña del ecodevice",
+        "Indicateurs": "Indicadores",
+        "Nom": "Nombre",
+        "Sous-Type": "Sub-Tipo",
+        "Valeur": "Valor",
+        "Unité": "Unidad",
+        "Paramètres": "Parámetros",
+        "Supprimer": "Borrar",
+        "Sauvegarder": "Salvar",
+        "Sauvegarde effectuée avec succès": "Salvado realizado con éxito",
+        "Utilisez sur l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez sur l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>",
+        "Gestion": "Gestion",
+        "Configuration": "Configuration",
+        "Accéder à la carte": "Accéder à la carte",
+        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
+    },
+    "plugins\/ecodevice\/plugin_info\/info.json": {
+        "Nécessite firmware 1.04.82 minimum": "Nécessite firmware 1.04.82 minimum"
+    },
+    "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
+        "L'ecodevice ne repond pas.": "L'ecodevice ne repond pas."
+    },
+    "plugins\/ecodevice\/core\/class\/ecodevice_compteur.class.php": {
+        "Eau": "Eau",
+        "Fuel": "Fuel",
+        "Gaz": "Gaz",
+        "Electricité": "Electricité",
+        "Autre": "Autre"
+    },
+    "plugins\/ecodevice\/desktop\/js\/ecodevice.js": {
+        "Nom": "Nom",
+        "Unite": "Unité",
+        "Min": "Min",
+        "Max": "Max",
+        "Historiser": "Historiser",
+        "Afficher": "Afficher",
+        "Tester": "Tester",
+        "Accèder à l'interface de l'Ecodevice": "Accéder à l'interface de l'Ecodevice"
+    },
+    "plugins\/ecodevice\/plugin_info\/configuration.php": {
+        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
+        "Trop diminuer cette valeur peut rendre instable votre serveur": "Trop diminuer cette valeur peut rendre instable votre serveur"
+    }
+}
