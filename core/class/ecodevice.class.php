@@ -601,7 +601,7 @@ class ecodevice extends eqLogic {
 				$count++;
 			}
 			if ( $this->xmlstatus === false ) {
-				if ($statuscmd->execCmd() != 0) {
+				if (is_object($statuscmd) && $statuscmd->execCmd() != 0) {
 					$statuscmd->setCollectDate(date('Y-m-d H:i:s'));
 					$statuscmd->event(0);
 				}
