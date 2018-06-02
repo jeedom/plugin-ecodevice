@@ -17,8 +17,8 @@
         "Sauvegarder": "Guardar",
         "Type": "Tipo",
         "Sans": "Sin",
-        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
-        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde."
+        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Coloque el medidor en modo de combustible y 1 en el control de caudal del ecodevice.",
+        "Les indicateurs sont regénérés après sauvegarde.": "Los indicadores se regeneran después de la copia de seguridad."
     },
     "plugins\/ecodevice\/desktop\/php\/ecodevice_teleinfo.php": {
         "Général": "General",
@@ -37,7 +37,7 @@
         "Unité": "Unidad",
         "Paramètres": "Parámetros",
         "Sauvegarder": "Guardar",
-        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde."
+        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Los indicadores se regeneran en caso de cambio de tarifa después de la copia de seguridad."
     },
     "plugins\/ecodevice\/desktop\/php\/ecodevice.php": {
         "Ajouter un Ecodev": "Añadir un Ecodev",
@@ -65,21 +65,21 @@
         "Supprimer": "Borrar",
         "Sauvegarder": "Guardar",
         "Sauvegarde effectuée avec succès": "Guardado completado con éxito",
-        "Utilisez sur l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez sur l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>",
+        "Utilisez sur l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Clique sobre el siguiente icono para ver el detalle del elemento <i class=\"fa fa-sitemap\"></i> ",
         "Gestion": "Administración",
         "Configuration": "Configuración",
         "Accéder à la carte": "Ir al mapa",
-        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
+        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Clique sobre el siguiente icono para ver el detalle del elemento <i class=\"fa fa-sitemap\"></i> "
     },
     "plugins\/ecodevice\/plugin_info\/info.json": {
-        "Nécessite firmware 1.04.82 minimum": "Nécessite firmware 1.04.82 minimum"
+        "Nécessite firmware 1.04.82 minimum": "Requiere firmware mínimo 1.04.82"
     },
     "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
-        "L'ecodevice ne repond pas.": "L'ecodevice ne repond pas."
+        "L'ecodevice ne repond pas.": "El ecodevice no responde."
     },
     "plugins\/ecodevice\/core\/class\/ecodevice_compteur.class.php": {
         "Eau": "Agua",
-        "Fuel": "Fuel",
+        "Fuel": "Combustible",
         "Gaz": "Gas",
         "Electricité": "Electricidad",
         "Autre": "Otro"
@@ -92,10 +92,10 @@
         "Historiser": "Historizar",
         "Afficher": "Mostrar",
         "Tester": "Probar",
-        "Accèder à l'interface de l'Ecodevice": "Accéder à l'interface de l'Ecodevice"
+        "Accèder à l'interface de l'Ecodevice": "Acceder a la interfaz del Ecodevice"
     },
     "plugins\/ecodevice\/plugin_info\/configuration.php": {
-        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
+        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Retraso de tiempo mínimo entre dos lecturas en segundos para caudales y consumo instantáneo",
         "Trop diminuer cette valeur peut rendre instable votre serveur": "Reducir demasiado este valor puede hacer inestable al servidor"
     }
 }
