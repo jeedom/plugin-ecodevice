@@ -72,10 +72,10 @@
         "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
     },
     "plugins\/ecodevice\/plugin_info\/info.json": {
-        "Nécessite firmware 1.04.82 minimum": "Nécessite firmware 1.04.82 minimum"
+        "Nécessite firmware 1.04.82 minimum": "Mindestens Firmware 1.04.82 benötigt"
     },
     "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
-        "L'ecodevice ne repond pas.": "L'ecodevice ne repond pas."
+        "L'ecodevice ne repond pas.": "Ecodevice antwortet nicht"
     },
     "plugins\/ecodevice\/core\/class\/ecodevice_compteur.class.php": {
         "Eau": "Wasser",
