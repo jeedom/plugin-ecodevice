@@ -493,6 +493,11 @@ class ecodevice_compteur extends eqLogic {
     public function getLinkToConfiguration() {
         return 'index.php?v=d&p=ecodevice&m=ecodevice&id=' . $this->getId();
     }
+    
+    public function getImage() {
+        $plugin = plugin::byId('ecodevice');
+        return $plugin->getPathImgIcon();
+    }
     /*     * **********************Getteur Setteur*************************** */
 }
 
