@@ -18,7 +18,7 @@
         "Type": "Type",
         "Sans": "Without",
         "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
-        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde."
+        "Les indicateurs sont regénérés après sauvegarde.": "The indicators are regenerated after saving."
     },
     "plugins\/ecodevice\/desktop\/php\/ecodevice_teleinfo.php": {
         "Général": "Main",
