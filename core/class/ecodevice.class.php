@@ -572,10 +572,10 @@ class ecodevice extends eqLogic {
 											$eqLogic_cmd_evol->event(0);
 										}
 										$eqLogic_cmd->setCollectDate(date('Y-m-d H:i:s'));
-										$eqLogic_cmd->event($data);
+										$eqLogic_cmd->event($data->__toString());
 									} else {
 										$eqLogic_cmd->setCollectDate(date('Y-m-d H:i:s'));
-										$eqLogic_cmd->event($data);
+										$eqLogic_cmd->event($data->__toString());
 									}
 								}
 							}
@@ -601,7 +601,7 @@ class ecodevice extends eqLogic {
 				$count++;
 			}
 			if ( $this->xmlstatus === false ) {
-				if ($statuscmd->execCmd() != 0) {
+				if (is_object($statuscmd) && $statuscmd->execCmd() != 0) {
 					$statuscmd->setCollectDate(date('Y-m-d H:i:s'));
 					$statuscmd->event(0);
 				}
@@ -659,7 +659,7 @@ class ecodevice extends eqLogic {
 						if ( is_object($eqLogic_cmd) && $eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
 							log::add('ecodevice','debug',"Change ".$item." of ".$eqLogicTeleinfo->getName());
 							$eqLogic_cmd->setCollectDate('');
-							$eqLogic_cmd->event($status[0]);
+							$eqLogic_cmd->event($status[0]->__toString());
 						}
 					}
 				}
