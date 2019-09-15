@@ -572,10 +572,10 @@ class ecodevice extends eqLogic {
 											$eqLogic_cmd_evol->event(0);
 										}
 										$eqLogic_cmd->setCollectDate(date('Y-m-d H:i:s'));
-										$eqLogic_cmd->event($data);
+										$eqLogic_cmd->event($data->__toString());
 									} else {
 										$eqLogic_cmd->setCollectDate(date('Y-m-d H:i:s'));
-										$eqLogic_cmd->event($data);
+										$eqLogic_cmd->event($data->__toString());
 									}
 								}
 							}
