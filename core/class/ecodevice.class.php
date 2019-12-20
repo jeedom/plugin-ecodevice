@@ -295,6 +295,10 @@ class ecodevice extends eqLogic
         }
     }
 
+    public function preSave(){
+        unset($this->xmlstatus);
+    }
+    
     public function postUpdate()
     {
         switch ($this->getConfiguration('type', '')) {
