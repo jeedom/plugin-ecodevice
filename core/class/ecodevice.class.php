@@ -23,7 +23,7 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class ecodevice extends eqLogic
 {
 
-    private $xmlstatus;
+    private $_xmlstatus;
 
     static function getTypeCompteur()
     {
@@ -107,8 +107,8 @@ class ecodevice extends eqLogic
             case "carte":
                 if ($this->getIsEnable()) {
                     log::add('ecodevice', 'debug', 'get ' . $this->getUrl() . 'status.xml');
-                    $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
-                    if ($this->xmlstatus === false) {
+                    $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
+                    if ($this->_xmlstatus === false) {
                         throw new \Exception(__('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName());
                     }
                 }
@@ -140,12 +140,12 @@ class ecodevice extends eqLogic
     {
         if ($this->getIsEnable()) {
             log::add('ecodevice', 'debug', 'get ' . $this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
-            $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
-            if ($this->xmlstatus === false) {
+            $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
+            if ($this->_xmlstatus === false) {
                 throw new \Exception(__('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName());
             }
             $xpathModele     = '//T' . $gceid . '_IMAX2';
-            $status          = $this->xmlstatus->xpath($xpathModele);
+            $status          = $this->_xmlstatus->xpath($xpathModele);
 
             if (count($status) != 0) {
                 if ($status[0] != "0") {
@@ -153,7 +153,7 @@ class ecodevice extends eqLogic
                 }
             }
             $xpathModele = '//T' . $gceid . '_IMAX';
-            $status      = $this->xmlstatus->xpath($xpathModele);
+            $status      = $this->_xmlstatus->xpath($xpathModele);
 
             if (count($status) != 0) {
                 if ($status[0] != "0") {
@@ -294,9 +294,8 @@ class ecodevice extends eqLogic
                 break;
         }
     }
-
-    public function postUpdate()
-    {
+    
+    public function postUpdate(){
         switch ($this->getConfiguration('type', '')) {
             case "carte":
                 $cmd = $this->getCmd(null, 'status');
@@ -346,13 +345,13 @@ class ecodevice extends eqLogic
                     $ecodeviceCmd->remove();
                 }
 
-                $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
+                $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
                 $count           = 0;
-                while ($this->xmlstatus === false && $count < 3) {
-                    $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
+                while ($this->_xmlstatus === false && $count < 3) {
+                    $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
                     $count++;
                 }
-                if ($this->xmlstatus !== false) {
+                if ($this->_xmlstatus !== false) {
                     for ($compteurId = 0; $compteurId <= 1; $compteurId++) {
                         if (!is_object(self::byLogicalId($this->getId() . "_C" . $compteurId, 'ecodevice'))) {
                             log::add('ecodevice', 'debug', 'Creation compteur : ' . $this->getId() . '_C' . $compteurId);
@@ -368,7 +367,7 @@ class ecodevice extends eqLogic
                             $eqLogic     = self::byLogicalId($this->getId() . "_C" . $compteurId, 'ecodevice');
                             # Verifie la configuration des compteurs fuel
                             $xpathModele = '//c' . $compteurId . '_fuel';
-                            $status      = $this->xmlstatus->xpath($xpathModele);
+                            $status      = $this->_xmlstatus->xpath($xpathModele);
 
                             if (count($status) != 0) {
                                 if ($status[0] != "selected") {
@@ -859,13 +858,13 @@ class ecodevice extends eqLogic
                 }
                 if ($this->getIsEnable()) {
                     throw new \Exception('Configurer l\'URL suivante pour un rafraichissement plus rapide dans l\'ecodevice : page index=>notification :<br>http://' . config::byKey('internalAddr') . '/jeedom/core/api/jeeApi.php?api=' . jeedom::getApiKey('ecodevice') . '&type=ecodevice&id=' . substr($this->getLogicalId(), 0, strpos($this->getLogicalId(), "_")) . '&message=data_change<br>Attention surcharge possible importante.');
-                    $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
+                    $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
                     $count           = 0;
-                    while ($this->xmlstatus === false && $count < 3) {
-                        $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
+                    while ($this->_xmlstatus === false && $count < 3) {
+                        $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
                         $count++;
                     }
-                    if ($this->xmlstatus === false) {
+                    if ($this->_xmlstatus === false) {
                         log::add('ecodevice', 'error', __('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName() . " get " . preg_replace("/:[^:]*@/", ":XXXX@", $this->getUrl()) . 'status.xml');
                         return false;
                     }
@@ -941,13 +940,13 @@ class ecodevice extends eqLogic
         if ($this->getIsEnable()) {
             log::add('ecodevice', 'debug', "Scan " . $this->getName());
             $statuscmd       = $this->getCmd(null, 'status');
-            $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
+            $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
             $count           = 0;
-            while ($this->xmlstatus === false && $count < 3) {
-                $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
+            while ($this->_xmlstatus === false && $count < 3) {
+                $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
                 $count++;
             }
-            if ($this->xmlstatus === false) {
+            if ($this->_xmlstatus === false) {
                 if ($statuscmd->execCmd() != 0) {
                     $statuscmd->setCollectDate(date('Y-m-d H:i:s'));
                     $statuscmd->event(0);
@@ -961,7 +960,7 @@ class ecodevice extends eqLogic
                     if ($eqLogic->getConfiguration('typecompteur') == "Temps de fonctionnement") {
                         # Verifie la configuration des compteurs de temps de fonctionnement
                         $xpathModele = '//c' . $gceid . '_fuel';
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             if ($status[0] != "selected") {
@@ -971,7 +970,7 @@ class ecodevice extends eqLogic
                             throw new \Exception(__('Le compteur ' . $eqLogic->getName() . ' doit être configuré en mode fuel dans l\'ecodevice.', __FILE__));
                         }
                         $xpathModele = '//count' . $gceid;
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             $nbimpulsiontotal_cmd  = $eqLogic->getCmd(null, 'nbimpulsiontotal');
@@ -1007,7 +1006,7 @@ class ecodevice extends eqLogic
                             $nbimpulsiontotal_cmd->event($status[0]);
                         }
                         $xpathModele         = '//c' . $gceid . 'day';
-                        $status              = $this->xmlstatus->xpath($xpathModele);
+                        $status              = $this->_xmlstatus->xpath($xpathModele);
                         log::add('ecodevice', 'debug', 'duree fonctionnement ' . $status[0]);
                         $eqLogic_cmd         = $eqLogic->getCmd(null, 'tempsfonctionnement');
                         $tempsfonctionnement = $eqLogic_cmd->execCmd();
@@ -1033,7 +1032,7 @@ class ecodevice extends eqLogic
                     } elseif ($eqLogic->getConfiguration('typecompteur') == "Fuel") {
                         # Verifie la configuration des compteurs fuel
                         $xpathModele = '//c' . $gceid . '_fuel';
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             if ($status[0] != "selected") {
@@ -1043,7 +1042,7 @@ class ecodevice extends eqLogic
                             throw new \Exception(__('Le compteur ' . $eqLogic->getName() . ' doit être configuré en mode fuel dans l\'ecodevice.', __FILE__));
                         }
                         $xpathModele = '//count' . $gceid;
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
                         if (count($status) != 0) {
                             $consommationtotal     = intval($status[0]);
                             $consommationtotal_cmd = $eqLogic->getCmd(null, 'consommationtotal');
@@ -1054,7 +1053,7 @@ class ecodevice extends eqLogic
                             }
                         }
                         $xpathModele = '//c' . $gceid . "day";
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
                         if (count($status) != 0) {
                             $consommationjour     = intval($status[0]);
                             $consommationjour_cmd = $eqLogic->getCmd(null, 'consommationjour');
@@ -1065,7 +1064,7 @@ class ecodevice extends eqLogic
                             }
                         }
                         $xpathModele = '//meter' . ($gceid + 2);
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
                         if (count($status) != 0) {
                             $consommationinstantane     = intval($status[0]) * 10;
                             $consommationinstantane_cmd = $eqLogic->getCmd(null, 'consommationinstantane');
@@ -1078,7 +1077,7 @@ class ecodevice extends eqLogic
                     } else {
                         # mode eau, gaz, electricité
                         $xpathModele = '//meter' . ($gceid + 2);
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             $eqLogic_cmd = $eqLogic->getCmd(null, 'debitinstantane');
@@ -1089,7 +1088,7 @@ class ecodevice extends eqLogic
                             }
                         }
                         $xpathModele = '//c' . $gceid . 'day';
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             $eqLogic_cmd = $eqLogic->getCmd(null, 'consommationjour');
@@ -1100,7 +1099,7 @@ class ecodevice extends eqLogic
                             }
                         }
                         $xpathModele = '//count' . $gceid;
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             $consommationtotal_cmd = $eqLogic->getCmd(null, 'consommationtotal');
@@ -1116,8 +1115,8 @@ class ecodevice extends eqLogic
             foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"teleinfo"') as $eqLogic) {
                 if ($eqLogic->getIsEnable() && substr($eqLogic->getLogicalId(), 0, strpos($eqLogic->getLogicalId(), "_")) == $this->getId()) {
                     $gceid           = substr($eqLogic->getLogicalId(), strpos($eqLogic->getLogicalId(), "_") + 2, 1);
-                    $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
-                    if ($this->xmlstatus === false) {
+                    $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
+                    if ($this->_xmlstatus === false) {
                         if ($statuscmd->execCmd() != 0) {
                             $statuscmd->setCollectDate(date('Y-m-d H:i:s'));
                             $statuscmd->event(0);
@@ -1126,7 +1125,7 @@ class ecodevice extends eqLogic
                         return false;
                     }
                     $xpathModele = '//response';
-                    $status      = $this->xmlstatus->xpath($xpathModele);
+                    $status      = $this->_xmlstatus->xpath($xpathModele);
 
                     if (count($status) != 0) {
                         foreach ($status[0] as $item => $data) {
@@ -1177,13 +1176,13 @@ class ecodevice extends eqLogic
         if ($this->getIsEnable()) {
             log::add('ecodevice', 'debug', "Scan rapide " . $this->getName());
             $statuscmd       = $this->getCmd(null, 'status');
-            $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
+            $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
             $count           = 0;
-            while ($this->xmlstatus === false && $count < 3) {
-                $this->xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
+            while ($this->_xmlstatus === false && $count < 3) {
+                $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
                 $count++;
             }
-            if ($this->xmlstatus === false) {
+            if ($this->_xmlstatus === false) {
                 if ($statuscmd->execCmd() != 0) {
                     $statuscmd->setCollectDate(date('Y-m-d H:i:s'));
                     $statuscmd->event(0);
@@ -1197,7 +1196,7 @@ class ecodevice extends eqLogic
                     if ($eqLogic->getConfiguration('typecompteur') == "Fuel") {
                         # mode fuel
                         $xpathModele = '//meter' . ($gceid + 2);
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             $consommationinstantane = $status[0] / 100;
@@ -1211,7 +1210,7 @@ class ecodevice extends eqLogic
                     } else {
                         # mode eau
                         $xpathModele = '//meter' . ($gceid + 2);
-                        $status      = $this->xmlstatus->xpath($xpathModele);
+                        $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             $eqLogic_cmd = $eqLogic->getCmd(null, 'debitinstantane');
@@ -1229,7 +1228,7 @@ class ecodevice extends eqLogic
                     $gceid       = substr($eqLogic->getLogicalId(), strpos($eqLogic->getLogicalId(), "_") + 2, 1);
                     $item        = "T" . $gceid . "_PPAP";
                     $xpathModele = '//' . $item;
-                    $status      = $this->xmlstatus->xpath($xpathModele);
+                    $status      = $this->_xmlstatus->xpath($xpathModele);
 
                     if (count($status) != 0) {
                         $eqLogic_cmd = $eqLogic->getCmd(null, substr($item, 3));
