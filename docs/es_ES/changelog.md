@@ -1,3 +1,7 @@
+# 02/01/2020
+
+- Corrección de errores
+
 # 03/10/2019
 
 - compatibilité v3.3
