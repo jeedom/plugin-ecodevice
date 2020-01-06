@@ -417,7 +417,7 @@ class ecodevice extends eqLogic
                         if (( $this->getConfiguration('tarification') == "" || $this->getConfiguration('tarification') == $data[4] || $data[4] == "" ) && ( $phase == $data[7] || $data[7] == "" )) {
                             $cmd = $this->getCmd(null, $label);
                             if (!is_object($cmd)) {
-                                $cmd = new ecodevice_Cmd();
+                                $cmd = new ecodeviceCmd();
                                 $cmd->setName($data[0]);
                                 $cmd->setEqLogic_id($this->getId());
                                 $cmd->setType('info');
@@ -566,7 +566,7 @@ class ecodevice extends eqLogic
                         }
                         $consommationinstantane = $this->getCmd(null, 'consommationinstantane');
                         if (!is_object($consommationinstantane)) {
-                            $consommationinstantane = new ecodevice_Cmd();
+                            $consommationinstantane = new ecodeviceCmd();
                             $consommationinstantane->setName('Consommation instantané');
                             $consommationinstantane->setEqLogic_id($this->getId());
                             $consommationinstantane->setType('info');
@@ -580,7 +580,7 @@ class ecodevice extends eqLogic
                         }
                         $consommationtotal = $this->getCmd(null, 'consommationtotal');
                         if (!is_object($consommationtotal)) {
-                            $consommationtotal = new ecodevice_Cmd();
+                            $consommationtotal = new ecodeviceCmd();
                             $consommationtotal->setName('Consommation total');
                             $consommationtotal->setEqLogic_id($this->getId());
                             $consommationtotal->setType('info');
@@ -596,7 +596,7 @@ class ecodevice extends eqLogic
                         }
                         $consommationjour = $this->getCmd(null, 'consommationjour');
                         if (!is_object($consommationjour)) {
-                            $consommationjour = new ecodevice_Cmd();
+                            $consommationjour = new ecodeviceCmd();
                             $consommationjour->setName('Consommation journalière');
                             $consommationjour->setEqLogic_id($this->getId());
                             $consommationjour->setType('info');
@@ -637,7 +637,7 @@ class ecodevice extends eqLogic
                         }
                         $consommationjour = $this->getCmd(null, 'consommationjour');
                         if (!is_object($consommationjour)) {
-                            $consommationjour = new ecodevice_Cmd();
+                            $consommationjour = new ecodeviceCmd();
                             $consommationjour->setName('Consommation journalière');
                             $consommationjour->setEqLogic_id($this->getId());
                             $consommationjour->setType('info');
@@ -653,7 +653,7 @@ class ecodevice extends eqLogic
                         }
                         $consommationtotal = $this->getCmd(null, 'consommationtotal');
                         if (!is_object($consommationtotal)) {
-                            $consommationtotal = new ecodevice_Cmd();
+                            $consommationtotal = new ecodeviceCmd();
                             $consommationtotal->setName('Consommation total');
                             $consommationtotal->setEqLogic_id($this->getId());
                             $consommationtotal->setType('info');
@@ -669,7 +669,7 @@ class ecodevice extends eqLogic
                         }
                         $debitinstantane = $this->getCmd(null, 'debitinstantane');
                         if (!is_object($debitinstantane)) {
-                            $debitinstantane = new ecodevice_Cmd();
+                            $debitinstantane = new ecodeviceCmd();
                             $debitinstantane->setName('Debit instantané');
                             $debitinstantane->setEqLogic_id($this->getId());
                             $debitinstantane->setType('info');
@@ -709,7 +709,7 @@ class ecodevice extends eqLogic
                         }
                         $consommationjour = $this->getCmd(null, 'consommationjour');
                         if (!is_object($consommationjour)) {
-                            $consommationjour = new ecodevice_Cmd();
+                            $consommationjour = new ecodeviceCmd();
                             $consommationjour->setName('Consommation journalière');
                             $consommationjour->setEqLogic_id($this->getId());
                             $consommationjour->setType('info');
@@ -725,7 +725,7 @@ class ecodevice extends eqLogic
                         }
                         $consommationtotal = $this->getCmd(null, 'consommationtotal');
                         if (!is_object($consommationtotal)) {
-                            $consommationtotal = new ecodevice_Cmd();
+                            $consommationtotal = new ecodeviceCmd();
                             $consommationtotal->setName('Consommation total');
                             $consommationtotal->setEqLogic_id($this->getId());
                             $consommationtotal->setType('info');
@@ -741,7 +741,7 @@ class ecodevice extends eqLogic
                         }
                         $debitinstantane = $this->getCmd(null, 'debitinstantane');
                         if (!is_object($debitinstantane)) {
-                            $debitinstantane = new ecodevice_Cmd();
+                            $debitinstantane = new ecodeviceCmd();
                             $debitinstantane->setName('Debit instantané');
                             $debitinstantane->setEqLogic_id($this->getId());
                             $debitinstantane->setType('info');
@@ -781,7 +781,7 @@ class ecodevice extends eqLogic
                         }
                         $consommationjour = $this->getCmd(null, 'consommationjour');
                         if (!is_object($consommationjour)) {
-                            $consommationjour = new ecodevice_Cmd();
+                            $consommationjour = new ecodeviceCmd();
                             $consommationjour->setName('Consommation journalière');
                             $consommationjour->setEqLogic_id($this->getId());
                             $consommationjour->setType('info');
@@ -797,7 +797,7 @@ class ecodevice extends eqLogic
                         }
                         $consommationtotal = $this->getCmd(null, 'consommationtotal');
                         if (!is_object($consommationtotal)) {
-                            $consommationtotal = new ecodevice_Cmd();
+                            $consommationtotal = new ecodeviceCmd();
                             $consommationtotal->setName('Consommation total');
                             $consommationtotal->setEqLogic_id($this->getId());
                             $consommationtotal->setType('info');
@@ -813,7 +813,7 @@ class ecodevice extends eqLogic
                         }
                         $debitinstantane = $this->getCmd(null, 'debitinstantane');
                         if (!is_object($debitinstantane)) {
-                            $debitinstantane = new ecodevice_Cmd();
+                            $debitinstantane = new ecodeviceCmd();
                             $debitinstantane->setName('Consommation instantanée');
                             $debitinstantane->setEqLogic_id($this->getId());
                             $debitinstantane->setType('info');
@@ -919,14 +919,14 @@ class ecodevice extends eqLogic
                 }
                 break;
             case "teleinfo":
-                $cmd = ecodevice_Cmd::byId(init('id'));
+                $cmd = ecodeviceCmd::byId(init('id'));
                 if (!is_object($cmd)) {
                     throw new \Exception('Commande ID virtuel inconnu : ' . init('id'));
                 }
                 $cmd->event(init('value'));
                 break;
             case "compteur":
-                $cmd = ecodevice_Cmd::byId(init('id'));
+                $cmd = ecodeviceCmd::byId(init('id'));
                 if (!is_object($cmd)) {
                     throw new \Exception('Commande ID virtuel inconnu : ' . init('id'));
                 }
