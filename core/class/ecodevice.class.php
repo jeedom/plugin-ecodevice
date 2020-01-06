@@ -1084,7 +1084,7 @@ class ecodevice extends eqLogic
                             if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
                                 log::add('ecodevice', 'debug', "Change debitinstantane of " . $eqLogic->getName());
                                 $eqLogic_cmd->setCollectDate('');
-                                $eqLogic_cmd->event($status[0]);
+                                $eqLogic_cmd->event((string) $status[0]);
                             }
                         }
                         $xpathModele = '//c' . $gceid . 'day';
@@ -1095,7 +1095,7 @@ class ecodevice extends eqLogic
                             if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
                                 log::add('ecodevice', 'debug', "Change consommationjour of " . $eqLogic->getName());
                                 $eqLogic_cmd->setCollectDate('');
-                                $eqLogic_cmd->event($status[0]);
+                                $eqLogic_cmd->event((string) $status[0]);
                             }
                         }
                         $xpathModele = '//count' . $gceid;
@@ -1217,7 +1217,7 @@ class ecodevice extends eqLogic
                             if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
                                 log::add('ecodevice', 'debug', "Change debitinstantane of " . $eqLogic->getName());
                                 $eqLogic_cmd->setCollectDate('');
-                                $eqLogic_cmd->event($status[0]);
+                                $eqLogic_cmd->event((string) $status[0]);
                             }
                         }
                     }
@@ -1235,7 +1235,7 @@ class ecodevice extends eqLogic
                         if (is_object($eqLogic_cmd) && $eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
                             log::add('ecodevice', 'debug', "Change " . $item . " of " . $eqLogic->getName());
                             $eqLogic_cmd->setCollectDate('');
-                            $eqLogic_cmd->event($status[0]);
+                            $eqLogic_cmd->event((string) $status[0]);
                         }
                     }
                 }
