@@ -1003,7 +1003,7 @@ class ecodevice extends eqLogic
                                 $nbimpulsionminute_cmd->event(0);
                             }
                             $nbimpulsiontotal_cmd->setCollectDate(date('Y-m-d H:i:s'));
-                            $nbimpulsiontotal_cmd->event($status[0]);
+                            $nbimpulsiontotal_cmd->event((string) $status[0]);
                         }
                         $xpathModele         = '//c' . $gceid . 'day';
                         $status              = $this->_xmlstatus->xpath($xpathModele);
@@ -1028,7 +1028,7 @@ class ecodevice extends eqLogic
                             $eqLogic_cmd_evol->event(0);
                         }
                         $eqLogic_cmd->setCollectDate(date('Y-m-d H:i:s'));
-                        $eqLogic_cmd->event($status[0] * 3.6);
+                        $eqLogic_cmd->event(intval($status[0]) * 3.6);
                     } elseif ($eqLogic->getConfiguration('typecompteur') == "Fuel") {
                         # Verifie la configuration des compteurs fuel
                         $xpathModele = '//c' . $gceid . '_fuel';
@@ -1106,7 +1106,7 @@ class ecodevice extends eqLogic
                             if ($consommationtotal_cmd->execCmd() != $status[0]) {
                                 log::add('ecodevice', 'debug', "Change consommationtotal of " . $eqLogic->getName());
                                 $consommationtotal_cmd->setCollectDate(date('Y-m-d H:i:s'));
-                                $consommationtotal_cmd->event($status[0]);
+                                $consommationtotal_cmd->event((string) $status[0]);
                             }
                         }
                     }
@@ -1153,10 +1153,10 @@ class ecodevice extends eqLogic
                                             $eqLogic_cmd_evol->event(0);
                                         }
                                         $eqLogic_cmd->setCollectDate(date('Y-m-d H:i:s'));
-                                        $eqLogic_cmd->event($data);
+                                        $eqLogic_cmd->event((string) $data);
                                     } else {
                                         $eqLogic_cmd->setCollectDate(date('Y-m-d H:i:s'));
-                                        $eqLogic_cmd->event($data);
+                                        $eqLogic_cmd->event((string) $data);
                                     }
                                 }
                             }
