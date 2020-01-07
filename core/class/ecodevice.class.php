@@ -1039,30 +1039,24 @@ class ecodevice extends eqLogic
                         if (count($status) != 0) {
                             $consommationtotal     = intval($status[0]);
                             $consommationtotal_cmd = $eqLogic->getCmd(null, 'consommationtotal');
-                            if ($consommationtotal_cmd->execCmd() != $consommationtotal) {
-                                log::add('ecodevice', 'debug', "Change consommationtotal of " . $eqLogic->getName());
-                                $consommationtotal_cmd->event($consommationtotal);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationtotal of " . $eqLogic->getName());
+                            $consommationtotal_cmd->event($consommationtotal);
                         }
                         $xpathModele = '//c' . $gceid . "day";
                         $status      = $this->_xmlstatus->xpath($xpathModele);
                         if (count($status) != 0) {
                             $consommationjour     = intval($status[0]);
                             $consommationjour_cmd = $eqLogic->getCmd(null, 'consommationjour');
-                            if ($consommationjour_cmd->execCmd() != $consommationjour) {
-                                log::add('ecodevice', 'debug', "Change consommationjour of " . $eqLogic->getName());
-                                $consommationjour_cmd->event($consommationjour);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationjour of " . $eqLogic->getName());
+                            $consommationjour_cmd->event($consommationjour);
                         }
                         $xpathModele = '//meter' . ($gceid + 2);
                         $status      = $this->_xmlstatus->xpath($xpathModele);
                         if (count($status) != 0) {
                             $consommationinstantane     = intval($status[0]) * 10;
                             $consommationinstantane_cmd = $eqLogic->getCmd(null, 'consommationinstantane');
-                            if ($consommationinstantane_cmd->execCmd() != $consommationinstantane) {
-                                log::add('ecodevice', 'debug', "Change consommationinstantane of " . $eqLogic->getName());
-                                $consommationinstantane_cmd->event($consommationinstantane);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationinstantane of " . $eqLogic->getName());
+                            $consommationinstantane_cmd->event($consommationinstantane);
                         }
                     } else {
                         # mode eau, gaz, electricité
@@ -1071,30 +1065,24 @@ class ecodevice extends eqLogic
 
                         if (count($status) != 0) {
                             $eqLogic_cmd = $eqLogic->getCmd(null, 'debitinstantane');
-                            if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
-                                log::add('ecodevice', 'debug', "Change debitinstantane of " . $eqLogic->getName());
-                                $eqLogic_cmd->event((string) $status[0]);
-                            }
+                            log::add('ecodevice', 'debug', "Change debitinstantane of " . $eqLogic->getName());
+                            $eqLogic_cmd->event((string) $status[0]);
                         }
                         $xpathModele = '//c' . $gceid . 'day';
                         $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             $eqLogic_cmd = $eqLogic->getCmd(null, 'consommationjour');
-                            if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
-                                log::add('ecodevice', 'debug', "Change consommationjour of " . $eqLogic->getName());
-                                $eqLogic_cmd->event((string) $status[0]);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationjour of " . $eqLogic->getName());
+                            $eqLogic_cmd->event((string) $status[0]);
                         }
                         $xpathModele = '//count' . $gceid;
                         $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             $consommationtotal_cmd = $eqLogic->getCmd(null, 'consommationtotal');
-                            if ($consommationtotal_cmd->execCmd() != $status[0]) {
-                                log::add('ecodevice', 'debug', "Change consommationtotal of " . $eqLogic->getName());
-                                $consommationtotal_cmd->event((string) $status[0]);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationtotal of " . $eqLogic->getName());
+                            $consommationtotal_cmd->event((string) $status[0]);
                         }
                     }
                 }
@@ -1181,10 +1169,8 @@ class ecodevice extends eqLogic
                         if (count($status) != 0) {
                             $consommationinstantane = $status[0] / 100;
                             $eqLogic_cmd            = $eqLogic->getCmd(null, 'consommationinstantane');
-                            if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($consommationinstantane)) {
-                                log::add('ecodevice', 'debug', "Change consommationinstantane of " . $eqLogic->getName());
-                                $eqLogic_cmd->event($consommationinstantane);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationinstantane of " . $eqLogic->getName());
+                            $eqLogic_cmd->event($consommationinstantane);
                         }
                     } else {
                         # mode eau
@@ -1193,10 +1179,8 @@ class ecodevice extends eqLogic
 
                         if (count($status) != 0) {
                             $eqLogic_cmd = $eqLogic->getCmd(null, 'debitinstantane');
-                            if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
-                                log::add('ecodevice', 'debug', "Change debitinstantane of " . $eqLogic->getName());
-                                $eqLogic_cmd->event((string) $status[0]);
-                            }
+                            log::add('ecodevice', 'debug', "Change debitinstantane of " . $eqLogic->getName());
+                            $eqLogic_cmd->event((string) $status[0]);
                         }
                     }
                 }
@@ -1210,7 +1194,7 @@ class ecodevice extends eqLogic
 
                     if (count($status) != 0) {
                         $eqLogic_cmd = $eqLogic->getCmd(null, substr($item, 3));
-                        if (is_object($eqLogic_cmd) && $eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
+                        if (is_object($eqLogic_cmd)) {
                             log::add('ecodevice', 'debug', "Change " . $item . " of " . $eqLogic->getName());
                             $eqLogic_cmd->event((string) $status[0]);
                         }
