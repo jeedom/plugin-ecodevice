@@ -948,7 +948,6 @@ class ecodevice extends eqLogic
             }
             if ($this->_xmlstatus === false) {
                 if ($statuscmd->execCmd() != 0) {
-                    $statuscmd->setCollectDate(date('Y-m-d H:i:s'));
                     $statuscmd->event(0);
                 }
                 log::add('ecodevice', 'error', __('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName() . " get " . preg_replace("/:[^:]*@/", ":XXXX@", $this->getUrl()) . 'status.xml');
@@ -996,13 +995,10 @@ class ecodevice extends eqLogic
                                     }
                                 }
                                 log::add('ecodevice', 'debug', "Change nbimpulsionminute " . $nbimpulsionminute);
-                                $nbimpulsionminute_cmd->setCollectDate(date('Y-m-d H:i:s'));
                                 $nbimpulsionminute_cmd->event($nbimpulsionminute);
                             } else {
-                                $nbimpulsionminute_cmd->setCollectDate(date('Y-m-d H:i:s'));
                                 $nbimpulsionminute_cmd->event(0);
                             }
-                            $nbimpulsiontotal_cmd->setCollectDate(date('Y-m-d H:i:s'));
                             $nbimpulsiontotal_cmd->event((string) $status[0]);
                         }
                         $xpathModele         = '//c' . $gceid . 'day';
@@ -1021,13 +1017,10 @@ class ecodevice extends eqLogic
                                     $tempsfonctionnementminute = round($status[0] * 3.6 / (time() - strtotime($eqLogic_cmd_evol->getCollectDate()) * 60), 6);
                                 }
                             }
-                            $eqLogic_cmd_evol->setCollectDate(date('Y-m-d H:i:s'));
                             $eqLogic_cmd_evol->event($tempsfonctionnementminute);
                         } else {
-                            $eqLogic_cmd_evol->setCollectDate(date('Y-m-d H:i:s'));
                             $eqLogic_cmd_evol->event(0);
                         }
-                        $eqLogic_cmd->setCollectDate(date('Y-m-d H:i:s'));
                         $eqLogic_cmd->event(intval($status[0]) * 3.6);
                     } elseif ($eqLogic->getConfiguration('typecompteur') == "Fuel") {
                         # Verifie la configuration des compteurs fuel
@@ -1046,33 +1039,24 @@ class ecodevice extends eqLogic
                         if (count($status) != 0) {
                             $consommationtotal     = intval($status[0]);
                             $consommationtotal_cmd = $eqLogic->getCmd(null, 'consommationtotal');
-                            if ($consommationtotal_cmd->execCmd() != $consommationtotal) {
-                                log::add('ecodevice', 'debug', "Change consommationtotal of " . $eqLogic->getName());
-                                $consommationtotal_cmd->setCollectDate(date('Y-m-d H:i:s'));
-                                $consommationtotal_cmd->event($consommationtotal);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationtotal of " . $eqLogic->getName());
+                            $consommationtotal_cmd->event($consommationtotal);
                         }
                         $xpathModele = '//c' . $gceid . "day";
                         $status      = $this->_xmlstatus->xpath($xpathModele);
                         if (count($status) != 0) {
                             $consommationjour     = intval($status[0]);
                             $consommationjour_cmd = $eqLogic->getCmd(null, 'consommationjour');
-                            if ($consommationjour_cmd->execCmd() != $consommationjour) {
-                                log::add('ecodevice', 'debug', "Change consommationjour of " . $eqLogic->getName());
-                                $consommationjour_cmd->setCollectDate(date('Y-m-d H:i:s'));
-                                $consommationjour_cmd->event($consommationjour);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationjour of " . $eqLogic->getName());
+                            $consommationjour_cmd->event($consommationjour);
                         }
                         $xpathModele = '//meter' . ($gceid + 2);
                         $status      = $this->_xmlstatus->xpath($xpathModele);
                         if (count($status) != 0) {
                             $consommationinstantane     = intval($status[0]) * 10;
                             $consommationinstantane_cmd = $eqLogic->getCmd(null, 'consommationinstantane');
-                            if ($consommationinstantane_cmd->execCmd() != $consommationinstantane) {
-                                log::add('ecodevice', 'debug', "Change consommationinstantane of " . $eqLogic->getName());
-                                $consommationinstantane_cmd->setCollectDate(date('Y-m-d H:i:s'));
-                                $consommationinstantane_cmd->event($consommationinstantane);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationinstantane of " . $eqLogic->getName());
+                            $consommationinstantane_cmd->event($consommationinstantane);
                         }
                     } else {
                         # mode eau, gaz, electricité
@@ -1081,33 +1065,24 @@ class ecodevice extends eqLogic
 
                         if (count($status) != 0) {
                             $eqLogic_cmd = $eqLogic->getCmd(null, 'debitinstantane');
-                            if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
-                                log::add('ecodevice', 'debug', "Change debitinstantane of " . $eqLogic->getName());
-                                $eqLogic_cmd->setCollectDate('');
-                                $eqLogic_cmd->event((string) $status[0]);
-                            }
+                            log::add('ecodevice', 'debug', "Change debitinstantane of " . $eqLogic->getName());
+                            $eqLogic_cmd->event((string) $status[0]);
                         }
                         $xpathModele = '//c' . $gceid . 'day';
                         $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             $eqLogic_cmd = $eqLogic->getCmd(null, 'consommationjour');
-                            if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
-                                log::add('ecodevice', 'debug', "Change consommationjour of " . $eqLogic->getName());
-                                $eqLogic_cmd->setCollectDate('');
-                                $eqLogic_cmd->event((string) $status[0]);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationjour of " . $eqLogic->getName());
+                            $eqLogic_cmd->event((string) $status[0]);
                         }
                         $xpathModele = '//count' . $gceid;
                         $status      = $this->_xmlstatus->xpath($xpathModele);
 
                         if (count($status) != 0) {
                             $consommationtotal_cmd = $eqLogic->getCmd(null, 'consommationtotal');
-                            if ($consommationtotal_cmd->execCmd() != $status[0]) {
-                                log::add('ecodevice', 'debug', "Change consommationtotal of " . $eqLogic->getName());
-                                $consommationtotal_cmd->setCollectDate(date('Y-m-d H:i:s'));
-                                $consommationtotal_cmd->event((string) $status[0]);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationtotal of " . $eqLogic->getName());
+                            $consommationtotal_cmd->event((string) $status[0]);
                         }
                     }
                 }
@@ -1118,7 +1093,6 @@ class ecodevice extends eqLogic
                     $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
                     if ($this->_xmlstatus === false) {
                         if ($statuscmd->execCmd() != 0) {
-                            $statuscmd->setCollectDate(date('Y-m-d H:i:s'));
                             $statuscmd->event(0);
                         }
                         log::add('ecodevice', 'error', __('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName() . " get " . preg_replace("/:[^:]*@/", ":XXXX@", $this->getUrl()) . 'protect/settings/teleinfo' . $gceid . '.xml');
@@ -1146,16 +1120,12 @@ class ecodevice extends eqLogic
                                                     $nbimpulsionminute = round($data / (time() - strtotime($eqLogic_cmd_evol->getCollectDate()) * 60));
                                                 }
                                             }
-                                            $eqLogic_cmd_evol->setCollectDate(date('Y-m-d H:i:s'));
                                             $eqLogic_cmd_evol->event($nbimpulsionminute);
                                         } else {
-                                            $eqLogic_cmd_evol->setCollectDate(date('Y-m-d H:i:s'));
                                             $eqLogic_cmd_evol->event(0);
                                         }
-                                        $eqLogic_cmd->setCollectDate(date('Y-m-d H:i:s'));
                                         $eqLogic_cmd->event((string) $data);
                                     } else {
-                                        $eqLogic_cmd->setCollectDate(date('Y-m-d H:i:s'));
                                         $eqLogic_cmd->event((string) $data);
                                     }
                                 }
@@ -1165,7 +1135,6 @@ class ecodevice extends eqLogic
                 }
             }
             if ($statuscmd->execCmd() != 1) {
-                $statuscmd->setCollectDate(date('Y-m-d H:i:s'));
                 $statuscmd->event(1);
             }
         }
@@ -1184,7 +1153,6 @@ class ecodevice extends eqLogic
             }
             if ($this->_xmlstatus === false) {
                 if ($statuscmd->execCmd() != 0) {
-                    $statuscmd->setCollectDate(date('Y-m-d H:i:s'));
                     $statuscmd->event(0);
                 }
                 log::add('ecodevice', 'error', __('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName() . " get " . preg_replace("/:[^:]*@/", ":XXXX@", $this->getUrl()) . 'status.xml');
@@ -1201,11 +1169,8 @@ class ecodevice extends eqLogic
                         if (count($status) != 0) {
                             $consommationinstantane = $status[0] / 100;
                             $eqLogic_cmd            = $eqLogic->getCmd(null, 'consommationinstantane');
-                            if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($consommationinstantane)) {
-                                log::add('ecodevice', 'debug', "Change consommationinstantane of " . $eqLogic->getName());
-                                $eqLogic_cmd->setCollectDate('');
-                                $eqLogic_cmd->event($consommationinstantane);
-                            }
+                            log::add('ecodevice', 'debug', "Change consommationinstantane of " . $eqLogic->getName());
+                            $eqLogic_cmd->event($consommationinstantane);
                         }
                     } else {
                         # mode eau
@@ -1214,11 +1179,8 @@ class ecodevice extends eqLogic
 
                         if (count($status) != 0) {
                             $eqLogic_cmd = $eqLogic->getCmd(null, 'debitinstantane');
-                            if ($eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
-                                log::add('ecodevice', 'debug', "Change debitinstantane of " . $eqLogic->getName());
-                                $eqLogic_cmd->setCollectDate('');
-                                $eqLogic_cmd->event((string) $status[0]);
-                            }
+                            log::add('ecodevice', 'debug', "Change debitinstantane of " . $eqLogic->getName());
+                            $eqLogic_cmd->event((string) $status[0]);
                         }
                     }
                 }
@@ -1232,9 +1194,8 @@ class ecodevice extends eqLogic
 
                     if (count($status) != 0) {
                         $eqLogic_cmd = $eqLogic->getCmd(null, substr($item, 3));
-                        if (is_object($eqLogic_cmd) && $eqLogic_cmd->execCmd() != $eqLogic_cmd->formatValue($status[0])) {
+                        if (is_object($eqLogic_cmd)) {
                             log::add('ecodevice', 'debug', "Change " . $item . " of " . $eqLogic->getName());
-                            $eqLogic_cmd->setCollectDate('');
                             $eqLogic_cmd->event((string) $status[0]);
                         }
                     }
