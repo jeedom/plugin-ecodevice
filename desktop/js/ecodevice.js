@@ -21,6 +21,32 @@ $("#typecompteur").on('change', function () {
 	$('#table_cmd_ecodevice_compteur tbody').empty();
 });
 
+
+/**
+ * printEqLogic callback called by plugin.template before calling addCmdToTable:
+ *   . Show UI fields depending on the type (carte or compteur or teleinfo)
+ */
+function printEqLogic(_eqLogic) {
+    switch (_eqLogic.configuration.type) {
+        case "carte":
+            $('.carte_only').show();
+            $('.teleinfo_only').hide();
+            $('.compteur_only').hide();
+            break;
+        case "teleinfo":
+            $('.carte_only').hide();
+            $('.teleinfo_only').show();
+            $('.compteur_only').hide();
+            break;
+        case "compteur":
+            $('.carte_only').hide();
+            $('.teleinfo_only').hide();
+            $('.compteur_only').show();
+            break;
+    }
+    console.log(_eqLogic);
+}
+
 function addCmdToTable(_cmd) {
    if (!isset(_cmd)) {
         var _cmd = {configuration: {}};

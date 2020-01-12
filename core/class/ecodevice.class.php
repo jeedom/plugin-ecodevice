@@ -23,6 +23,9 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class ecodevice extends eqLogic
 {
 
+    const CONF_TYPE = 'type';
+    const TYP_CARTE = 'carte';
+    
     private $_xmlstatus;
 
     static function getTypeCompteur()
@@ -290,7 +293,7 @@ class ecodevice extends eqLogic
                     $debitinstantane->setUnite("l/min");
                     $debitinstantane->save();
                 }
-                $this->setConfiguration('typecompteur', "Eau");
+                $this->setConfiguration('typecompteur', "");
                 break;
         }
     }
@@ -1278,14 +1281,23 @@ class ecodevice extends eqLogic
         }
     }
 
-    public function getImage()
-    {
-        if (file_exists(dirname(__FILE__) . '/../../plugin_info/' . $this->getConfiguration('type', '') . '_icon.png')) {
-            return 'plugins/' . $this->getEqType_name() . '/plugin_info/' . $this->getConfiguration('type', '') . '_icon.png';
+    public function getImage() {
+        $f = '/resources/' . $this->getConfiguration('type', '') . '.svg';
+        if (file_exists(dirname(__FILE__) . '/../..' . $f)) {
+            return 'plugins/' . $this->getEqType_name() . $f;
         }
         return parent::getImage();
     }
-
+    
+    /**
+     * Return the eqLogic id of the ecodevice eqLogic related to this meter, or 0 if this eqLogic is itself
+     * an ecodevice card
+     * @return int
+     */
+    public function getEcodeviceId() {
+        $id = empty($this->getLogicalId()) ? 0 : substr($this->getLogicalId(), 0, strpos($this->getLogicalId(),"_"));
+        return $id;
+    }
 }
 
 class ecodeviceCmd extends cmd
