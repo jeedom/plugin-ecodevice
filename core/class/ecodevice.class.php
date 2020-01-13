@@ -26,6 +26,13 @@ class ecodevice extends eqLogic {
     const TYP_CARTE = 'carte';
     
     private $_xmlstatus;
+    
+    
+    /**
+     * Variable shared between preUpdate and postUpdate
+     * @var string
+     */
+    private $_phase;
 
     static function getTypeCompteur() {
         return array(__('Eau', __FILE__),
@@ -38,14 +45,14 @@ class ecodevice extends eqLogic {
     private function getListeDefaultCommandes() {
         return array(
             "BASE"              => array('Index (base)', 'numeric', 'Wh', 1, "BASE", "CONSUMPTION", 'badge', ''),
-            "HCHC"              => array('Index (heures creuses)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
-            "HCHP"              => array('Index (heures pleines)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
-            "BBRHCJB"           => array('Index (heures creuses jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHPJB"           => array('Index (heures pleines jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHCJW"           => array('Index (heures creuses jours blancs Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHPJW"           => array('Index (heures pleines jours blancs Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHCJR"           => array('Index (heures creuses jours rouges Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHPJR"           => array('Index (heures pleines jours rouges Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "HCHC"              => array('Index (HC)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
+            "HCHP"              => array('Index (HP)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
+            "BBRHCJB"           => array('Index (HC jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "BBRHPJB"           => array('Index (HP jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "BBRHCJW"           => array('Index (HC jours blancs Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "BBRHPJW"           => array('Index (HP jours blancs Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "BBRHCJR"           => array('Index (HC jours rouges Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "BBRHPJR"           => array('Index (HP jours rouges Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
             "EJPHN"             => array('Index (normal EJP)', 'numeric', 'Wh', 0, "EJP", "CONSUMPTION", 'badge', ''),
             "EJPHPM"            => array('Index (pointe mobile EJP)', 'numeric', 'Wh', 0, "EJP", "CONSUMPTION", 'badge', ''),
             "IINST"             => array('Intensité instantanée', 'numeric', 'A', 1, "", "POWER", 'default', 'Mono'),
@@ -57,14 +64,14 @@ class ecodevice extends eqLogic {
             "DEMAIN"            => array('Couleur demain', 'string', '', 0, "BBRH", "GENERIC_INFO", 'badge', ''),
             "PTEC"              => array('Tarif en cours', 'string', '', 1, "", "GENERIC_INFO", 'badge', ''),
             "BASE_evolution"    => array('Evolution index (base)', 'numeric', 'W/min', 1, "BASE", "", 'badge', ''),
-            "HCHC_evolution"    => array('Evolution index (heures creuses)', 'numeric', 'W/min', 1, "HC", "", 'badge', ''),
-            "HCHP_evolution"    => array('Evolution index (heures pleines)', 'numeric', 'W/min', 1, "HC", "", 'badge', ''),
-            "BBRHCJB_evolution" => array('Evolution index (heures creuses jours bleus Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHPJB_evolution" => array('Evolution index (heures pleines jours bleus Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHCJW_evolution" => array('Evolution index (heures creuses jours blancs Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHPJW_evolution" => array('Evolution index (heures pleines jours blancs Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHCJR_evolution" => array('Evolution index (heures creuses jours rouges Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHPJR_evolution" => array('Evolution index (heures pleines jours rouges Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "HCHC_evolution"    => array('Evolution index (HC)', 'numeric', 'W/min', 1, "HC", "", 'badge', ''),
+            "HCHP_evolution"    => array('Evolution index (HP)', 'numeric', 'W/min', 1, "HC", "", 'badge', ''),
+            "BBRHCJB_evolution" => array('Evolution index (HC jours bleus Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "BBRHPJB_evolution" => array('Evolution index (HP jours bleus Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "BBRHCJW_evolution" => array('Evolution index (HC jours blancs Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "BBRHPJW_evolution" => array('Evolution index (HP jours blancs Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "BBRHCJR_evolution" => array('Evolution index (HC jours rouges Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "BBRHPJR_evolution" => array('Evolution index (HP jours rouges Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
             "EJPHN_evolution"   => array('Evolution index (normal EJP)', 'numeric', 'W', 0, "EJP", "", 'badge', ''),
             "EJPHPM_evolution"  => array('Evolution index (pointe mobile EJP)', 'numeric', 'W', 0, "EJP", "", 'badge', ''),
             "ISOUSC"            => array('Intensité souscrite', 'numeric', 'A', 1, "", "", 'badge', ''),
@@ -113,13 +120,10 @@ class ecodevice extends eqLogic {
                 break;
             case "teleinfo":
                 if ($this->getIsEnable()) {
-                    foreach (self::byType('ecodevice') as $eqLogic) {
-                        if ($this->getEcodeviceId() == $eqLogic->getId()) {
-                            $phase = $eqLogic->GetPhase($this->getGceId());
-                            log::add('ecodevice', 'debug', 'Detection phase ' . $phase);
-                        }
-                    }
-                    if ($phase == "") {
+                    $carteEqL = $this->getEcodevice();
+                    $this->_phase = $carteEqL->GetPhase($this->getGceId());
+                    log::add('ecodevice', 'debug', 'Detection phase ' . $this->_phase);
+                    if ($this->_phase == "") {
                         throw new \Exception(__('Le type de compteur est introuvable. Vérifier la communication entre l\'ecodevice et votre compteur.', __FILE__));
                     }
                 }
@@ -402,14 +406,8 @@ class ecodevice extends eqLogic {
                 break;
             case "teleinfo":
                 if ($this->getIsEnable()) {
-                    foreach (self::byType('ecodevice') as $eqLogic) {
-                        if ($this->getEcodeviceId() == $eqLogic->getId()) {
-                            $phase = $eqLogic->GetPhase($this->getGceId());
-                            log::add('ecodevice', 'debug', 'Detection phase ' . $phase);
-                        }
-                    }
                     foreach ($this->getListeDefaultCommandes() as $label => $data) {
-                        if (( $this->getConfiguration('tarification') == "" || $this->getConfiguration('tarification') == $data[4] || $data[4] == "" ) && ( $phase == $data[7] || $data[7] == "" )) {
+                        if (( $this->getConfiguration('tarification') == "" || $this->getConfiguration('tarification') == $data[4] || $data[4] == "" ) && ( $this->_phase == $data[7] || $data[7] == "" )) {
                             $cmd = $this->getCmd(null, $label);
                             if (!is_object($cmd)) {
                                 $cmd = new ecodeviceCmd();
@@ -1264,6 +1262,18 @@ class ecodevice extends eqLogic {
     public function getEcodeviceId() {
         $id = empty($this->getLogicalId()) ? 0 : substr($this->getLogicalId(), 0, strpos($this->getLogicalId(),"_"));
         return $id;
+    }
+    
+    /**
+     * Return the eqLogic of the ecodevice related to this meter
+     * @throw exception if not found
+     * @return ecodevice
+     */
+    public function getEcodevice() {
+        $eql = empty($this->getLogicalId()) ? $this : eqLogic::byId($this->getEcodeviceId());
+        if (! is_object($eql))
+            throw new \Exception(__('L\'ecodevice associé au compteur', __FILE__) . " " . $this->getName() . __('n\'existe pas', __FILE__));
+        return $eql;
     }
     
     /**
