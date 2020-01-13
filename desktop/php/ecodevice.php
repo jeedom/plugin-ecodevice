@@ -110,12 +110,6 @@ function displayEqLogicCard($eqL) {
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-3 control-label">{{template param 1}}</label>
-              <div class="col-sm-3">
-                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="city" placeholder="param1" />
-              </div>
-            </div>
-            <div class="form-group">
               <label class="col-sm-3 control-label">{{Accéder à l'interface de eco-devices}}</label>
               <div class="col-sm-3">
                 <a class="btn btn-default" id="bt_goCarte" title='{{Accéder à la carte}}'><i class="fa fa-arrow-right"></i></a>
