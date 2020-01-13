@@ -95,7 +95,7 @@ class ecodevice extends eqLogic {
             }
             return $url . "/";
         } else {
-            $EcodeviceeqLogic = eqLogic::byId(substr($this->getLogicalId(), 0, strpos($this->getLogicalId(), "_")));
+            $EcodeviceeqLogic = eqLogic::byId($this->getEcodeviceId());
             return $EcodeviceeqLogic->getUrl();
         }
     }
@@ -114,8 +114,8 @@ class ecodevice extends eqLogic {
             case "teleinfo":
                 if ($this->getIsEnable()) {
                     foreach (self::byType('ecodevice') as $eqLogic) {
-                        if (substr($this->getLogicalId(), 0, strpos($this->getLogicalId(), "_")) == $eqLogic->getId()) {
-                            $phase = $eqLogic->GetPhase(substr($this->getLogicalId(), strpos($this->getLogicalId(), "_") + 2, 1));
+                        if ($this->getEcodeviceId() == $eqLogic->getId()) {
+                            $phase = $eqLogic->GetPhase($this->getGceId());
                             log::add('ecodevice', 'debug', 'Detection phase ' . $phase);
                         }
                     }
@@ -403,8 +403,8 @@ class ecodevice extends eqLogic {
             case "teleinfo":
                 if ($this->getIsEnable()) {
                     foreach (self::byType('ecodevice') as $eqLogic) {
-                        if (substr($this->getLogicalId(), 0, strpos($this->getLogicalId(), "_")) == $eqLogic->getId()) {
-                            $phase = $eqLogic->GetPhase(substr($this->getLogicalId(), strpos($this->getLogicalId(), "_") + 2, 1));
+                        if ($this->getEcodeviceId() == $eqLogic->getId()) {
+                            $phase = $eqLogic->GetPhase($this->getGceId());
                             log::add('ecodevice', 'debug', 'Detection phase ' . $phase);
                         }
                     }
@@ -849,7 +849,7 @@ class ecodevice extends eqLogic {
                     throw new \Exception(__('L\'adresse IP du serveur Jeedom doit être renseignée.<br>Général -> Administration -> Configuration.<br>Configuration réseaux -> Adresse interne', __FILE__));
                 }
                 if ($this->getIsEnable()) {
-                    throw new \Exception('Configurer l\'URL suivante pour un rafraichissement plus rapide dans l\'ecodevice : page index=>notification :<br>http://' . config::byKey('internalAddr') . '/jeedom/core/api/jeeApi.php?api=' . jeedom::getApiKey('ecodevice') . '&type=ecodevice&id=' . substr($this->getLogicalId(), 0, strpos($this->getLogicalId(), "_")) . '&message=data_change<br>Attention surcharge possible importante.');
+                    throw new \Exception('Configurer l\'URL suivante pour un rafraichissement plus rapide dans l\'ecodevice : page index=>notification :<br>http://' . config::byKey('internalAddr') . '/jeedom/core/api/jeeApi.php?api=' . jeedom::getApiKey('ecodevice') . '&type=ecodevice&id=' . $this->getEcodeviceId() . '&message=data_change<br>Attention surcharge possible importante.');
                     $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
                     $count           = 0;
                     while ($this->_xmlstatus === false && $count < 3) {
@@ -873,7 +873,7 @@ class ecodevice extends eqLogic {
                 }
                 break;
             case "teleinfo":
-                $gceid       = substr($this->getLogicalId(), strpos($this->getLogicalId(), "_") + 2, 1);
+                $gceid       = $this->getGceId();
                 $url_serveur .= 'protect/settings/notif' . $gceid . 'P.htm';
                 for ($compteur = 0; $compteur < 6; $compteur++) {
                     log::add('ecodevice', 'debug', 'Url ' . $url_serveur);
@@ -881,7 +881,7 @@ class ecodevice extends eqLogic {
                         'act'  => $compteur + 3,
                         'serv' => config::byKey('internalAddr'),
                         'port' => 80,
-                        'url'  => '/jeedom/core/api/jeeApi.php?api=' . jeedom::getApiKey('ecodevice') . '&type=ecodevice&plugin=ecodevice&id=' . substr($this->getLogicalId(), 0, strpos($this->getLogicalId(), "_")) . '&message=data_change');
+                        'url'  => '/jeedom/core/api/jeeApi.php?api=' . jeedom::getApiKey('ecodevice') . '&type=ecodevice&plugin=ecodevice&id=' . $this->getEcodeviceId() . '&message=data_change');
                     //					'url' => '/jeedom/core/api/jeeApi.php?api='.jeedom::getApiKey('ecodevice').'&type=ecodevice&id='.$this->getId().'&message=data_change');
 
                     $options = array(
@@ -1248,19 +1248,6 @@ class ecodevice extends eqLogic {
         $cron->save();
     }
 
-    public function getListeName() {
-        switch ($this->getConfiguration('type', '')) {
-            case "carte":
-                break;
-            case "teleinfo":
-                return (substr($this->getLogicalId(), strpos($this->getLogicalId(), "_") + 2, 1)) . " - " . parent::getName();
-                break;
-            case "compteur":
-                return (substr($this->getLogicalId(), strpos($this->getLogicalId(), "_") + 2, 1) + 1) . " - " . parent::getName();
-                break;
-        }
-    }
-
     public function getImage() {
         $f = '/resources/' . $this->getConfiguration('type', '') . '.svg';
         if (file_exists(dirname(__FILE__) . '/../..' . $f)) {
@@ -1277,6 +1264,14 @@ class ecodevice extends eqLogic {
     public function getEcodeviceId() {
         $id = empty($this->getLogicalId()) ? 0 : substr($this->getLogicalId(), 0, strpos($this->getLogicalId(),"_"));
         return $id;
+    }
+    
+    /**
+     * Return the id of this teleinfo meter
+     * @return string
+     */
+    private function getGceId() {
+        return substr($this->getLogicalId(), strpos($this->getLogicalId(), "_") + 2, 1);
     }
 }
 
