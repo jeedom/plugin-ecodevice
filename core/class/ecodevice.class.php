@@ -20,16 +20,14 @@
 /* * ***************************Includes********************************* */
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
-class ecodevice extends eqLogic
-{
+class ecodevice extends eqLogic {
 
     const CONF_TYPE = 'type';
     const TYP_CARTE = 'carte';
     
     private $_xmlstatus;
 
-    static function getTypeCompteur()
-    {
+    static function getTypeCompteur() {
         return array(__('Eau', __FILE__),
             __('Fuel', __FILE__),
             __('Gaz', __FILE__),
@@ -37,9 +35,9 @@ class ecodevice extends eqLogic
             __('Autre', __FILE__));
     }
 
-    private function getListeDefaultCommandes()
-    {
-        return array("BASE"              => array('Index (base)', 'numeric', 'Wh', 1, "BASE", "CONSUMPTION", 'badge', ''),
+    private function getListeDefaultCommandes() {
+        return array(
+            "BASE"              => array('Index (base)', 'numeric', 'Wh', 1, "BASE", "CONSUMPTION", 'badge', ''),
             "HCHC"              => array('Index (heures creuses)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
             "HCHP"              => array('Index (heures pleines)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
             "BBRHCJB"           => array('Index (heures creuses jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
@@ -77,8 +75,7 @@ class ecodevice extends eqLogic
         );
     }
 
-    public static function pull()
-    {
+    public static function pull() {
         log::add('ecodevice', 'debug', 'start cron');
         foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"carte"') as $eqLogic) {
             $eqLogic->scan();
@@ -86,8 +83,7 @@ class ecodevice extends eqLogic
         log::add('ecodevice', 'debug', 'stop cron');
     }
 
-    public function getUrl()
-    {
+    public function getUrl() {
         if ($this->getConfiguration('type', '') == 'carte') {
             $url = 'http://';
             if ($this->getConfiguration('username') != '') {
@@ -104,8 +100,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public function preUpdate()
-    {
+    public function preUpdate() {
         switch ($this->getConfiguration('type', '')) {
             case "carte":
                 if ($this->getIsEnable()) {
@@ -139,8 +134,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public function GetPhase($gceid)
-    {
+    public function GetPhase($gceid) {
         if ($this->getIsEnable()) {
             log::add('ecodevice', 'debug', 'get ' . $this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
             $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
@@ -167,8 +161,7 @@ class ecodevice extends eqLogic
         return "";
     }
 
-    public function preInsert()
-    {
+    public function preInsert() {
         switch ($this->getConfiguration('type', '')) {
             case "":
             case "carte":
@@ -186,8 +179,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public function postInsert()
-    {
+    public function postInsert() {
         switch ($this->getConfiguration('type', '')) {
             case "carte":
                 $cmd = $this->getCmd(null, 'status');
@@ -298,7 +290,7 @@ class ecodevice extends eqLogic
         }
     }
     
-    public function postUpdate(){
+    public function postUpdate() {
         switch ($this->getConfiguration('type', '')) {
             case "carte":
                 $cmd = $this->getCmd(null, 'status');
@@ -458,8 +450,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public function postAjax()
-    {
+    public function postAjax() {
         switch ($this->getConfiguration('type', '')) {
             case "carte":
                 break;
@@ -834,8 +825,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public function preRemove()
-    {
+    public function preRemove() {
         if ($this->getConfiguration('type', '') == 'carte') {
             foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"compteur"') as $eqLogic) {
                 if (substr($eqLogic->getLogicalId(), 0, strpos($eqLogic->getLogicalId(), "_")) == $this->getId()) {
@@ -852,8 +842,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public function configPush($url_serveur = null)
-    {
+    public function configPush($url_serveur = null) {
         switch ($this->getConfiguration('type', '')) {
             case "carte":
                 if (config::byKey('internalAddr') == "") {
@@ -911,8 +900,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public function event()
-    {
+    public function event() {
         switch ($this->getConfiguration('type', '')) {
             case "carte":
                 foreach (eqLogic::byType('ecodevice') as $eqLogic) {
@@ -938,8 +926,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public function scan()
-    {
+    public function scan() {
         if ($this->getIsEnable()) {
             log::add('ecodevice', 'debug', "Scan " . $this->getName());
             $statuscmd       = $this->getCmd(null, 'status');
@@ -1143,8 +1130,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public function scan_rapide()
-    {
+    public function scan_rapide() {
         if ($this->getIsEnable()) {
             log::add('ecodevice', 'debug', "Scan rapide " . $this->getName());
             $statuscmd       = $this->getCmd(null, 'status');
@@ -1207,8 +1193,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public static function daemon()
-    {
+    public static function daemon() {
         $starttime = microtime(true);
         foreach (self::byType('ecodevice') as $eqLogic) {
             $eqLogic->scan_rapide();
@@ -1219,8 +1204,7 @@ class ecodevice extends eqLogic
         }
     }
 
-    public static function deamon_info()
-    {
+    public static function deamon_info() {
         $return          = array();
         $return['log']   = '';
         $return['state'] = 'nok';
@@ -1232,8 +1216,7 @@ class ecodevice extends eqLogic
         return $return;
     }
 
-    public static function deamon_start($_debug = false)
-    {
+    public static function deamon_start($_debug = false) {
         self::deamon_stop();
         $deamon_info = self::deamon_info();
         if ($deamon_info['launchable'] != 'ok') {
@@ -1247,8 +1230,7 @@ class ecodevice extends eqLogic
         $cron->run();
     }
 
-    public static function deamon_stop()
-    {
+    public static function deamon_stop() {
         $cron = cron::byClassAndFunction('ecodevice', 'daemon');
         if (!is_object($cron)) {
             throw new \Exception(__('Tâche cron introuvable', __FILE__));
@@ -1257,8 +1239,7 @@ class ecodevice extends eqLogic
         $cron->halt();
     }
 
-    public static function deamon_changeAutoMode($_mode)
-    {
+    public static function deamon_changeAutoMode($_mode) {
         $cron = cron::byClassAndFunction('ecodevice', 'daemon');
         if (!is_object($cron)) {
             throw new \Exception(__('Tâche cron introuvable', __FILE__));
@@ -1267,8 +1248,7 @@ class ecodevice extends eqLogic
         $cron->save();
     }
 
-    public function getListeName()
-    {
+    public function getListeName() {
         switch ($this->getConfiguration('type', '')) {
             case "carte":
                 break;
@@ -1300,10 +1280,8 @@ class ecodevice extends eqLogic
     }
 }
 
-class ecodeviceCmd extends cmd
-{
-    public function execute($_options = null)
-    {
+class ecodeviceCmd extends cmd {
+    public function execute($_options = null) {
         $eqLogic = $this->getEqLogic();
         if (!is_object($eqLogic) || $eqLogic->getIsEnable() != 1) {
             throw new \Exception(__('Equipement desactivé impossible d\éxecuter la commande : ' . $this->getHumanName(), __FILE__));
@@ -1329,9 +1307,7 @@ class ecodeviceCmd extends cmd
         return false;
     }
 
-    public function dontRemoveCmd()
-    {
+    public function dontRemoveCmd() {
         return true;
     }
-
 }
