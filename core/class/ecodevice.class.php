@@ -34,54 +34,6 @@ class ecodevice extends eqLogic {
      */
     private $_phase;
 
-    static function getTypeCompteur() {
-        return array(__('Eau', __FILE__),
-            __('Fuel', __FILE__),
-            __('Gaz', __FILE__),
-            __('Electricité', __FILE__),
-            __('Autre', __FILE__));
-    }
-
-    private function getListeDefaultCommandes() {
-        return array(
-            "BASE"              => array('Index (base)', 'numeric', 'Wh', 1, "BASE", "CONSUMPTION", 'badge', ''),
-            "HCHC"              => array('Index (HC)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
-            "HCHP"              => array('Index (HP)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
-            "BBRHCJB"           => array('Index (HC jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHPJB"           => array('Index (HP jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHCJW"           => array('Index (HC jours blancs Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHPJW"           => array('Index (HP jours blancs Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHCJR"           => array('Index (HC jours rouges Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHPJR"           => array('Index (HP jours rouges Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "EJPHN"             => array('Index (normal EJP)', 'numeric', 'Wh', 0, "EJP", "CONSUMPTION", 'badge', ''),
-            "EJPHPM"            => array('Index (pointe mobile EJP)', 'numeric', 'Wh', 0, "EJP", "CONSUMPTION", 'badge', ''),
-            "IINST"             => array('Intensité instantanée', 'numeric', 'A', 1, "", "POWER", 'default', 'Mono'),
-            "IINST1"            => array('Intensité instantanée 1', 'numeric', 'A', 0, "", "POWER", 'default', 'Tri'),
-            "IINST2"            => array('Intensité instantanée 2', 'numeric', 'A', 0, "", "POWER", 'default', 'Tri'),
-            "IINST3"            => array('Intensité instantanée 3', 'numeric', 'A', 0, "", "POWER", 'default', 'Tri'),
-            "PPAP"              => array('Puissance Apparente', 'numeric', 'VA', 1, "", "POWER", 'badge', ''),
-            "OPTARIF"           => array('Option tarif', 'string', '', 1, "", "GENERIC_INFO", 'badge', ''),
-            "DEMAIN"            => array('Couleur demain', 'string', '', 0, "BBRH", "GENERIC_INFO", 'badge', ''),
-            "PTEC"              => array('Tarif en cours', 'string', '', 1, "", "GENERIC_INFO", 'badge', ''),
-            "BASE_evolution"    => array('Evolution index (base)', 'numeric', 'W/min', 1, "BASE", "", 'badge', ''),
-            "HCHC_evolution"    => array('Evolution index (HC)', 'numeric', 'W/min', 1, "HC", "", 'badge', ''),
-            "HCHP_evolution"    => array('Evolution index (HP)', 'numeric', 'W/min', 1, "HC", "", 'badge', ''),
-            "BBRHCJB_evolution" => array('Evolution index (HC jours bleus Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHPJB_evolution" => array('Evolution index (HP jours bleus Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHCJW_evolution" => array('Evolution index (HC jours blancs Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHPJW_evolution" => array('Evolution index (HP jours blancs Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHCJR_evolution" => array('Evolution index (HC jours rouges Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHPJR_evolution" => array('Evolution index (HP jours rouges Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "EJPHN_evolution"   => array('Evolution index (normal EJP)', 'numeric', 'W', 0, "EJP", "", 'badge', ''),
-            "EJPHPM_evolution"  => array('Evolution index (pointe mobile EJP)', 'numeric', 'W', 0, "EJP", "", 'badge', ''),
-            "ISOUSC"            => array('Intensité souscrite', 'numeric', 'A', 1, "", "", 'badge', ''),
-            "IMAX"              => array('Intensité maximale', 'numeric', 'A', 1, "", "", 'badge', 'Mono'),
-            "IMAX1"             => array('Intensité maximale 1', 'numeric', 'A', 0, "", "", 'badge', 'Tri'),
-            "IMAX2"             => array('Intensité maximale 2', 'numeric', 'A', 0, "", "", 'badge', 'Tri'),
-            "IMAX3"             => array('Intensité maximale 3', 'numeric', 'A', 0, "", "", 'badge', 'Tri')
-        );
-    }
-
     public static function pull() {
         log::add('ecodevice', 'debug', 'start cron');
         foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"carte"') as $eqLogic) {
@@ -107,64 +59,6 @@ class ecodevice extends eqLogic {
         }
     }
 
-    public function preUpdate() {
-        switch ($this->getConfiguration('type', '')) {
-            case "carte":
-                if ($this->getIsEnable()) {
-                    log::add('ecodevice', 'debug', 'get ' . $this->getUrl() . 'status.xml');
-                    $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
-                    if ($this->_xmlstatus === false) {
-                        throw new \Exception(__('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName());
-                    }
-                }
-                break;
-            case "teleinfo":
-                if ($this->getIsEnable()) {
-                    $carteEqL = $this->getEcodevice();
-                    $this->_phase = $carteEqL->GetPhase($this->getGceId());
-                    log::add('ecodevice', 'debug', 'Detection phase ' . $this->_phase);
-                    if ($this->_phase == "") {
-                        throw new \Exception(__('Le type de compteur est introuvable. Vérifier la communication entre l\'ecodevice et votre compteur.', __FILE__));
-                    }
-                }
-                break;
-            case "compteur":
-                if ($this->getIsEnable()) {
-                    if ($this->getConfiguration('typecompteur') == "") {
-                        throw new \Exception(__('Le type de compteur doit être défini.', __FILE__));
-                    }
-                }
-                break;
-        }
-    }
-
-    public function GetPhase($gceid) {
-        if ($this->getIsEnable()) {
-            log::add('ecodevice', 'debug', 'get ' . $this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
-            $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
-            if ($this->_xmlstatus === false) {
-                throw new \Exception(__('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName());
-            }
-            $xpathModele     = '//T' . $gceid . '_IMAX2';
-            $status          = $this->_xmlstatus->xpath($xpathModele);
-
-            if (count($status) != 0) {
-                if ($status[0] != "0") {
-                    return "Tri";
-                }
-            }
-            $xpathModele = '//T' . $gceid . '_IMAX';
-            $status      = $this->_xmlstatus->xpath($xpathModele);
-
-            if (count($status) != 0) {
-                if ($status[0] != "0") {
-                    return "Mono";
-                }
-            }
-        }
-        return "";
-    }
-
     public function preInsert() {
         switch ($this->getConfiguration('type', '')) {
             case "":
@@ -179,6 +73,36 @@ class ecodevice extends eqLogic {
             case "compteur":
                 $this->setIsEnable(0);
                 $this->setIsVisible(0);
+                break;
+        }
+    }
+    
+    public function preUpdate() {
+        switch ($this->getConfiguration('type', '')) {
+            case "carte":
+                if ($this->getIsEnable()) {
+                    log::add('ecodevice', 'debug', 'get ' . $this->getUrl() . 'status.xml');
+                    $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
+                    if ($this->_xmlstatus === false) {
+                        throw new \Exception(__('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName());
+                    }
+                }
+                break;
+            case "teleinfo":
+                if ($this->getIsEnable()) {
+                    $carteEqL = $this->getEcodevice();
+                    $this->_phase = $carteEqL->getPhase($this->getGceId());
+                    if ($this->_phase == "") {
+                        throw new \Exception(__('Le type de compteur est introuvable. Vérifier la communication entre l\'ecodevice et votre compteur.', __FILE__));
+                    }
+                }
+                break;
+            case "compteur":
+                if ($this->getIsEnable()) {
+                    if ($this->getConfiguration('typecompteur') == "") {
+                        throw new \Exception(__('Le type de compteur doit être défini.', __FILE__));
+                    }
+                }
                 break;
         }
     }
@@ -407,7 +331,7 @@ class ecodevice extends eqLogic {
             case "teleinfo":
                 if ($this->getIsEnable()) {
                     foreach ($this->getListeDefaultCommandes() as $label => $data) {
-                        if (( $this->getConfiguration('tarification') == "" || $this->getConfiguration('tarification') == $data[4] || $data[4] == "" ) && ( $this->_phase == $data[7] || $data[7] == "" )) {
+                        if (( $this->getConfiguration('tarification') == "" || $this->getConfiguration('tarification') == $data[4] || $data[4] == "" ) && ($this->_phase == $data[7] || $data[7] == "" )) {
                             $cmd = $this->getCmd(null, $label);
                             if (!is_object($cmd)) {
                                 $cmd = new ecodeviceCmd();
@@ -1277,11 +1201,96 @@ class ecodevice extends eqLogic {
     }
     
     /**
-     * Return the id of this teleinfo meter
+     * @param string $gceid Id of this teleinfo in ecodevice provided data
+     * @throws \Exception if no data can be retrieved from the ecodevice
+     * @return string either Mono or Tri
+     */
+    public function getPhase($gceid) {
+        $phase = "";
+        if ($this->getIsEnable()) {            
+            log::add('ecodevice', 'debug', 'get ' . $this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
+            $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
+            if ($this->_xmlstatus === false) {
+                throw new \Exception(__('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName());
+            }
+            $xpathModele     = '//T' . $gceid . '_IMAX2';
+            $status          = $this->_xmlstatus->xpath($xpathModele);
+            
+            if (count($status) != 0) {
+                if ($status[0] != "0") {
+                    $phase =  "Tri";
+                }
+            }
+            if ($phase == "") {
+                $xpathModele = '//T' . $gceid . '_IMAX';
+                $status      = $this->_xmlstatus->xpath($xpathModele);
+                
+                if (count($status) != 0) {
+                    if ($status[0] != "0") {
+                        $phase = "Mono";
+                    }
+                }
+            }
+        }       
+        
+        log::add('ecodevice', 'debug', 'Detection phase: ' . (empty($phase) ? 'ecodevice désactivé' : $phase));
+        return $phase;
+    }
+    
+    /**
+     * Return the id of this teleinfo meter in the data provide by the ecodevice
      * @return string
      */
     private function getGceId() {
         return substr($this->getLogicalId(), strpos($this->getLogicalId(), "_") + 2, 1);
+    }
+
+    public static function getTypeCompteur() {
+        return array(__('Eau', __FILE__),
+            __('Fuel', __FILE__),
+            __('Gaz', __FILE__),
+            __('Electricité', __FILE__),
+            __('Autre', __FILE__));
+    }
+    
+    private function getListeDefaultCommandes() {
+        return array(
+            "BASE"              => array('Index (base)', 'numeric', 'Wh', 1, "BASE", "CONSUMPTION", 'badge', ''),
+            "HCHC"              => array('Index (HC)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
+            "HCHP"              => array('Index (HP)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
+            "BBRHCJB"           => array('Index (HC jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "BBRHPJB"           => array('Index (HP jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "BBRHCJW"           => array('Index (HC jours blancs Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "BBRHPJW"           => array('Index (HP jours blancs Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "BBRHCJR"           => array('Index (HC jours rouges Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "BBRHPJR"           => array('Index (HP jours rouges Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
+            "EJPHN"             => array('Index (normal EJP)', 'numeric', 'Wh', 0, "EJP", "CONSUMPTION", 'badge', ''),
+            "EJPHPM"            => array('Index (pointe mobile EJP)', 'numeric', 'Wh', 0, "EJP", "CONSUMPTION", 'badge', ''),
+            "IINST"             => array('Intensité instantanée', 'numeric', 'A', 1, "", "POWER", 'default', 'Mono'),
+            "IINST1"            => array('Intensité instantanée 1', 'numeric', 'A', 0, "", "POWER", 'default', 'Tri'),
+            "IINST2"            => array('Intensité instantanée 2', 'numeric', 'A', 0, "", "POWER", 'default', 'Tri'),
+            "IINST3"            => array('Intensité instantanée 3', 'numeric', 'A', 0, "", "POWER", 'default', 'Tri'),
+            "PPAP"              => array('Puissance Apparente', 'numeric', 'VA', 1, "", "POWER", 'badge', ''),
+            "OPTARIF"           => array('Option tarif', 'string', '', 1, "", "GENERIC_INFO", 'badge', ''),
+            "DEMAIN"            => array('Couleur demain', 'string', '', 0, "BBRH", "GENERIC_INFO", 'badge', ''),
+            "PTEC"              => array('Tarif en cours', 'string', '', 1, "", "GENERIC_INFO", 'badge', ''),
+            "BASE_evolution"    => array('Evolution index (base)', 'numeric', 'W/min', 1, "BASE", "", 'badge', ''),
+            "HCHC_evolution"    => array('Evolution index (HC)', 'numeric', 'W/min', 1, "HC", "", 'badge', ''),
+            "HCHP_evolution"    => array('Evolution index (HP)', 'numeric', 'W/min', 1, "HC", "", 'badge', ''),
+            "BBRHCJB_evolution" => array('Evolution index (HC jours bleus Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "BBRHPJB_evolution" => array('Evolution index (HP jours bleus Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "BBRHCJW_evolution" => array('Evolution index (HC jours blancs Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "BBRHPJW_evolution" => array('Evolution index (HP jours blancs Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "BBRHCJR_evolution" => array('Evolution index (HC jours rouges Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "BBRHPJR_evolution" => array('Evolution index (HP jours rouges Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
+            "EJPHN_evolution"   => array('Evolution index (normal EJP)', 'numeric', 'W', 0, "EJP", "", 'badge', ''),
+            "EJPHPM_evolution"  => array('Evolution index (pointe mobile EJP)', 'numeric', 'W', 0, "EJP", "", 'badge', ''),
+            "ISOUSC"            => array('Intensité souscrite', 'numeric', 'A', 1, "", "", 'badge', ''),
+            "IMAX"              => array('Intensité maximale', 'numeric', 'A', 1, "", "", 'badge', 'Mono'),
+            "IMAX1"             => array('Intensité maximale 1', 'numeric', 'A', 0, "", "", 'badge', 'Tri'),
+            "IMAX2"             => array('Intensité maximale 2', 'numeric', 'A', 0, "", "", 'badge', 'Tri'),
+            "IMAX3"             => array('Intensité maximale 3', 'numeric', 'A', 0, "", "", 'badge', 'Tri')
+        );
     }
 }
 
