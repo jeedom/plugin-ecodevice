@@ -132,7 +132,7 @@ function addCmdToTable(_cmd) {
 }
 
 $('#bt_goCarte').on('click', function() {
-    $('#md_modal').dialog({title: "{{Accèder à l'interface de l'Ecodevice}}"});
+    $('#md_modal').dialog({title: "{{Accèder à l'interface de l'eco-device}}"});
 	window.open('http://'+$('.eqLogicAttr[data-l2key=username]').value()+':'+$('.eqLogicAttr[data-l2key=password]').value()+'@'+$('.eqLogicAttr[data-l2key=ip]').value()+':'+$('.eqLogicAttr[data-l2key=port]').value()+'/');
 });
 

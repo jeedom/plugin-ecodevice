@@ -19,6 +19,7 @@
 
 /* * ***************************Includes********************************* */
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
+include_file('core', 'ecodeviceCmd', 'class', 'ecodevice');
 
 class ecodevice extends eqLogic {
 
@@ -27,12 +28,68 @@ class ecodevice extends eqLogic {
     
     private $_xmlstatus;
     
-    
     /**
      * Variable shared between preUpdate and postUpdate
      * @var string
      */
     private $_phase;
+    
+    private static $_teleinfo_default_cmds = array(
+        "carte" =>
+            array(
+                'status' => array(
+                    'type' => 'info', 'name' => 'Etat', 'subtype' => 'binary', 'unit' => '', 'isvisible' => 1, 'generic_type' => "GENERIC_INFO", 'template' => 'default'
+                ),
+                'reboot' => array(
+                    'type' => 'action', 'name' => 'Reboot', 'subtype' => 'other', 'unit' => '', 'isvisible' => 0, 'generic_type' => "GENERIC_ACTION", 'template' => 'default'
+                ),
+            ),
+        "teleinfo" =>
+            array(
+                "BASE" =>
+                    array(
+                        'type' => 'info', 'name' => 'Index (base)', 'subtype' => 'numeric', 'unit' => 'Wh', 'isvisible' => 1, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '',
+                        'tarif' => "BASE"
+                    ),
+                "HCHC" =>
+                    array(
+                        'type' => 'info', 'name' => 'Index (HC)', 'subtype' =>  'numeric', 'unit' => 'Wh', 'isvisible' => 1, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '', 'tarif' => "HC"),
+                "HCHP"              => array('type' => 'info', 'name' => 'Index (HP)', 'subtype' =>  'numeric', 'unit' => 'Wh', 'isvisible' => 1, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '', 'tarif' => "HC"),
+                "BBRHCJB"           => array('type' => 'info', 'name' => 'Index (HC jours bleus Tempo)', 'subtype' => 'numeric', 'unit' => 'Wh', 'isvisible' => 0, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "BBRHPJB"           => array('type' => 'info', 'name' => 'Index (HP jours bleus Tempo)', 'subtype' => 'numeric', 'unit' => 'Wh', 'isvisible' => 0, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "BBRHCJW"           => array('type' => 'info', 'name' => 'Index (HC jours blancs Tempo)', 'subtype' => 'numeric', 'unit' => 'Wh', 'isvisible' => 0, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "BBRHPJW"           => array('type' => 'info', 'name' => 'Index (HP jours blancs Tempo)', 'subtype' => 'numeric', 'unit' => 'Wh', 'isvisible' => 0, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "BBRHCJR"           => array('type' => 'info', 'name' => 'Index (HC jours rouges Tempo)', 'subtype' => 'numeric', 'unit' => 'Wh', 'isvisible' => 0, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "BBRHPJR"           => array('type' => 'info', 'name' => 'Index (HP jours rouges Tempo)', 'subtype' => 'numeric', 'unit' => 'Wh', 'isvisible' => 0, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "EJPHN"             => array('type' => 'info', 'name' => 'Index (normal EJP)', 'subtype' => 'numeric', 'unit' => 'Wh', 'isvisible' => 0, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '', 'tarif' => "EJP"),
+                "EJPHPM"            => array('type' => 'info', 'name' => 'Index (pointe mobile EJP)', 'subtype' =>  'numeric', 'unit' => 'Wh', 'isvisible' => 0, 'generic_type' => "CONSUMPTION", 'template' => 'badge', 'phase' => '', 'tarif' => "EJP"),
+                "IINST"             => array('type' => 'info', 'name' => 'Intensité instantanée', 'subtype' => 'numeric', 'unit' => 'A', 'isvisible' => 1, 'generic_type' => "POWER", 'template' => 'default', 'phase' => 'Mono', 'tarif' => ""),
+                "IINST1"            => array('type' => 'info', 'name' => 'Intensité instantanée 1', 'subtype' => 'numeric', 'unit' => 'A', 'isvisible' => 0, 'generic_type' => "POWER", 'template' => 'default', 'phase' => 'Tri', 'tarif' => ""),
+                "IINST2"            => array('type' => 'info', 'name' => 'Intensité instantanée 2', 'subtype' => 'numeric', 'unit' => 'A', 'isvisible' => 0, 'generic_type' => "POWER", 'template' => 'default', 'phase' => 'Tri', 'tarif' => ""),
+                "IINST3"            => array('type' => 'info', 'name' => 'Intensité instantanée 3', 'subtype' => 'numeric', 'unit' => 'A', 'isvisible' => 0, 'generic_type' => "POWER", 'template' => 'default', 'phase' => 'Tri', 'tarif' => ""),
+                "PPAP"              => array('type' => 'info', 'name' => 'Puissance Apparente', 'subtype' => 'numeric', 'unit' => 'VA', 'isvisible' => 1, 'generic_type' => "POWER", 'template' => 'badge', 'phase' => '', 'tarif' => ""),
+                "OPTARIF"           => array('type' => 'info', 'name' => 'Option tarif', 'subtype' => 'string', 'unit' => '', 'isvisible' => 1, 'generic_type' => "GENERIC_INFO", 'template' => 'badge', 'phase' => '', 'tarif' => ""),
+                "DEMAIN"            => array('type' => 'info', 'name' => 'Couleur demain', 'subtype' => 'string', 'unit' => '', 'isvisible' => 0, 'generic_type' => "GENERIC_INFO", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "PTEC"              => array('type' => 'info', 'name' => 'Tarif en cours', 'subtype' => 'string', 'unit' => '', 'isvisible' => 1, 'generic_type' => "GENERIC_INFO", 'template' => 'badge', 'phase' => '', 'tarif' => ""),
+                "BASE_evolution"    => array('type' => 'info', 'name' => 'Evolution index (base)', 'subtype' => 'numeric', 'unit' => 'W/min', 'isvisible' => 1, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => "BASE"),
+                "HCHC_evolution"    => array('type' => 'info', 'name' => 'Evolution index (HC)', 'subtype' => 'numeric', 'unit' => 'W/min', 'isvisible' => 1, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => "HC"),
+                "HCHP_evolution"    => array('type' => 'info', 'name' => 'Evolution index (HP)', 'subtype' => 'numeric', 'unit' => 'W/min', 'isvisible' => 1, "'generic_type' => ", 'template' => 'badge', 'phase' => '', 'tarif' => "HC"),
+                "BBRHCJB_evolution" => array('type' => 'info', 'name' => 'Evolution index (HC jours bleus Tempo)', 'subtype' => 'numeric', 'unit' => 'W/min', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "BBRHPJB_evolution" => array('type' => 'info', 'name' => 'Evolution index (HP jours bleus Tempo)', 'subtype' => 'numeric', 'unit' => 'W/min', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "BBRHCJW_evolution" => array('type' => 'info', 'name' => 'Evolution index (HC jours blancs Tempo)', 'subtype' => 'numeric', 'unit' => 'W/min', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "BBRHPJW_evolution" => array('type' => 'info', 'name' => 'Evolution index (HP jours blancs Tempo)', 'subtype' => 'numeric', 'unit' => 'W/min', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "BBRHCJR_evolution" => array('type' => 'info', 'name' => 'Evolution index (HC jours rouges Tempo)', 'subtype' => 'numeric', 'unit' => 'W/min', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "BBRHPJR_evolution" => array('type' => 'info', 'name' => 'Evolution index (HP jours rouges Tempo)', 'subtype' => 'numeric', 'unit' => 'W/min', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => "BBRH"),
+                "EJPHN_evolution"   => array('type' => 'info', 'name' => 'Evolution index (normal EJP)', 'subtype' => 'numeric', 'unit' => 'W', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => "EJP"),
+                "EJPHPM_evolution"  => array('type' => 'info', 'name' => 'Evolution index (pointe mobile EJP)', 'subtype' => 'numeric', 'unit' => 'W', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => "EJP"),
+                "ISOUSC"            => array('type' => 'info', 'name' => 'Intensité souscrite', 'subtype' => 'numeric', 'unit' => 'A', 'isvisible' => 1, 'generic_type' => "", 'template' => 'badge', 'phase' => '', 'tarif' => ""),
+                "IMAX"              => array('type' => 'info', 'name' => 'Intensité maximale', 'subtype' => 'numeric', 'unit' => 'A', 'isvisible' => 1, 'generic_type' => "", 'template' => 'badge', 'phase' => 'Mono', 'tarif' => ""),
+                "IMAX1"             => array('type' => 'info', 'name' => 'Intensité maximale 1', 'subtype' => 'numeric', 'unit' => 'A', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => 'Tri', 'tarif' => ""),
+                "IMAX2"             => array('type' => 'info', 'name' => 'Intensité maximale 2', 'subtype' => 'numeric', 'unit' => 'A', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => 'Tri', 'tarif' => ""),
+                "IMAX3"             => array('type' => 'info', 'name' => 'Intensité maximale 3', 'subtype' => 'numeric', 'unit' => 'A', 'isvisible' => 0, 'generic_type' => "", 'template' => 'badge', 'phase' => 'Tri', 'tarif' => "")
+    ));
+    
+    //private static $
 
     public static function pull() {
         log::add('ecodevice', 'debug', 'start cron');
@@ -64,15 +121,12 @@ class ecodevice extends eqLogic {
             case "":
             case "carte":
                 $this->setConfiguration('type', 'carte');
-                $this->setIsVisible(0);
                 break;
             case "teleinfo":
                 $this->setIsEnable(0);
-                $this->setIsVisible(0);
                 break;
             case "compteur":
                 $this->setIsEnable(0);
-                $this->setIsVisible(0);
                 break;
         }
     }
@@ -88,6 +142,7 @@ class ecodevice extends eqLogic {
                     }
                 }
                 break;
+                
             case "teleinfo":
                 if ($this->getIsEnable()) {
                     $carteEqL = $this->getEcodevice();
@@ -97,6 +152,7 @@ class ecodevice extends eqLogic {
                     }
                 }
                 break;
+                
             case "compteur":
                 if ($this->getIsEnable()) {
                     if ($this->getConfiguration('typecompteur') == "") {
@@ -110,31 +166,8 @@ class ecodevice extends eqLogic {
     public function postInsert() {
         switch ($this->getConfiguration('type', '')) {
             case "carte":
-                $cmd = $this->getCmd(null, 'status');
-                if (!is_object($cmd)) {
-                    $cmd = new ecodeviceCmd();
-                    $cmd->setName('Etat');
-                    $cmd->setEqLogic_id($this->getId());
-                    $cmd->setType('info');
-                    $cmd->setSubType('binary');
-                    $cmd->setLogicalId('status');
-                    $cmd->setIsVisible(1);
-                    $cmd->setEventOnly(1);
-                    $cmd->setDisplay('generic_type', 'GENERIC_INFO');
-                    $cmd->save();
-                }
-                $reboot = $this->getCmd(null, 'reboot');
-                if (!is_object($reboot)) {
-                    $reboot = new ecodeviceCmd();
-                    $reboot->setName('Reboot');
-                    $reboot->setEqLogic_id($this->getId());
-                    $reboot->setType('action');
-                    $reboot->setSubType('other');
-                    $reboot->setLogicalId('reboot');
-                    $reboot->setEventOnly(1);
-                    $reboot->setIsVisible(0);
-                    $reboot->setDisplay('generic_type', 'GENERIC_ACTION');
-                    $reboot->save();
+                foreach (self::$_teleinfo_default_cmds['carte'] as $logicalId => $data) {
+                    ecodeviceCmd::create($this, $logicalId, $data);
                 }
                 for ($compteurId = 0; $compteurId <= 1; $compteurId++) {
                     if (!is_object(self::byLogicalId($this->getId() . "_C" . $compteurId, 'ecodevice'))) {
@@ -164,8 +197,10 @@ class ecodevice extends eqLogic {
                     }
                 }
                 break;
+                
             case "teleinfo":
                 break;
+                
             case "compteur":
                 $consommationjour = $this->getCmd(null, 'consommationjour');
                 if (!is_object($consommationjour)) {
@@ -221,53 +256,6 @@ class ecodevice extends eqLogic {
     public function postUpdate() {
         switch ($this->getConfiguration('type', '')) {
             case "carte":
-                $cmd = $this->getCmd(null, 'status');
-                if (!is_object($cmd)) {
-                    $cmd = new ecodeviceCmd();
-                    $cmd->setName('Etat');
-                    $cmd->setEqLogic_id($this->getId());
-                    $cmd->setType('info');
-                    $cmd->setSubType('binary');
-                    $cmd->setLogicalId('status');
-                    $cmd->setIsVisible(1);
-                    $cmd->setEventOnly(1);
-                    $cmd->setDisplay('generic_type', 'GENERIC_INFO');
-                    $cmd->save();
-                } else {
-                    if ($cmd->getDisplay('generic_type') == "") {
-                        $cmd->setDisplay('generic_type', 'GENERIC_INFO');
-                        $cmd->save();
-                    }
-                }
-                $reboot = $this->getCmd(null, 'reboot');
-                if (is_object($reboot) && get_class($reboot) != "ecodeviceCmd") {
-                    $reboot->remove();
-                }
-                $reboot = $this->getCmd(null, 'reboot');
-
-                if (!is_object($reboot)) {
-                    $reboot = new ecodeviceCmd();
-                    $reboot->setName('Reboot');
-                    $reboot->setEqLogic_id($this->getId());
-                    $reboot->setType('action');
-                    $reboot->setSubType('other');
-                    $reboot->setLogicalId('reboot');
-                    $reboot->setEventOnly(1);
-                    $reboot->setIsVisible(0);
-                    $reboot->setDisplay('generic_type', 'GENERIC_ACTION');
-                    $reboot->save();
-                } else {
-                    if ($cmd->getDisplay('generic_type') == "") {
-                        $cmd->setDisplay('generic_type', 'GENERIC_INFO');
-                        $cmd->save();
-                    }
-                }
-
-                $ecodeviceCmd = $this->getCmd(null, 'updatetime');
-                if (is_object($ecodeviceCmd)) {
-                    $ecodeviceCmd->remove();
-                }
-
                 $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'status.xml');
                 $count           = 0;
                 while ($this->_xmlstatus === false && $count < 3) {
@@ -296,17 +284,21 @@ class ecodevice extends eqLogic {
                                 if ($status[0] != "selected") {
                                     if ($eqLogic->getConfiguration('typecompteur') == "Fuel" || $eqLogic->getConfiguration('typecompteur') == "Temps de fonctionnement") {
                                         throw new \Exception(__('Le compteur ' . $eqLogic->getName() . ' ne doit pas être configuré en mode fuel dans l\'ecodevice.', __FILE__));
-                                    } elseif ($eqLogic->getConfiguration('typecompteur') == "") {
+                                    }
+                                    elseif ($eqLogic->getConfiguration('typecompteur') == "") {
                                         $eqLogic->setConfiguration('typecompteur', "Eau");
                                         $eqLogic->save();
                                     }
-                                } else {
+                                }
+                                else {
                                     $eqLogic->setConfiguration('typecompteur', "Fuel");
                                     $eqLogic->save();
                                 }
-                            } elseif ($eqLogic->getConfiguration('typecompteur') == "Fuel" || $eqLogic->getConfiguration('typecompteur') == "Temps de fonctionnement") {
+                            }
+                            elseif ($eqLogic->getConfiguration('typecompteur') == "Fuel" || $eqLogic->getConfiguration('typecompteur') == "Temps de fonctionnement") {
                                 throw new \Exception(__('Le compteur ' . $eqLogic->getName() . ' ne doit pas être configuré en mode fuel dans l\'ecodevice.', __FILE__));
-                            } elseif ($eqLogic->getConfiguration('typecompteur') == "") {
+                            }
+                            elseif ($eqLogic->getConfiguration('typecompteur') == "") {
                                 $eqLogic->setConfiguration('typecompteur', "Eau");
                                 $eqLogic->save();
                             }
@@ -328,38 +320,20 @@ class ecodevice extends eqLogic {
                     }
                 }
                 break;
+                
             case "teleinfo":
                 if ($this->getIsEnable()) {
-                    foreach ($this->getListeDefaultCommandes() as $label => $data) {
-                        if (( $this->getConfiguration('tarification') == "" || $this->getConfiguration('tarification') == $data[4] || $data[4] == "" ) && ($this->_phase == $data[7] || $data[7] == "" )) {
-                            $cmd = $this->getCmd(null, $label);
+                    foreach (self::$_teleinfo_default_cmds['teleinfo'] as $logicalId => $data) {
+                        if (($this->getConfiguration('tarification') == "" || $this->getConfiguration('tarification') == $data['tarif'] || $data['tarif'] == "") &&
+                            ($this->_phase == $data['phase'] || $data['phase'] == "")) {
+                            $cmd = $this->getCmd(null, $logicalId);
                             if (!is_object($cmd)) {
-                                $cmd = new ecodeviceCmd();
-                                $cmd->setName($data[0]);
-                                $cmd->setEqLogic_id($this->getId());
-                                $cmd->setType('info');
-                                $cmd->setSubType($data[1]);
-                                $cmd->setLogicalId($label);
-                                $cmd->setUnite($data[2]);
-                                $cmd->setIsVisible($data[3]);
-                                $cmd->setEventOnly(1);
-                                $cmd->setDisplay('generic_type', $data[5]);
-                                $cmd->setTemplate('dashboard', $data[6]);
-                                $cmd->setTemplate('mobile', $data[6]);
-                                $cmd->save();
-                            } else {
-                                if ($cmd->getDisplay('generic_type') == "") {
-                                    $cmd->setDisplay('generic_type', $data[5]);
-                                    $cmd->save();
-                                }
-                                if ($cmd->getTemplate('dashboard') == "") {
-                                    $cmd->setTemplate('dashboard', $data[6]);
-                                    $cmd->setTemplate('mobile', $data[6]);
-                                    $cmd->save();
-                                }
+                                ecodeviceCmd::create($this, $logicalId, $data);
                             }
-                        } else {
-                            $cmd = $this->getCmd(null, $label);
+                        }
+                        else {
+                            //FIXME: is that code usefull?
+                            $cmd = $this->getCmd(null, $logicalId);
                             if (is_object($cmd)) {
                                 $cmd->remove();
                             }
@@ -367,6 +341,7 @@ class ecodevice extends eqLogic {
                     }
                 }
                 break;
+                
             case "compteur":
                 break;
         }
@@ -376,8 +351,10 @@ class ecodevice extends eqLogic {
         switch ($this->getConfiguration('type', '')) {
             case "carte":
                 break;
+                
             case "teleinfo":
                 break;
+                
             case "compteur":
                 if ($this->getIsEnable()) {
                     foreach ($this->getCmd() as $cmd) {
@@ -455,7 +432,8 @@ class ecodevice extends eqLogic {
                             $nbimpulsionjour->setDisplay('generic_type', 'GENERIC_INFO');
                             $nbimpulsionjour->save();
                         }
-                    } elseif ($this->getConfiguration('typecompteur') == "Fuel") {
+                    }
+                    elseif ($this->getConfiguration('typecompteur') == "Fuel") {
                         $tempsfonctionnement = $this->getCmd(null, 'tempsfonctionnement');
                         if (is_object($tempsfonctionnement)) {
                             $tempsfonctionnement->remove();
@@ -526,7 +504,8 @@ class ecodevice extends eqLogic {
                             $consommationjour->setTemplate('mobile', 'badge');
                             $consommationjour->save();
                         }
-                    } elseif ($this->getConfiguration('typecompteur') == "Eau") {
+                    }
+                    elseif ($this->getConfiguration('typecompteur') == "Eau") {
                         $tempsfonctionnement = $this->getCmd(null, 'tempsfonctionnement');
                         if (is_object($tempsfonctionnement)) {
                             $tempsfonctionnement->remove();
@@ -597,7 +576,8 @@ class ecodevice extends eqLogic {
                             $debitinstantane->setUnite("l/min");
                             $debitinstantane->save();
                         }
-                    } elseif ($this->getConfiguration('typecompteur') == "Gaz") {
+                    }
+                    elseif ($this->getConfiguration('typecompteur') == "Gaz") {
                         $tempsfonctionnement = $this->getCmd(null, 'tempsfonctionnement');
                         if (is_object($tempsfonctionnement)) {
                             $tempsfonctionnement->remove();
@@ -669,7 +649,8 @@ class ecodevice extends eqLogic {
                             $debitinstantane->setUnite("dm³/min");
                             $debitinstantane->save();
                         }
-                    } elseif ($this->getConfiguration('typecompteur') == "Electricité") {
+                    }
+                    elseif ($this->getConfiguration('typecompteur') == "Electricité") {
                         $tempsfonctionnement = $this->getCmd(null, 'tempsfonctionnement');
                         if (is_object($tempsfonctionnement)) {
                             $tempsfonctionnement->remove();
@@ -748,16 +729,16 @@ class ecodevice extends eqLogic {
     }
 
     public function preRemove() {
+        log::add('ecodevice', 'info', 'Suppression ecodevice ' . $this->getConfiguration('type', '') . ' ' . $this->getName());
         if ($this->getConfiguration('type', '') == 'carte') {
+            /** @var ecodevice $eqLogic */
             foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"compteur"') as $eqLogic) {
-                if (substr($eqLogic->getLogicalId(), 0, strpos($eqLogic->getLogicalId(), "_")) == $this->getId()) {
-                    log::add('ecodevice', 'debug', 'Suppression compteur : ' . $eqLogic->getName());
+                if ($eqLogic->getEcodeviceId() == $this->getId()) {
                     $eqLogic->remove();
                 }
             }
             foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"teleinfo"') as $eqLogic) {
-                if (substr($eqLogic->getLogicalId(), 0, strpos($eqLogic->getLogicalId(), "_")) == $this->getId()) {
-                    log::add('ecodevice', 'debug', 'Suppression teleinfo : ' . $eqLogic->getName());
+                if ($eqLogic->getEcodeviceId() == $this->getId()) {
                     $eqLogic->remove();
                 }
             }
@@ -782,13 +763,14 @@ class ecodevice extends eqLogic {
                         log::add('ecodevice', 'error', __('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName() . " get " . preg_replace("/:[^:]*@/", ":XXXX@", $this->getUrl()) . 'status.xml');
                         return false;
                     }
+                    /** @var ecodevice $eqLogic */
                     foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"compteur"') as $eqLogic) {
-                        if ($eqLogic->getIsEnable() && substr($eqLogic->getLogicalId(), 0, strpos($eqLogic->getLogicalId(), "_")) == $this->getId()) {
+                        if ($eqLogic->getIsEnable() && $eqLogic->getEcodeviceId() == $this->getId()) {
                             $eqLogic->configPush($this->getUrl());
                         }
                     }
                     foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"teleinfo"') as $eqLogic) {
-                        if ($eqLogic->getIsEnable() && substr($eqLogic->getLogicalId(), 0, strpos($eqLogic->getLogicalId(), "_")) == $this->getId()) {
+                        if ($eqLogic->getIsEnable() && $eqLogic->getEcodeviceId() == $this->getId()) {
                             $eqLogic->configPush($this->getUrl());
                         }
                     }
@@ -865,9 +847,10 @@ class ecodevice extends eqLogic {
                 log::add('ecodevice', 'error', __('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName() . " get " . preg_replace("/:[^:]*@/", ":XXXX@", $this->getUrl()) . 'status.xml');
                 return false;
             }
+            /** @var ecodevice $eqLogic */
             foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"compteur"') as $eqLogic) {
-                if ($eqLogic->getIsEnable() && substr($eqLogic->getLogicalId(), 0, strpos($eqLogic->getLogicalId(), "_")) == $this->getId()) {
-                    $gceid = substr($eqLogic->getLogicalId(), strpos($eqLogic->getLogicalId(), "_") + 2, 1);
+                if ($eqLogic->getIsEnable() && $eqLogic->getEcodeviceId() == $this->getId()) {
+                    $gceid = $eqLogic->getGceId();
                     if ($eqLogic->getConfiguration('typecompteur') == "Temps de fonctionnement") {
                         # Verifie la configuration des compteurs de temps de fonctionnement
                         $xpathModele = '//c' . $gceid . '_fuel';
@@ -893,22 +876,26 @@ class ecodevice extends eqLogic {
                                 if ($lastCollectDate == '') {
                                     log::add('ecodevice', 'debug', "Change nbimpulsionminute 0");
                                     $nbimpulsionminute = 0;
-                                } else {
+                                }
+                                else {
                                     $DeltaSeconde = (time() - strtotime($lastCollectDate)) * 60;
                                     if ($DeltaSeconde != 0) {
                                         if ($status[0] > $nbimpulsiontotal) {
                                             $DeltaValeur = $status[0] - $nbimpulsiontotal;
-                                        } else {
+                                        }
+                                        else {
                                             $DeltaValeur = $status[0];
                                         }
                                         $nbimpulsionminute = round(($status[0] - $nbimpulsiontotal) / (time() - strtotime($lastCollectDate)) * 60, 6);
-                                    } else {
+                                    }
+                                    else {
                                         $nbimpulsionminute = 0;
                                     }
                                 }
                                 log::add('ecodevice', 'debug', "Change nbimpulsionminute " . $nbimpulsionminute);
                                 $nbimpulsionminute_cmd->event($nbimpulsionminute);
-                            } else {
+                            }
+                            else {
                                 $nbimpulsionminute_cmd->event(0);
                             }
                             $nbimpulsiontotal_cmd->event((string) $status[0]);
@@ -922,19 +909,23 @@ class ecodevice extends eqLogic {
                         if ($tempsfonctionnement != $status[0] * 3.6) {
                             if ($eqLogic_cmd->getCollectDate() == '') {
                                 $tempsfonctionnementminute = 0;
-                            } else {
+                            }
+                            else {
                                 if ($status[0] * 3.6 > $tempsfonctionnement) {
                                     $tempsfonctionnementminute = round(($status[0] * 3.6 - $tempsfonctionnement) / (time() - strtotime($eqLogic_cmd->getCollectDate())) * 60, 6);
-                                } else {
+                                }
+                                else {
                                     $tempsfonctionnementminute = round($status[0] * 3.6 / (time() - strtotime($eqLogic_cmd_evol->getCollectDate()) * 60), 6);
                                 }
                             }
                             $eqLogic_cmd_evol->event($tempsfonctionnementminute);
-                        } else {
+                        }
+                        else {
                             $eqLogic_cmd_evol->event(0);
                         }
                         $eqLogic_cmd->event(intval($status[0]) * 3.6);
-                    } elseif ($eqLogic->getConfiguration('typecompteur') == "Fuel") {
+                    }
+                    elseif ($eqLogic->getConfiguration('typecompteur') == "Fuel") {
                         # Verifie la configuration des compteurs fuel
                         $xpathModele = '//c' . $gceid . '_fuel';
                         $status      = $this->_xmlstatus->xpath($xpathModele);
@@ -943,7 +934,8 @@ class ecodevice extends eqLogic {
                             if ($status[0] != "selected") {
                                 throw new \Exception(__('Le compteur ' . $eqLogic->getName() . ' doit être configuré en mode fuel dans l\'ecodevice.', __FILE__));
                             }
-                        } else {
+                        }
+                        else {
                             throw new \Exception(__('Le compteur ' . $eqLogic->getName() . ' doit être configuré en mode fuel dans l\'ecodevice.', __FILE__));
                         }
                         $xpathModele = '//count' . $gceid;
@@ -970,7 +962,8 @@ class ecodevice extends eqLogic {
                             log::add('ecodevice', 'debug', "Change consommationinstantane of " . $eqLogic->getName());
                             $consommationinstantane_cmd->event($consommationinstantane);
                         }
-                    } else {
+                    }
+                    else {
                         # mode eau, gaz, electricité
                         $xpathModele = '//meter' . ($gceid + 2);
                         $status      = $this->_xmlstatus->xpath($xpathModele);
@@ -999,9 +992,11 @@ class ecodevice extends eqLogic {
                     }
                 }
             }
+            
+            /** @var ecodevice $eqLogic */
             foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"teleinfo"') as $eqLogic) {
-                if ($eqLogic->getIsEnable() && substr($eqLogic->getLogicalId(), 0, strpos($eqLogic->getLogicalId(), "_")) == $this->getId()) {
-                    $gceid           = substr($eqLogic->getLogicalId(), strpos($eqLogic->getLogicalId(), "_") + 2, 1);
+                if ($eqLogic->getIsEnable() && $eqLogic->getEcodeviceId() == $this->getId()) {
+                    $gceid = $eqLogic->getGceId();
                     $this->_xmlstatus = @simplexml_load_file($this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
                     if ($this->_xmlstatus === false) {
                         if ($statuscmd->execCmd() != 0) {
@@ -1025,19 +1020,23 @@ class ecodevice extends eqLogic {
                                             log::add('ecodevice', 'debug', $eqLogic_cmd->getName() . ' Change ' . $data);
                                             if ($eqLogic_cmd->getCollectDate() == '') {
                                                 $nbimpulsionminute = 0;
-                                            } else {
+                                            }
+                                            else {
                                                 if ($data > $ancien_data) {
                                                     $nbimpulsionminute = round(($data - $ancien_data) / (time() - strtotime($eqLogic_cmd->getCollectDate())) * 60);
-                                                } else {
+                                                }
+                                                else {
                                                     $nbimpulsionminute = round($data / (time() - strtotime($eqLogic_cmd_evol->getCollectDate()) * 60));
                                                 }
                                             }
                                             $eqLogic_cmd_evol->event($nbimpulsionminute);
-                                        } else {
+                                        }
+                                        else {
                                             $eqLogic_cmd_evol->event(0);
                                         }
                                         $eqLogic_cmd->event((string) $data);
-                                    } else {
+                                    }
+                                    else {
                                         $eqLogic_cmd->event((string) $data);
                                     }
                                 }
@@ -1069,9 +1068,14 @@ class ecodevice extends eqLogic {
                 log::add('ecodevice', 'error', __('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName() . " get " . preg_replace("/:[^:]*@/", ":XXXX@", $this->getUrl()) . 'status.xml');
                 return false;
             }
+            
+            /**
+             * Scan and update non teleinfo counters
+             * @var ecodevice $eqLogic
+             */
             foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"compteur"') as $eqLogic) {
-                if ($eqLogic->getIsEnable() && substr($eqLogic->getLogicalId(), 0, strpos($eqLogic->getLogicalId(), "_")) == $this->getId()) {
-                    $gceid = substr($eqLogic->getLogicalId(), strpos($eqLogic->getLogicalId(), "_") + 2, 1);
+                if ($eqLogic->getIsEnable() && $eqLogic->getEcodeviceId() == $this->getId()) {
+                    $gceid = $eqLogic->getGceId();
                     if ($eqLogic->getConfiguration('typecompteur') == "Fuel") {
                         # mode fuel
                         $xpathModele = '//meter' . ($gceid + 2);
@@ -1083,7 +1087,8 @@ class ecodevice extends eqLogic {
                             log::add('ecodevice', 'debug', "Change consommationinstantane of " . $eqLogic->getName());
                             $eqLogic_cmd->event($consommationinstantane);
                         }
-                    } else {
+                    }
+                    else {
                         # mode eau
                         $xpathModele = '//meter' . ($gceid + 2);
                         $status      = $this->_xmlstatus->xpath($xpathModele);
@@ -1096,9 +1101,14 @@ class ecodevice extends eqLogic {
                     }
                 }
             }
+            
+            /**
+             * Scan and update teleinfo counters
+             * @var ecodevice $eqLogic
+             */
             foreach (eqLogic::byTypeAndSearhConfiguration('ecodevice', '"type":"teleinfo"') as $eqLogic) {
-                if ($eqLogic->getIsEnable() && substr($eqLogic->getLogicalId(), 0, strpos($eqLogic->getLogicalId(), "_")) == $this->getId()) {
-                    $gceid       = substr($eqLogic->getLogicalId(), strpos($eqLogic->getLogicalId(), "_") + 2, 1);
+                if ($eqLogic->getIsEnable() && $eqLogic->getEcodeviceId() == $this->getId()) {
+                    $gceid = $eqLogic->getGceId();
                     $item        = "T" . $gceid . "_PPAP";
                     $xpathModele = '//' . $item;
                     $status      = $this->_xmlstatus->xpath($xpathModele);
@@ -1178,6 +1188,12 @@ class ecodevice extends eqLogic {
         return parent::getImage();
     }
     
+    ###################################################################################################################
+    ##
+    ##                   PLUGIN SPECIFIC METHODS
+    ##
+    ###################################################################################################################
+        
     /**
      * Return the eqLogic id of the ecodevice eqLogic related to this meter, or 0 if this eqLogic is itself
      * an ecodevice card
@@ -1193,7 +1209,7 @@ class ecodevice extends eqLogic {
      * @throw exception if not found
      * @return ecodevice
      */
-    public function getEcodevice() {
+    private function getEcodevice() {
         $eql = empty($this->getLogicalId()) ? $this : eqLogic::byId($this->getEcodeviceId());
         if (! is_object($eql))
             throw new \Exception(__('L\'ecodevice associé au compteur', __FILE__) . " " . $this->getName() . __('n\'existe pas', __FILE__));
@@ -1205,7 +1221,7 @@ class ecodevice extends eqLogic {
      * @throws \Exception if no data can be retrieved from the ecodevice
      * @return string either Mono or Tri
      */
-    public function getPhase($gceid) {
+    private function getPhase($gceid) {
         $phase = "";
         if ($this->getIsEnable()) {            
             log::add('ecodevice', 'debug', 'get ' . $this->getUrl() . 'protect/settings/teleinfo' . $gceid . '.xml');
@@ -1252,76 +1268,5 @@ class ecodevice extends eqLogic {
             __('Electricité', __FILE__),
             __('Autre', __FILE__));
     }
-    
-    private function getListeDefaultCommandes() {
-        return array(
-            "BASE"              => array('Index (base)', 'numeric', 'Wh', 1, "BASE", "CONSUMPTION", 'badge', ''),
-            "HCHC"              => array('Index (HC)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
-            "HCHP"              => array('Index (HP)', 'numeric', 'Wh', 1, "HC", "CONSUMPTION", 'badge', ''),
-            "BBRHCJB"           => array('Index (HC jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHPJB"           => array('Index (HP jours bleus Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHCJW"           => array('Index (HC jours blancs Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHPJW"           => array('Index (HP jours blancs Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHCJR"           => array('Index (HC jours rouges Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "BBRHPJR"           => array('Index (HP jours rouges Tempo)', 'numeric', 'Wh', 0, "BBRH", "CONSUMPTION", 'badge', ''),
-            "EJPHN"             => array('Index (normal EJP)', 'numeric', 'Wh', 0, "EJP", "CONSUMPTION", 'badge', ''),
-            "EJPHPM"            => array('Index (pointe mobile EJP)', 'numeric', 'Wh', 0, "EJP", "CONSUMPTION", 'badge', ''),
-            "IINST"             => array('Intensité instantanée', 'numeric', 'A', 1, "", "POWER", 'default', 'Mono'),
-            "IINST1"            => array('Intensité instantanée 1', 'numeric', 'A', 0, "", "POWER", 'default', 'Tri'),
-            "IINST2"            => array('Intensité instantanée 2', 'numeric', 'A', 0, "", "POWER", 'default', 'Tri'),
-            "IINST3"            => array('Intensité instantanée 3', 'numeric', 'A', 0, "", "POWER", 'default', 'Tri'),
-            "PPAP"              => array('Puissance Apparente', 'numeric', 'VA', 1, "", "POWER", 'badge', ''),
-            "OPTARIF"           => array('Option tarif', 'string', '', 1, "", "GENERIC_INFO", 'badge', ''),
-            "DEMAIN"            => array('Couleur demain', 'string', '', 0, "BBRH", "GENERIC_INFO", 'badge', ''),
-            "PTEC"              => array('Tarif en cours', 'string', '', 1, "", "GENERIC_INFO", 'badge', ''),
-            "BASE_evolution"    => array('Evolution index (base)', 'numeric', 'W/min', 1, "BASE", "", 'badge', ''),
-            "HCHC_evolution"    => array('Evolution index (HC)', 'numeric', 'W/min', 1, "HC", "", 'badge', ''),
-            "HCHP_evolution"    => array('Evolution index (HP)', 'numeric', 'W/min', 1, "HC", "", 'badge', ''),
-            "BBRHCJB_evolution" => array('Evolution index (HC jours bleus Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHPJB_evolution" => array('Evolution index (HP jours bleus Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHCJW_evolution" => array('Evolution index (HC jours blancs Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHPJW_evolution" => array('Evolution index (HP jours blancs Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHCJR_evolution" => array('Evolution index (HC jours rouges Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "BBRHPJR_evolution" => array('Evolution index (HP jours rouges Tempo)', 'numeric', 'W/min', 0, "BBRH", "", 'badge', ''),
-            "EJPHN_evolution"   => array('Evolution index (normal EJP)', 'numeric', 'W', 0, "EJP", "", 'badge', ''),
-            "EJPHPM_evolution"  => array('Evolution index (pointe mobile EJP)', 'numeric', 'W', 0, "EJP", "", 'badge', ''),
-            "ISOUSC"            => array('Intensité souscrite', 'numeric', 'A', 1, "", "", 'badge', ''),
-            "IMAX"              => array('Intensité maximale', 'numeric', 'A', 1, "", "", 'badge', 'Mono'),
-            "IMAX1"             => array('Intensité maximale 1', 'numeric', 'A', 0, "", "", 'badge', 'Tri'),
-            "IMAX2"             => array('Intensité maximale 2', 'numeric', 'A', 0, "", "", 'badge', 'Tri'),
-            "IMAX3"             => array('Intensité maximale 3', 'numeric', 'A', 0, "", "", 'badge', 'Tri')
-        );
-    }
 }
 
-class ecodeviceCmd extends cmd {
-    public function execute($_options = null) {
-        $eqLogic = $this->getEqLogic();
-        if (!is_object($eqLogic) || $eqLogic->getIsEnable() != 1) {
-            throw new \Exception(__('Equipement desactivé impossible d\éxecuter la commande : ' . $this->getHumanName(), __FILE__));
-        }
-        $url = $eqLogic->getUrl();
-
-        if ($this->getLogicalId() == 'reboot') {
-            $url .= "protect/settings/reboot.htm";
-        } else {
-            return false;
-        }
-        log::add('ecodevice', 'debug', 'get ' . preg_replace("/:[^:]*@/", ":XXXX@", $url) . '?' . http_build_query($data));
-        $result = @file_get_contents($url . '?' . http_build_query($data));
-        $count  = 0;
-        while ($result === false) {
-            $result = @file_get_contents($url . '?' . http_build_query($data));
-            if ($count < 3) {
-                log::add('ecodevice', 'error', __('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName() . " get " . preg_replace("/:[^:]*@/", ":XXXX@", $url) . "?" . http_build_query($data));
-                throw new \Exception(__('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName());
-            }
-            $count ++;
-        }
-        return false;
-    }
-
-    public function dontRemoveCmd() {
-        return true;
-    }
-}

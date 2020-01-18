@@ -109,8 +109,8 @@ function displayEqLogicCard($eqL) {
                 <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked />{{Visible}}</label>
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label">{{Accéder à l'interface de eco-devices}}</label>
+            <div class="form-group carte_only">
+              <label class="col-sm-3 control-label">{{Accéder à l'interface de l'eco-devices}}</label>
               <div class="col-sm-3">
                 <a class="btn btn-default" id="bt_goCarte" title='{{Accéder à la carte}}'><i class="fa fa-arrow-right"></i></a>
               </div>
