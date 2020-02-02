@@ -10,7 +10,7 @@ sendVarToJS('eqType', $plugin->getId());
 /** @var ecodevice[] $eqLogics */
 $eqLogics = eqLogic::byType($plugin->getId());
 
-/** @param jMQTT $eqL */
+/** @param ecodevice $eqL */
 function displayEqLogicCard($eqL) {
     $opacity = ($eqL->getIsEnable()) ? '' : 'disableCard';
     echo '<div class="eqLogicDisplayCard cursor ' . $opacity . '" data-eqLogic_id="' . $eqL->getId() . '">';
@@ -35,12 +35,12 @@ function displayEqLogicCard($eqL) {
     
     <?php
     foreach ($eqLogics as $eqLogic) {
-        if ($eqLogic->getConfiguration(ecodevice::CONF_TYPE) == ecodevice::TYP_CARTE) {
+        if ($eqLogic->getConfType() == ecodevice::TYP_CARTE) {
             echo '<legend><i class="fas fa-table"></i> Eco-device ' . $eqLogic->getName() . '</legend>';
             echo '<div class="eqLogicThumbnailContainer">';
             displayEqLogicCard($eqLogic);
             foreach ($eqLogics as $eqSubLogic) {
-                if ($eqSubLogic->getEcodeviceId() == $eqLogic->getId()) {
+                if ($eqSubLogic->getCarteEqlogicId() == $eqLogic->getId()) {
                     displayEqLogicCard($eqSubLogic);
                 }
             }
@@ -73,6 +73,7 @@ function displayEqLogicCard($eqL) {
               <label class="col-sm-3 control-label">{{Nom de l'équipement}}</label>
               <div class="col-sm-3">
                 <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display: none;" />
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="type" style="display: none;" />
                 <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement}}" />
               </div>
             </div>
@@ -139,13 +140,37 @@ function displayEqLogicCard($eqL) {
                 <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" />
               </div>
             </div>
+            <div class="form-group carte_only">
+              <label class="col-sm-3 control-label">{{Teleinfo 1}}</label>
+              <div class="col-sm-3">
+                <input type="checkbox" class="eqLogicAttr form-control meter" data-l1key="configuration" data-l2key="T1" />
+              </div>
+            </div>
+            <div class="form-group carte_only">
+              <label class="col-sm-3 control-label">{{Teleinfo 2}}</label>
+              <div class="col-sm-3">
+                <input type="checkbox" class="eqLogicAttr form-control meter" data-l1key="configuration" data-l2key="T2" />
+              </div>
+            </div>
+            <div class="form-group carte_only">
+              <label class="col-sm-3 control-label">{{Compteur 1}}</label>
+              <div class="col-sm-3">
+                <input type="checkbox" class="eqLogicAttr form-control meter" data-l1key="configuration" data-l2key="C0" />
+              </div>
+            </div>
+            <div class="form-group carte_only">
+              <label class="col-sm-3 control-label">{{Compteur 2}}</label>
+              <div class="col-sm-3">
+                <input type="checkbox" class="eqLogicAttr form-control meter" data-l1key="configuration" data-l2key="C1" />
+              </div>
+            </div>
             <div class="form-group compteur_only">
               <label class="col-sm-3 control-label" >{{Type}}</label>
               <div class="col-sm-3">
                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="typecompteur" id="typecompteur">
                   <option value="">{{Non défini}}</option>
                     <?php
-                    foreach (ecodevice::getTypeCompteur() as $object) {
+                    foreach (ecodevice::getCompteurTypes() as $object) {
                         echo '<option value="' . $object . '">' . $object . '</option>';
                     }
                     ?>

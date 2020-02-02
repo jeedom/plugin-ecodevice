@@ -32,6 +32,16 @@ function printEqLogic(_eqLogic) {
             $('.carte_only').show();
             $('.teleinfo_only').hide();
             $('.compteur_only').hide();
+            var selected = [];
+            $('.meter').each(function() {
+                console.log($(this).attr("data-l2key"))
+                console.log($(this).is(":checked"));
+                console.log($(this));
+                if ($(this).is(":checked"))
+                    $(this).attr("disabled", true);
+                else
+                    $(this).removeAttr("disabled");
+            });
             break;
         case "teleinfo":
             $('.carte_only').hide();
@@ -44,7 +54,22 @@ function printEqLogic(_eqLogic) {
             $('.compteur_only').show();
             break;
     }
-    console.log(_eqLogic);
+}
+
+/**
+ * saveEqLogic callback called by plugin.template before saving an eqLogic:
+ *   . Remove configuration parameters that are dependant of the ecodevice type
+ */
+function saveEqLogic(_eqLogic) {
+    const types = ['carte', 'teleinfo', 'compteur'];
+    types.forEach(function (type, index) {
+        $('.' + type + '_only .eqLogicAttr[data-l1key=configuration]').each(function() {
+            if (type != _eqLogic.configuration.type) {
+                delete _eqLogic.configuration[$(this)[0].dataset['l2key']];
+            }
+         });
+    });
+    return _eqLogic;
 }
 
 function addCmdToTable(_cmd) {
