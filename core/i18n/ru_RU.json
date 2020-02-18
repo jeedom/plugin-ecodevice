@@ -1,90 +1,13 @@
 {
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_compteur.php": {
-        "Général": "общий",
-        "Nom du compteur": "Имя счетчика",
-        "Nom de l'ecodevice": "Имя ecodevice",
-        "Objet parent": "родительский объект",
-        "Aucun": "нет",
-        "Catégorie": "категория",
-        "Activer": "активировать",
-        "Visible": "видимый",
-        "Indicateurs": "Индикаторы",
-        "Nom": "имя",
-        "Sous-Type": "Под-Тип",
-        "Valeur": "значение",
-        "Unité": "Устройство",
-        "Paramètres": "Параметры",
-        "Sauvegarder": "экономить",
-        "Type": "Тип",
-        "Sans": "Sans",
-        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
-        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde."
+    "plugin_info\/configuration.php": {
+        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
+        "Trop diminuer cette valeur peut rendre instable votre serveur": "Trop diminuer cette valeur peut rendre instable votre serveur"
     },
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_teleinfo.php": {
-        "Général": "общий",
-        "Nom du teleinfo": "Имя Телеинфо",
-        "Nom de l'ecodevice": "Имя ecodevice",
-        "Objet parent": "родительский объект",
-        "Aucun": "нет",
-        "Catégorie": "категория",
-        "Activer": "активировать",
-        "Visible": "видимый",
-        "Tarification :": "Цены:",
-        "Indicateurs": "Индикаторы",
-        "Nom": "имя",
-        "Sous-Type": "Под-Тип",
-        "Valeur": "значение",
-        "Unité": "Устройство",
-        "Paramètres": "Параметры",
-        "Sauvegarder": "экономить",
-        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde."
+    "desktop\/modal\/help.ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# ": "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# "
     },
-    "plugins\/ecodevice\/desktop\/php\/ecodevice.php": {
-        "Ajouter un Ecodev": "Добавить Ecodev",
-        "Compteur": "Счетчик",
-        "Téléinfo": "Телеинфо",
-        "Mes Ecodevices": "Мой Ecodevice",
-        "Général": "общий",
-        "Nom de l'ecodevice": "Имя ecodevice",
-        "Objet parent": "родительский объект",
-        "Aucun": "нет",
-        "Catégorie": "категория",
-        "Activer": "активировать",
-        "Configurer push": "Протолкнуть настройку",
-        "Visible": "видимый",
-        "IP de l'ecodevice": "IP Ecodevice",
-        "Port de l'ecodevice": "Порт Ecodevice",
-        "Compte de l'ecodevice": "Аккаунт ecodevice",
-        "Password de l'ecodevice": "Пароль для ecodevice",
-        "Indicateurs": "Индикаторы",
-        "Nom": "имя",
-        "Sous-Type": "Под-Тип",
-        "Valeur": "значение",
-        "Unité": "Устройство",
-        "Paramètres": "Параметры",
-        "Supprimer": "удаление",
-        "Sauvegarder": "экономить",
-        "Sauvegarde effectuée avec succès": "Резервное копирование завершено успешно",
-        "Utilisez sur l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez sur l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>",
-        "Gestion": "Управление",
-        "Configuration": "Конфигурация",
-        "Accéder à la carte": "Доступ к меню",
-        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
-    },
-    "plugins\/ecodevice\/plugin_info\/info.json": {
-        "Nécessite firmware 1.04.82 minimum": "Nécessite firmware 1.04.82 minimum"
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
-        "L'ecodevice ne repond pas.": "L'ecodevice ne repond pas."
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice_compteur.class.php": {
-        "Eau": "Вода",
-        "Fuel": "Fuel",
-        "Gaz": "Gaz",
-        "Electricité": "Electricité",
-        "Autre": "Другой"
-    },
-    "plugins\/ecodevice\/desktop\/js\/ecodevice.js": {
+    "desktop\/js\/ecodevice.js": {
         "Nom": "имя",
         "Unite": "Устройство",
         "Min": "Мин",
@@ -94,7 +17,50 @@
         "Tester": "Тест",
         "Accèder à l'interface de l'Ecodevice": "Accéder à l'interface de l'Ecodevice"
     },
-    "plugins\/ecodevice\/plugin_info\/configuration.php": {
+    "desktop\/php\/ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "Ajouter un Ecodev": "Добавить Ecodev",
+        "Compteur": "Счетчик",
+        "Téléinfo": "Телеинфо",
+        "Gestion": "Управление",
+        "Configuration": "Конфигурация",
+        "Mes Ecodevices": "Мой Ecodevice",
+        "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer": "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer",
+        "Général": "общий",
+        "Nom de l'ecodevice": "Имя ecodevice",
+        "Objet parent": "родительский объект",
+        "Aucun": "нет",
+        "Catégorie": "категория",
+        "Activer": "активировать",
+        "Visible": "видимый",
+        "Accéder à la carte": "Доступ к меню",
+        "IP de l'ecodevice": "IP Ecodevice",
+        "Port de l'ecodevice": "Порт Ecodevice",
+        "Compte de l'ecodevice": "Аккаунт ecodevice",
+        "Password de l'ecodevice": "Пароль для ecodevice",
+        "Type": "Тип",
+        "Sans": "Sans",
+        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
+        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde.",
+        "Tarification :": "Цены:",
+        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.",
+        "Indicateurs": "Индикаторы",
+        "Nom": "имя",
+        "Sous-Type": "Под-Тип",
+        "Unité": "Устройство",
+        "Paramètres": "Параметры",
+        "Supprimer": "удаление",
+        "Sauvegarder": "экономить",
+        "Sauvegarde effectuée avec succès": "Резервное копирование завершено успешно",
+        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
+    },
+    "core\/ajax\/ecodevice.ajax.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "ecodevice eqLogic non trouvé : ": "ecodevice eqLogic non trouvé : ",
+        "Url de push sur ecodevice configuré": "Url de push sur ecodevice configuré",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+    },
+    "core\/class\/ecodevice.class.php": {
         "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
         "Trop diminuer cette valeur peut rendre instable votre serveur": "Trop diminuer cette valeur peut rendre instable votre serveur"
     }

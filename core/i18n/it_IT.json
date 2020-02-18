@@ -1,90 +1,13 @@
 {
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_compteur.php": {
-        "Général": "generale",
-        "Nom du compteur": "Nome sensore",
-        "Nom de l'ecodevice": "Nome del ecodevice",
-        "Objet parent": "oggetto padre",
-        "Aucun": "no",
-        "Catégorie": "categoria",
-        "Activer": "attivare",
-        "Visible": "visibile",
-        "Indicateurs": "Indicatori",
-        "Nom": "Nome",
-        "Sous-Type": "Sotto-tipo",
-        "Valeur": "valore",
-        "Unité": "Unità",
-        "Paramètres": "Parametri",
-        "Sauvegarder": "salvare",
-        "Type": "Tipo",
-        "Sans": "Sans",
-        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
-        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde."
+    "plugin_info\/configuration.php": {
+        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
+        "Trop diminuer cette valeur peut rendre instable votre serveur": "Ridurre troppo questo valore potrebbe rendere instabile il vostro server"
     },
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_teleinfo.php": {
-        "Général": "generale",
-        "Nom du teleinfo": "Nom du teleinfo",
-        "Nom de l'ecodevice": "Nome del ecodevice",
-        "Objet parent": "oggetto padre",
-        "Aucun": "no",
-        "Catégorie": "categoria",
-        "Activer": "attivare",
-        "Visible": "visibile",
-        "Tarification :": "Tarification :",
-        "Indicateurs": "Indicatori",
-        "Nom": "Nome",
-        "Sous-Type": "Sotto-tipo",
-        "Valeur": "valore",
-        "Unité": "Unità",
-        "Paramètres": "Parametri",
-        "Sauvegarder": "salvare",
-        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde."
+    "desktop\/modal\/help.ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# ": "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# "
     },
-    "plugins\/ecodevice\/desktop\/php\/ecodevice.php": {
-        "Ajouter un Ecodev": "Ajouter un Ecodev",
-        "Compteur": "Contatore",
-        "Téléinfo": "Téléinfo",
-        "Mes Ecodevices": "Le mie Ecodevices",
-        "Général": "generale",
-        "Nom de l'ecodevice": "Nome del ecodevice",
-        "Objet parent": "oggetto padre",
-        "Aucun": "no",
-        "Catégorie": "categoria",
-        "Activer": "attivare",
-        "Configurer push": "Configura push",
-        "Visible": "visibile",
-        "IP de l'ecodevice": "IP de l'ecodevice",
-        "Port de l'ecodevice": "Port de l'ecodevice",
-        "Compte de l'ecodevice": "Compte de l'ecodevice",
-        "Password de l'ecodevice": "Password de l'ecodevice",
-        "Indicateurs": "Indicatori",
-        "Nom": "Nome",
-        "Sous-Type": "Sotto-tipo",
-        "Valeur": "valore",
-        "Unité": "Unità",
-        "Paramètres": "Parametri",
-        "Supprimer": "rimuovere",
-        "Sauvegarder": "salvare",
-        "Sauvegarde effectuée avec succès": "Backup completato con successo",
-        "Utilisez sur l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez sur l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>",
-        "Gestion": "Gestione",
-        "Configuration": "Configurazione",
-        "Accéder à la carte": "Accedi alla mappa",
-        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
-    },
-    "plugins\/ecodevice\/plugin_info\/info.json": {
-        "Nécessite firmware 1.04.82 minimum": "Nécessite firmware 1.04.82 minimum"
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
-        "L'ecodevice ne repond pas.": "L'ecodevice ne repond pas."
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice_compteur.class.php": {
-        "Eau": "Eau",
-        "Fuel": "Fuel",
-        "Gaz": "Gaz",
-        "Electricité": "Electricité",
-        "Autre": "Altri"
-    },
-    "plugins\/ecodevice\/desktop\/js\/ecodevice.js": {
+    "desktop\/js\/ecodevice.js": {
         "Nom": "Nome",
         "Unite": "Unità",
         "Min": "Min",
@@ -94,7 +17,50 @@
         "Tester": "Prova",
         "Accèder à l'interface de l'Ecodevice": "Accéder à l'interface de l'Ecodevice"
     },
-    "plugins\/ecodevice\/plugin_info\/configuration.php": {
+    "desktop\/php\/ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "Ajouter un Ecodev": "Ajouter un Ecodev",
+        "Compteur": "Contatore",
+        "Téléinfo": "Téléinfo",
+        "Gestion": "Gestione",
+        "Configuration": "Configurazione",
+        "Mes Ecodevices": "Le mie Ecodevices",
+        "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer": "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer",
+        "Général": "generale",
+        "Nom de l'ecodevice": "Nome del ecodevice",
+        "Objet parent": "oggetto padre",
+        "Aucun": "no",
+        "Catégorie": "categoria",
+        "Activer": "attivare",
+        "Visible": "visibile",
+        "Accéder à la carte": "Accedi alla mappa",
+        "IP de l'ecodevice": "IP de l'ecodevice",
+        "Port de l'ecodevice": "Port de l'ecodevice",
+        "Compte de l'ecodevice": "Compte de l'ecodevice",
+        "Password de l'ecodevice": "Password de l'ecodevice",
+        "Type": "Tipo",
+        "Sans": "Sans",
+        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
+        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde.",
+        "Tarification :": "Tarification :",
+        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.",
+        "Indicateurs": "Indicatori",
+        "Nom": "Nome",
+        "Sous-Type": "Sotto-tipo",
+        "Unité": "Unità",
+        "Paramètres": "Parametri",
+        "Supprimer": "rimuovere",
+        "Sauvegarder": "salvare",
+        "Sauvegarde effectuée avec succès": "Backup completato con successo",
+        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
+    },
+    "core\/ajax\/ecodevice.ajax.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "ecodevice eqLogic non trouvé : ": "ecodevice eqLogic non trouvé : ",
+        "Url de push sur ecodevice configuré": "Url de push sur ecodevice configuré",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+    },
+    "core\/class\/ecodevice.class.php": {
         "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
         "Trop diminuer cette valeur peut rendre instable votre serveur": "Ridurre troppo questo valore potrebbe rendere instabile il vostro server"
     }

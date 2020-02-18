@@ -1,90 +1,13 @@
 {
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_compteur.php": {
-        "Général": "Genel",
-        "Nom du compteur": "Sayaç ismi",
-        "Nom de l'ecodevice": "Ecodevice ismi",
-        "Objet parent": "Ana nesne",
-        "Aucun": "Hiçbir",
-        "Catégorie": "Kategori",
-        "Activer": "Etkinleştir",
-        "Visible": "Görülebilir",
-        "Indicateurs": "Göstergeler",
-        "Nom": "Soyisim",
-        "Sous-Type": "alt tipi",
-        "Valeur": "Değer",
-        "Unité": "Ünite",
-        "Paramètres": "Ayarlar",
-        "Sauvegarder": "Kaydet",
-        "Type": "Çeşit",
-        "Sans": "Olmadan",
-        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
-        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde."
+    "plugin_info\/configuration.php": {
+        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
+        "Trop diminuer cette valeur peut rendre instable votre serveur": "Bu değeri çok düşürmek sunucunuzu sabitsiz kılabilir"
     },
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_teleinfo.php": {
-        "Général": "Genel",
-        "Nom du teleinfo": "Teleinfo ismi",
-        "Nom de l'ecodevice": "Ecodevice ismi",
-        "Objet parent": "Ana nesne",
-        "Aucun": "Hiçbir",
-        "Catégorie": "Kategori",
-        "Activer": "Etkinleştir",
-        "Visible": "Görülebilir",
-        "Tarification :": "Fiyatlandırma:",
-        "Indicateurs": "Göstergeler",
-        "Nom": "Soyisim",
-        "Sous-Type": "alt tipi",
-        "Valeur": "Değer",
-        "Unité": "Ünite",
-        "Paramètres": "Ayarlar",
-        "Sauvegarder": "Kaydet",
-        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde."
+    "desktop\/modal\/help.ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# ": "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# "
     },
-    "plugins\/ecodevice\/desktop\/php\/ecodevice.php": {
-        "Ajouter un Ecodev": "Ecodev ekle",
-        "Compteur": "Sayaç",
-        "Téléinfo": "Telebilgi",
-        "Mes Ecodevices": "Ecodevices larim",
-        "Général": "Genel",
-        "Nom de l'ecodevice": "Ecodevice ismi",
-        "Objet parent": "Ana nesne",
-        "Aucun": "Hiçbir",
-        "Catégorie": "Kategori",
-        "Activer": "Etkinleştir",
-        "Configurer push": "Push yapılandır",
-        "Visible": "Görülebilir",
-        "IP de l'ecodevice": "Ecodevice IP adresi",
-        "Port de l'ecodevice": "Ecodevice port bağlantı noktası",
-        "Compte de l'ecodevice": "Ecodevice hesabı",
-        "Password de l'ecodevice": "Ecodevice şifresi",
-        "Indicateurs": "Göstergeler",
-        "Nom": "Soyisim",
-        "Sous-Type": "alt tipi",
-        "Valeur": "Değer",
-        "Unité": "Ünite",
-        "Paramètres": "Ayarlar",
-        "Supprimer": "Sil",
-        "Sauvegarder": "Kaydet",
-        "Sauvegarde effectuée avec succès": "Yedekleme başarıyla sonuçlandı",
-        "Utilisez sur l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez sur l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>",
-        "Gestion": "Yönetim",
-        "Configuration": "Ayarlar",
-        "Accéder à la carte": "Karta el koy",
-        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
-    },
-    "plugins\/ecodevice\/plugin_info\/info.json": {
-        "Nécessite firmware 1.04.82 minimum": "Nécessite firmware 1.04.82 minimum"
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
-        "L'ecodevice ne repond pas.": "L'ecodevice ne repond pas."
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice_compteur.class.php": {
-        "Eau": "Su",
-        "Fuel": "Fuel",
-        "Gaz": "Gaz",
-        "Electricité": "Electricité",
-        "Autre": "Başka"
-    },
-    "plugins\/ecodevice\/desktop\/js\/ecodevice.js": {
+    "desktop\/js\/ecodevice.js": {
         "Nom": "Soyisim",
         "Unite": "Ünite",
         "Min": "Minimum",
@@ -94,7 +17,50 @@
         "Tester": "Test et",
         "Accèder à l'interface de l'Ecodevice": "Accéder à l'interface de l'Ecodevice"
     },
-    "plugins\/ecodevice\/plugin_info\/configuration.php": {
+    "desktop\/php\/ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "Ajouter un Ecodev": "Ecodev ekle",
+        "Compteur": "Sayaç",
+        "Téléinfo": "Telebilgi",
+        "Gestion": "Yönetim",
+        "Configuration": "Ayarlar",
+        "Mes Ecodevices": "Ecodevices larim",
+        "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer": "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer",
+        "Général": "Genel",
+        "Nom de l'ecodevice": "Ecodevice ismi",
+        "Objet parent": "Ana nesne",
+        "Aucun": "Hiçbir",
+        "Catégorie": "Kategori",
+        "Activer": "Etkinleştir",
+        "Visible": "Görülebilir",
+        "Accéder à la carte": "Karta el koy",
+        "IP de l'ecodevice": "Ecodevice IP adresi",
+        "Port de l'ecodevice": "Ecodevice port bağlantı noktası",
+        "Compte de l'ecodevice": "Ecodevice hesabı",
+        "Password de l'ecodevice": "Ecodevice şifresi",
+        "Type": "Çeşit",
+        "Sans": "Olmadan",
+        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
+        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde.",
+        "Tarification :": "Fiyatlandırma:",
+        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.",
+        "Indicateurs": "Göstergeler",
+        "Nom": "Soyisim",
+        "Sous-Type": "alt tipi",
+        "Unité": "Ünite",
+        "Paramètres": "Ayarlar",
+        "Supprimer": "Sil",
+        "Sauvegarder": "Kaydet",
+        "Sauvegarde effectuée avec succès": "Yedekleme başarıyla sonuçlandı",
+        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
+    },
+    "core\/ajax\/ecodevice.ajax.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "ecodevice eqLogic non trouvé : ": "ecodevice eqLogic non trouvé : ",
+        "Url de push sur ecodevice configuré": "Url de push sur ecodevice configuré",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+    },
+    "core\/class\/ecodevice.class.php": {
         "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
         "Trop diminuer cette valeur peut rendre instable votre serveur": "Bu değeri çok düşürmek sunucunuzu sabitsiz kılabilir"
     }

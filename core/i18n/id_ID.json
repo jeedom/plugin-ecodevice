@@ -1,90 +1,13 @@
 {
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_compteur.php": {
-        "Général": "umum",
-        "Nom du compteur": "Nom du compteur",
-        "Nom de l'ecodevice": "Nom de l'ecodevice",
-        "Objet parent": "obyek orangtua",
-        "Aucun": "tidak",
-        "Catégorie": "kategori",
-        "Activer": "mengaktifkan",
-        "Visible": "terlihat",
-        "Indicateurs": "Indicateurs",
-        "Nom": "nama",
-        "Sous-Type": "Subtipe",
-        "Valeur": "nilai",
-        "Unité": "Satuan",
-        "Paramètres": "pengaturan",
-        "Sauvegarder": "menyimpan",
-        "Type": "Jenis",
-        "Sans": "Sans",
-        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
-        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde."
+    "plugin_info\/configuration.php": {
+        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
+        "Trop diminuer cette valeur peut rendre instable votre serveur": "Trop diminuer cette valeur peut rendre instable votre serveur"
     },
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_teleinfo.php": {
-        "Général": "umum",
-        "Nom du teleinfo": "Nom du teleinfo",
-        "Nom de l'ecodevice": "Nom de l'ecodevice",
-        "Objet parent": "obyek orangtua",
-        "Aucun": "tidak",
-        "Catégorie": "kategori",
-        "Activer": "mengaktifkan",
-        "Visible": "terlihat",
-        "Tarification :": "Tarification :",
-        "Indicateurs": "Indicateurs",
-        "Nom": "nama",
-        "Sous-Type": "Subtipe",
-        "Valeur": "nilai",
-        "Unité": "Satuan",
-        "Paramètres": "pengaturan",
-        "Sauvegarder": "menyimpan",
-        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde."
+    "desktop\/modal\/help.ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# ": "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# "
     },
-    "plugins\/ecodevice\/desktop\/php\/ecodevice.php": {
-        "Ajouter un Ecodev": "Ajouter un Ecodev",
-        "Compteur": "Counter",
-        "Téléinfo": "Téléinfo",
-        "Mes Ecodevices": "Mes Ecodevices",
-        "Général": "umum",
-        "Nom de l'ecodevice": "Nom de l'ecodevice",
-        "Objet parent": "obyek orangtua",
-        "Aucun": "tidak",
-        "Catégorie": "kategori",
-        "Activer": "mengaktifkan",
-        "Configurer push": "Configurer push",
-        "Visible": "terlihat",
-        "IP de l'ecodevice": "IP de l'ecodevice",
-        "Port de l'ecodevice": "Port de l'ecodevice",
-        "Compte de l'ecodevice": "Compte de l'ecodevice",
-        "Password de l'ecodevice": "Password de l'ecodevice",
-        "Indicateurs": "Indicateurs",
-        "Nom": "nama",
-        "Sous-Type": "Subtipe",
-        "Valeur": "nilai",
-        "Unité": "Satuan",
-        "Paramètres": "pengaturan",
-        "Supprimer": "menghapus",
-        "Sauvegarder": "menyimpan",
-        "Sauvegarde effectuée avec succès": "Backup selesai dengan sukses",
-        "Utilisez sur l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez sur l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>",
-        "Gestion": "Manajemen",
-        "Configuration": "konfigurasi",
-        "Accéder à la carte": "Accéder à la carte",
-        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
-    },
-    "plugins\/ecodevice\/plugin_info\/info.json": {
-        "Nécessite firmware 1.04.82 minimum": "Nécessite firmware 1.04.82 minimum"
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
-        "L'ecodevice ne repond pas.": "L'ecodevice ne repond pas."
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice_compteur.class.php": {
-        "Eau": "Air",
-        "Fuel": "Fuel",
-        "Gaz": "Gaz",
-        "Electricité": "Electricité",
-        "Autre": "Yang lainnya"
-    },
-    "plugins\/ecodevice\/desktop\/js\/ecodevice.js": {
+    "desktop\/js\/ecodevice.js": {
         "Nom": "nama",
         "Unite": "Satuan",
         "Min": "Min",
@@ -94,7 +17,50 @@
         "Tester": "Coba",
         "Accèder à l'interface de l'Ecodevice": "Accéder à l'interface de l'Ecodevice"
     },
-    "plugins\/ecodevice\/plugin_info\/configuration.php": {
+    "desktop\/php\/ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "Ajouter un Ecodev": "Ajouter un Ecodev",
+        "Compteur": "Counter",
+        "Téléinfo": "Téléinfo",
+        "Gestion": "Manajemen",
+        "Configuration": "konfigurasi",
+        "Mes Ecodevices": "Mes Ecodevices",
+        "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer": "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer",
+        "Général": "umum",
+        "Nom de l'ecodevice": "Nom de l'ecodevice",
+        "Objet parent": "obyek orangtua",
+        "Aucun": "tidak",
+        "Catégorie": "kategori",
+        "Activer": "mengaktifkan",
+        "Visible": "terlihat",
+        "Accéder à la carte": "Accéder à la carte",
+        "IP de l'ecodevice": "IP de l'ecodevice",
+        "Port de l'ecodevice": "Port de l'ecodevice",
+        "Compte de l'ecodevice": "Compte de l'ecodevice",
+        "Password de l'ecodevice": "Password de l'ecodevice",
+        "Type": "Jenis",
+        "Sans": "Sans",
+        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
+        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde.",
+        "Tarification :": "Tarification :",
+        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.",
+        "Indicateurs": "Indicateurs",
+        "Nom": "nama",
+        "Sous-Type": "Subtipe",
+        "Unité": "Satuan",
+        "Paramètres": "pengaturan",
+        "Supprimer": "menghapus",
+        "Sauvegarder": "menyimpan",
+        "Sauvegarde effectuée avec succès": "Backup selesai dengan sukses",
+        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
+    },
+    "core\/ajax\/ecodevice.ajax.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "ecodevice eqLogic non trouvé : ": "ecodevice eqLogic non trouvé : ",
+        "Url de push sur ecodevice configuré": "Url de push sur ecodevice configuré",
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+    },
+    "core\/class\/ecodevice.class.php": {
         "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
         "Trop diminuer cette valeur peut rendre instable votre serveur": "Trop diminuer cette valeur peut rendre instable votre serveur"
     }
