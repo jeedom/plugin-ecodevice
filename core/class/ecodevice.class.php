@@ -1152,7 +1152,7 @@ class ecodevice extends eqLogic
                 $count++;
             }
             if ($this->_xmlstatus === false) {
-                if ($statuscmd->execCmd() != 0) {
+                if (is_object($statuscmd) && $statuscmd->execCmd() != 0) {
                     $statuscmd->event(0);
                 }
                 log::add('ecodevice', 'error', __('L\'ecodevice ne repond pas.', __FILE__) . " " . $this->getName() . " get " . preg_replace("/:[^:]*@/", ":XXXX@", $this->getUrl()) . 'status.xml');
