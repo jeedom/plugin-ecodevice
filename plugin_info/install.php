@@ -92,7 +92,7 @@ function ecodevice_update_remove_subclasses() {
     }
 }
 
-function ecodevice_update_complete_rewrite() {
+function ecodevice_update_complete_rewrite_v4() {
     /** @var ecodeviceCmd $cmd */
     /** @var ecodevice $eqLogic */
     /** @var ecodevice $eqSubLogic */
@@ -120,9 +120,17 @@ function ecodevice_update_complete_rewrite() {
                     }
                 }
             }
-            if ($eqLogic->getChanged()) {
-                $eqLogic->save(true);
+        }
+        
+        if ($eqLogic->getConfType() == ecodevice::TYP_TELEINFO) {
+            if ($eqLogic->getPhase() == '') {
+                $eqLogic->initPhaseFromExistingCmds();
+                $eqLogic->setChanged(true);
             }
+        }
+    
+        if ($eqLogic->getChanged()) {
+            $eqLogic->save(true);
         }
     }
     
@@ -137,7 +145,7 @@ function ecodevice_update_complete_rewrite() {
     
 function ecodevice_update() {
     ecodevice_update_remove_subclasses();
-    ecodevice_update_complete_rewrite();
+    ecodevice_update_complete_rewrite_v4();
 	ecodevice_init();
 }
 

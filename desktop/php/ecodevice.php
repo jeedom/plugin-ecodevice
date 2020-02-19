@@ -140,6 +140,9 @@ function displayEqLogicCard($eqL) {
                 <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" />
               </div>
             </div>
+            <div class="carte_only">
+            <legend><i class="fas fa-table"></i> {{Téléinfo et Compteurs Ecodevice}}</legend>
+            </div>
             <div class="form-group carte_only">
               <label class="col-sm-3 control-label">{{Teleinfo 1}}</label>
               <div class="col-sm-3">
@@ -167,37 +170,41 @@ function displayEqLogicCard($eqL) {
             <div class="form-group compteur_only">
               <label class="col-sm-3 control-label" >{{Type}}</label>
               <div class="col-sm-3">
-                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="typecompteur" id="typecompteur">
-                  <option value="">{{Non défini}}</option>
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="typecompteur" readonly/>
+<!--                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="typecompteur"> -->
+<!--                   <option value="">{{Non défini}}</option> -->
                     <?php
-                    foreach (ecodevice::getCompteurTypes() as $object) {
-                        echo '<option value="' . $object . '">' . $object . '</option>';
-                    }
-                    ?>
-                </select>
-                <label class="inline" id="Alerte_Temps_de_fonctionnement">{{Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.}}</label>
-                <label class="inline" id="Alerte_Change_Type">{{Les indicateurs sont regénérés après sauvegarde.}}</label>
-               </div>
+//                     foreach (ecodevice::getCompteurTypes() as $object) {
+//                         echo '<option value="' . $object . '">' . $object . '</option>';
+//                     }
+//                     ?>
+<!--                 </select> -->
+              </div>
+            </div>
+           <div class="form-group teleinfo_only">
+              <label class="col-sm-3 control-label" >{{Abonnement}}</label>
+              <div class="col-sm-3">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="phase" readonly/>
+              </div>
             </div>
             <div class="form-group teleinfo_only">
               <label class="col-sm-3 control-label">{{Tarification}}</label>
               <div class="col-sm-3">
-                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="tarification" id="tarification">
-                  <option value="">Sans</option>
-                  <option value="BASE">Base</option>
-                  <option value="HC">Heure creuse/Heure pleine</option>
-                  <option value="BBRH">Tempo</option>
-                  <option value="EJP">EJP</option>
-                </select>
-                <label>{{Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.}}</label>
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="tarification" readonly/>
+<!--                 <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="tarification" id="tarification"> -->
+<!--                   <option value="">Sans</option> -->
+<!--                   <option value="BASE">Base</option> -->
+<!--                   <option value="HC">Heure creuse/Heure pleine</option> -->
+<!--                   <option value="BBRH">Tempo</option> -->
+<!--                   <option value="EJP">EJP</option> -->
+<!--                 </select> -->
+<!--                 <label>{{Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.}}</label> -->
               </div>
             </div>
           </fieldset>
         </form>
       </div>
       <div role="tabpanel" class="tab-pane" id="commandtab">
-        <a class="btn btn-success btn-sm cmdAction pull-right" data-action="add" style="margin-top: 5px;"><i
-          class="fa fa-plus-circle"></i> {{Commandes}}</a><br /> <br />
         <table id="table_cmd" class="table table-bordered table-condensed">
           <thead>
             <tr>

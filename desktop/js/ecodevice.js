@@ -1,27 +1,3 @@
-$('.eqLogicAction[data-action=hide]').on('click', function () {
-    var eqLogic_id = $(this).attr('data-eqLogic_id');
-    $('.sub-nav-list').each(function () {
-		if ( $(this).attr('data-eqLogic_id') == eqLogic_id ) {
-			$(this).toggle();
-		}
-    });
-    return false;
-});
-
-$("#typecompteur").on('change', function () {
-	if ( $(this).find('option').filter(":selected").value() == "Temps de fonctionnement" )
-	{
-		$("#Alerte_Temps_de_fonctionnement").show();
-	}
-	else
-	{
-		$("#Alerte_Temps_de_fonctionnement").hide();
-	}
-	$("#Alerte_Change_Type").show();
-	$('#table_cmd_ecodevice_compteur tbody').empty();
-});
-
-
 /**
  * printEqLogic callback called by plugin.template before calling addCmdToTable:
  *   . Show UI fields depending on the type (carte or compteur or teleinfo)
@@ -182,6 +158,4 @@ $('#bt_configPush').on('click', function() {
     });
 });
 
-$("#table_cmd_ecodevice_compteur").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
-$("#table_cmd_ecodevice_teleinfo").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});

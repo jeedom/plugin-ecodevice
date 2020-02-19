@@ -19,7 +19,7 @@
 
 class ecodeviceCmd extends cmd {
     
-    public static function create($eqLogic, $logicalId, $data) {
+    public static function create($eqLogic, $logicalId, $data, $save=true) {
         $cmd = new ecodeviceCmd();
         $cmd->setName($data['name']);
         $cmd->setEqLogic_id($eqLogic->getId());
@@ -31,7 +31,9 @@ class ecodeviceCmd extends cmd {
         $cmd->setDisplay('generic_type', $data['generic_type']);
         $cmd->setTemplate('dashboard', $data['template']);
         $cmd->setTemplate('mobile', $data['template']);
-        $cmd->save();
+        if ($save) {
+            $cmd->save();
+        }
         return $cmd;
     }
     
