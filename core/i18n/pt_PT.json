@@ -1,67 +1,79 @@
 {
-    "plugin_info\/configuration.php": {
-        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
-        "Trop diminuer cette valeur peut rendre instable votre serveur": "Trop diminuer cette valeur peut rendre instable votre serveur"
+    "plugins\/ecodevice\/plugin_info\/configuration.php": {
+        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "",
+        "Trop diminuer cette valeur peut rendre instable votre serveur": ""
     },
-    "desktop\/modal\/help.ecodevice.php": {
-        "401 - Accès non autorisé": "401 - Accès non autorisé",
-        "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# ": "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# "
+    "plugins\/ecodevice\/desktop\/modal\/help.ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Acesso não autorizado",
+        "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# ": ""
     },
-    "desktop\/js\/ecodevice.js": {
-        "Nom": "nome",
-        "Unite": "unidade",
-        "Min": "baixo",
-        "Max": "Max",
-        "Historiser": "historicizar",
-        "Afficher": "display",
-        "Tester": "teste",
-        "Accèder à l'interface de l'Ecodevice": "Accéder à l'interface de l'Ecodevice"
-    },
-    "desktop\/php\/ecodevice.php": {
-        "401 - Accès non autorisé": "401 - Accès non autorisé",
-        "Ajouter un Ecodev": "Ajouter un Ecodev",
-        "Compteur": "Compteur",
-        "Téléinfo": "Téléinfo",
-        "Gestion": "gestão",
-        "Configuration": "configuração",
-        "Mes Ecodevices": "Mes Ecodevices",
-        "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer": "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer",
-        "Général": "geral",
-        "Nom de l'ecodevice": "Nom de l'ecodevice",
-        "Objet parent": "objeto pai",
-        "Aucun": "não",
-        "Catégorie": "categoria",
-        "Activer": "ativar",
-        "Visible": "visível",
-        "Accéder à la carte": "Accéder à la carte",
-        "IP de l'ecodevice": "IP de l'ecodevice",
-        "Port de l'ecodevice": "Port de l'ecodevice",
-        "Compte de l'ecodevice": "Compte de l'ecodevice",
-        "Password de l'ecodevice": "Password de l'ecodevice",
-        "Type": "tipo",
-        "Sans": "Sans",
-        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
-        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde.",
-        "Tarification :": "Tarification :",
-        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.",
-        "Indicateurs": "Indicateurs",
-        "Nom": "nome",
-        "Sous-Type": "subtipo",
-        "Unité": "unidade",
-        "Paramètres": "configurações",
-        "Supprimer": "remover",
-        "Sauvegarder": "salvar",
+    "plugins\/ecodevice\/desktop\/php\/ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Acesso não autorizado",
+        "Ajouter un Ecodev": "",
+        "Compteur": "",
+        "Téléinfo": "",
+        "Gestion": "Gestão",
+        "Configuration": "Configuração",
+        "Mes Ecodevices": "",
+        "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer": "",
+        "Général": "Geral",
+        "Nom de l'ecodevice": "",
+        "Objet parent": "Objeto pai",
+        "Aucun": "Nemhum",
+        "Catégorie": "Categoria",
+        "Activer": "Ativar",
+        "Visible": "Visivél",
+        "Accéder à la carte": "",
+        "IP de l'ecodevice": "",
+        "Port de l'ecodevice": "",
+        "Compte de l'ecodevice": "",
+        "Password de l'ecodevice": "",
+        "Type": "Tipo",
+        "Sans": "",
+        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "",
+        "Les indicateurs sont regénérés après sauvegarde.": "",
+        "Tarification :": "",
+        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "",
+        "Indicateurs": "",
+        "Nom": "Nome",
+        "Sous-Type": "Subtipo",
+        "Unité": "Unidade",
+        "Paramètres": "Configurações",
+        "Supprimer": "Remover",
+        "Sauvegarder": "Salvar",
         "Sauvegarde effectuée avec succès": "Backup concluído com êxito",
-        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
+        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": ""
     },
-    "core\/ajax\/ecodevice.ajax.php": {
-        "401 - Accès non autorisé": "401 - Accès non autorisé",
-        "ecodevice eqLogic non trouvé : ": "ecodevice eqLogic non trouvé : ",
-        "Url de push sur ecodevice configuré": "Url de push sur ecodevice configuré",
+    "plugins\/ecodevice\/desktop\/js\/ecodevice.js": {
+        "Nom": "Nome",
+        "Unite": "Unidade",
+        "Min": "Baixo",
+        "Max": "",
+        "Historiser": "Historicizar",
+        "Afficher": "Display",
+        "Tester": "Teste",
+        "Accèder à l'interface de l'Ecodevice": ""
+    },
+    "plugins\/ecodevice\/core\/ajax\/ecodevice.ajax.php": {
+        "401 - Accès non autorisé": "401 - Acesso não autorizado",
+        "ecodevice eqLogic non trouvé : ": "",
+        "Url de push sur ecodevice configuré": "",
         "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
     },
-    "core\/class\/ecodevice.class.php": {
-        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
-        "Trop diminuer cette valeur peut rendre instable votre serveur": "Trop diminuer cette valeur peut rendre instable votre serveur"
+    "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
+        "Eau": "",
+        "Fuel": "",
+        "Gaz": "",
+        "Electricité": "",
+        "Autre": "Outro",
+        "L\\'ecodevice ne repond pas.": "",
+        "Le type de compteur est introuvable. Vérifier la communication entre l\\'ecodevice et votre compteur.": "",
+        "Le type de compteur doit être défini.": "",
+        "Le compteur ' . $eqLogic->getName() . ' ne doit pas être configuré en mode fuel dans l\\'ecodevice.": "",
+        "L\\'adresse IP du serveur Jeedom doit être renseignée.<br>Général -> Administration -> Configuration.<br>Configuration réseaux -> Adresse interne": "",
+        "Le compteur ' . $eqLogic->getName() . ' doit être configuré en mode fuel dans l\\'ecodevice.": "",
+        "Veuillez vérifier la configuration": "",
+        "Tâche cron introuvable": "",
+        "Equipement desactivé impossible d\\éxecuter la commande : ' . $this->getHumanName()": ""
     }
 }

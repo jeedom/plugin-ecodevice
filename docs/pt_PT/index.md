@@ -1,22 +1,22 @@
-Presentation 
+ 
 ============
 
 .
 
 .
 
-Data visible on the Dashboard : 
+ : 
 -----------------------------------
 
 -   ''' '''
 
 ![ecodevice screenshot2](../images/ecodevice_screenshot2.jpg)
 
--   '''pulse counters'''
+-   ''''''
 
 ![ecodevice screenshot3](../images/ecodevice_screenshot3.jpg)
 
-Refresh rate 
+ 
 -----------------------------
 
  :
@@ -29,35 +29,35 @@ Refresh rate
 . 
 .
 
-Installation / Setup 
+ 
 ========================
 
-We will now configure a device. To do so, click
+. 
 '''.
 
 
-Equipment'''".
+Equipamento'''".
 
-Then enter the name of the equipment (ex. .
+. .
 
-Then define :
+ :
 
--   '''Parent object'''
-
--   '''
+-   '''Objeto pai'''
 
 -   '''
 
 -   '''
-    the Dashboard)
 
--   '''IP adress'''
+-   '''
+    
 
--   '''Port'''
+-   '''Endereço IP'''
 
--   '''Account'''
+-   '''Porta'''
 
--   '''Password'''
+-   ''''''
+
+-   '''Senha'''
 
 ![ecodevice screenshot1](../images/ecodevice_screenshot1.jpg)
 
@@ -74,16 +74,16 @@ Then define :
 
 ![ecodevice screenshot5](../images/ecodevice_screenshot5.jpg)
 
-Installation / Setup 
+ 
 ========================
 
 .
 
-FAQ 
+ 
 ===
 
 
-access : ![la](../images/acces_sous_indicateur.jpg)
+ : ![la](../images/acces_sous_indicateur.jpg)
 
 . 
 . 
@@ -91,7 +91,7 @@ access : ![la](../images/acces_sous_indicateur.jpg)
 .
 
 
-Left.
+Esquerda.
 
 
 
@@ -120,10 +120,10 @@ Left.
 .
 <http://blog.domadoo.fr/guides/jeedom-guide-dutilisation-plugin-ecodevice/>
 
-Changelog 
+ 
 =========
 
-> **Warning**
+> **Aviso**
 >
 > 
 > :
@@ -132,13 +132,13 @@ Changelog
 
 -   
 
-Old developments :
+ :
 
--   Addition of a specific API Key to the plugin
+-   
 
--   Modification for Jeedom V3 compatibility
+-   
 
--   No more version tracking
+-   
 
 -   
 
@@ -172,8 +172,8 @@ Old developments :
 
 -   .
 
--   Updating analog inputs, even if the value does not change
-    for graphics.
+-   
+    .
 
 -   .
 
@@ -181,16 +181,16 @@ Old developments :
 
 -   .
 
--   Cron modification for more autonomy.
+-   .
 
--   Modification of the logo extension.
+-   .
 
--   Compatibility Imperihome
+-   
 
--   Removal of the removal of equipment during deactivation
-    plugin
+-   
+    
 
--   Correction compared to the new core.
+-   .
 
 -   Suppression de l'info `updatetime`.
 
@@ -199,11 +199,11 @@ Old developments :
 -   
     .
 
--   Add link to display options.
+-   .
 
--   Double cron correction.
+-   .
 
--   Addition of the number of pulses per minute.
+-   .
 
 -   
     .
