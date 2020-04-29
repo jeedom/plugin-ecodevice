@@ -1,14 +1,14 @@
 Präsentation 
 ============
 
-.
+Mit diesem Plugin können Sie GCE Ecodevice-Karten verwalten.
 
-.
+Ursprünglich wurde dieses Plugin erstellt, um GCE Ecodevices zu verbinden.
 
-Im Dashboard sichte Daten : 
+Im Dashboard sichtbare Daten : 
 -----------------------------------
 
--   ''' '''
+-   '''Tele-Informationsschalter '''
 
 ![ecodevice screenshot2](../images/ecodevice_screenshot2.jpg)
 
@@ -19,118 +19,118 @@ Im Dashboard sichte Daten :
 Aktualisierungsrate 
 -----------------------------
 
- :
+Das Plugin aktualisiert diese Daten auf zwei Arten :
 
+Die Daten werden vom Plugin jede Minute für alle abgerufen
+die Zähler. Eine höhere Frequenz ist nicht möglich.
 
-. .
-
-
-
-. 
-.
+Für Durchflussraten, momentanen Verbrauch und scheinbare Leistung a
+Die Erfassung erfolgt durch einen Dämon gemäß der eingestellten Häufigkeit
+Plugin-Level. Bitte beachten Sie, dass ein starker Rückgang einen großen Rückgang erzeugt
+Überlastung Ihres Jeedom-Servers.
 
 Installation / Einrichtung 
 ========================
 
 Wir werden jetzt ein Gerät konfigurieren. Klicken Sie dazu auf
-'''.
+on '' 'Plugins / Hausautomationsprotokoll / Öko-Gerät'''.
 
+Klicken Sie dann oben links auf die Schaltfläche "'' 'Hinzufügen eines
+équipement'''".
 
-Gerät'''".
-
-Geben Sie dann den Namen des Geräts ein (z. .
+Geben Sie dann den Namen des Geräts ein (z. Ecodevice 1).
 
 Dann definieren :
 
 -   '''Übergeordnetes Objekt'''
 
--   '''
+-   '''Kategorie '' '(optional)
 
--   '''
+-   '''Aktivieren Sie '' '(überprüfen Sie, ob das Gerät sonst nicht verwendet werden kann).
 
--   '''
+-   '''SichtBar '' '(optional, wenn Sie es nicht sichtBar machen möchten
     das Dashboard)
 
 -   '''IP-Adresse'''
 
--   '''Hafen'''
+-   '''Port'''
 
--   '''Konto'''
+-   '''Compte'''
 
 -   '''Passwort'''
 
 ![ecodevice screenshot1](../images/ecodevice_screenshot1.jpg)
 
+Sie finden alle Elemente der Karte im Menü unter
+links durch Klicken auf das Symbol.
 
-.
-
-. 
-.
+Hier ist die Zählerkonfigurationsseite. Solange der Zählertyp
+ist nicht definiert, Befehle werden nicht erstellt.
 
 ![ecodevice screenshot4](../images/ecodevice_screenshot4.jpg)
 
-. 
-.
+Hier ist die Konfigurationsseite für eine Tele-Informationseingabe. Solange die
+Vertragsart ist nicht definiert, Aufträge werden nicht angelegt.
 
 ![ecodevice screenshot5](../images/ecodevice_screenshot5.jpg)
 
 Installation / Einrichtung 
 ========================
 
-.
+Dieses Plugin erfordert keine Installationsvoraussetzungen.
 
 Faq 
 ===
 
+Klicken Sie im linken Menü auf das folgende Symbol
+Zugang : ![die](../images/acces_sous_indicateur.jpg)
 
-Zugang : ![la](../images/acces_sous_indicateur.jpg)
+Standardmäßig ist es jede Minute. Es ist möglich zu konfigurieren
+Drücken Sie das Ecodevice manuell auf. Für Belastungen Verbrauch
+Momentane und scheinbare Kraft kann mehr gesammelt werden
+häufig abhängig vom Dämon.
 
-. 
-. 
+Klicken Sie auf das Symbol links neben dem Kartennamen in der Liste von
+gauche.
 
-.
+Dieses Plugin ist kostenlos, so dass jeder es einfach genießen kann. Wenn
+Sie möchten immer noch an den Plugin-Entwickler spenden, danke
+Sende mir eine Nachricht
+privé](https://www.jeedom.com/forum/memberlist.php?mode = viewprofile & u = 698)
+im Forum.
 
+Es ist durchaus möglich über
+[Github](https://github.com/guenneguezt/plugin-ecodevice)
 
-Links.
+Um den Kraftstoffdurchfluss in einer Betriebsstunde zu berechnen,
+Kennen Sie die Markierung Ihrer Kraftstoffdüse. Dafür du
+Informationen finden Sie in [dem Dokument
+suivant](http://fr.cd.danfoss.com/PCMPDF/DKBDPD060A204.pdf).
 
+Der angegebene Wert ist in USgal / Stunde mit der Entsprechung in kg / h angegeben.
 
+Für die Dichte des Kraftstoffs können wir 820 kg / m³ und einen Druck von 7 nehmen
+bar.
 
+Wenn Sie also eine Düse mit der Markierung 0 haben.65S : 2,67 kg / h (abhängig von
+Danfoss Malerei). 2,67 x 0,82 = 2,1894 Liter pro Stunde. Dies gibt eine
+"ungefähre" Angabe Ihres Verbrauchs.
 
-:?
-.
-
-
-[github](https://github.com/guenneguezt/plugin-ecodevice)
-
-
-. 
-
-:.
-
-.
-
-
-.
-
-. : 
-. . 
-.
-
-.
-.
+Ja, es wurde nicht von mir geschrieben, hat aber den Verdienst zu existieren.
+Danke an den Herausgeber.
 <http://blog.domadoo.fr/guides/jeedom-guide-dutilisation-plugin-ecodevice/>
 
 Änderungsprotokoll 
 =========
 
-> **Warnung**
+> **Warning**
 >
-> 
-> :
+> Ausführliche Informationen zu Aktualisierungen unter [Verlauf
+> Commit](https://github.com/guenneguezt/plugin-ecodevice/commits/master)
 
- :
+Liste der wichtigsten Änderungen in der aktuellen Version :
 
--   
+-   Entfernen des Paypal-Links zur Einhaltung von Jeedom V3.1
 
 Alte Entwicklungen :
 
@@ -140,46 +140,46 @@ Alte Entwicklungen :
 
 -   Keine Versionsverfolgung mehr
 
--   
+-   Korrektur für Firmware 1.04.82
 
--   
+-   Dreiphasenkorrektur
 
--   
+-   Dämonenfix
 
--   
-    
+-   Hinzufügung der automatischen und intelligenten Erzeugung der Befehle von
+    Teleinfo
 
--   
+-   Ampere-Einheit auf A stellen
 
--   
+-   Hinzufügen eines Daemons für sich schnell ändernde Werte
 
--   
+-   Steuerung nach Zählertyp (Wasser, Gas, Strom, Kraftstoff)
 
--   
+-   Hinzufügen von max und min für das Widget
 
--   
+-   Standard-Widget
 
--   
+-   Faq Verbesserung
 
--   .
+-   Befehl zum Neustart der Korrektur.
 
--   
-    .
+-   Änderung zum Neuerstellen der Unterbefehle, falls vorhanden
+    nicht mehr existieren.
 
--   
+-   Korrektur des Neustartbefehls
 
--   
+-   Hinzufügen eines Befehls zum Neustart
 
--   .
+-   Erkennung von beschädigten XML.
 
 -   Aktualisieren der analogen Eingänge, auch wenn sich der Wert nicht ändert
     für Grafiken.
 
--   .
+-   Hinzufügen der abonnierten Intensität.
 
--   .
+-   Maximale Intensität.
 
--   .
+-   Hinzufügung des Tageszählers in der Welt ohne Kraftstoff.
 
 -   Cron-Modifikation für mehr Autonomie.
 
@@ -192,12 +192,12 @@ Alte Entwicklungen :
 
 -   Korrektur gegenüber dem neuen Kern.
 
--   Suppression de l'info `updatetime`.
+-   Entfernen der "Updatetime" -Info.
 
--   .
+-   Hinzufügen von Evolutionsdaten (Variation pro Minute).
 
--   
-    .
+-   Hinzufügen einer Preisauswahl, um nur die Bestellungen anzuzeigen
+    entsprechend.
 
 -   Link zu Anzeigeoptionen hinzufügen.
 
@@ -205,15 +205,15 @@ Alte Entwicklungen :
 
 -   Addition der Anzahl der Impulse pro Minute.
 
--   
-    .
+-   Bei Nichtverfügbarkeit bis zu 3 Mal erneut auslösen
+    des ecodevice.
 
--   Ajout d'une information `status`.
+-   Hinzufügen von Statusinformationen.
 
--   .
+-   Aktualisieren Sie keine Daten, wenn sie sich nicht ändern.
 
--   .
+-   ZIP-Problem.
 
--   .
+-   Initialisierung.
 
 
