@@ -26,7 +26,7 @@ the counters. It is not possible to have a higher frequency.
 
 For flow rates, instantaneous consumption and Apparent Power a
 collection is done by a daemon according to the set frequency
-plugin level. Please note, a therge decrease generates a therge
+plugin level. Please note, a large decrease generates a large
 overloading your jeedom server.
 
 Installation / Setup 

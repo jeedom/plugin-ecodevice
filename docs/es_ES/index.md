@@ -125,7 +125,7 @@ Cambios
 
 > **Warning**
 >
-> Detalles completos de els actualizaciones en [Historial
+> Detalles completos de las actualizaciones en [Historial
 > Commit](https://github.com/guenneguezt/plugin-ecodevice/commits/master)
 
 Lista de cambios importantes en el versión actual :
