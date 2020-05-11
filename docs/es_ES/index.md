@@ -36,7 +36,7 @@ Ahora configuraremos un dispositivo. Para hacerlo, haga clic en
 en '' 'Complementos / Protocolo de automatización del hogar / Eco-dispositivo'''.
 
 Luego haga clic en el botón en la esquina superior izquierda "'' 'Agregar un
-Dispositivos'''".
+équipement'''".
 
 Luego ingrese el nombre del equipo (ej. Ecodispositivo 1).
 
@@ -53,9 +53,9 @@ Luego defina :
 
 -   '''Dirección IP'''
 
--   '''Puerto'''
+-   '''Port'''
 
--   '''Cuenta'''
+-   '''Compte'''
 
 -   '''Contraseña'''
 
@@ -91,7 +91,7 @@ el poder instantáneo y aparente se puede recoger más
 con frecuencia dependiendo del demonio.
 
 Haga clic en el icono a la izquierda del nombre de la tarjeta en la lista de
-Izquierda.
+gauche.
 
 Este complemento es gratuito para que todos puedan simplemente disfrutarlo. Si
 aún quieres donar al desarrollador del complemento, gracias
@@ -100,7 +100,7 @@ privé](https://www.jeedom.com/forum/memberlist.php?mode = viewprofile & u = 698
 en el foro.
 
 Es completamente posible a través de
-[Github](https://Github.com/guenneguezt/plugin-ecodevice)
+[Github](https://github.com/guenneguezt/plugin-ecodevice)
 
 Para calcular el flujo de combustible en una hora de operación,
 saber la marca de su inyector de combustible. Por eso, tu
@@ -126,7 +126,7 @@ Cambios
 > **Advertencia**
 >
 > Detalles completos de las actualizaciones en [Historial
-> Commit](https://Github.com/guenneguezt/plugin-ecodevice/commits/master)
+> Commit](https://github.com/guenneguezt/plugin-ecodevice/commits/master)
 
 Lista de cambios importantes en la versión actual :
 

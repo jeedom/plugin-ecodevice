@@ -36,7 +36,7 @@ Agora vamos configurar um dispositivo. Para fazer isso, clique em
 '' 'Plugins / Protocolo de automação residencial / Eco-device'''.
 
 Em seguida, clique no botão no canto superior esquerdo "'' 'Adicionar um
-Equipamento'''".
+équipement'''".
 
 Em seguida, digite o nome do equipamento (ex. Ecodispositivo 1).
 
@@ -53,9 +53,9 @@ Então defina :
 
 -   '''Endereço IP'''
 
--   '''Porta'''
+-   '''Port'''
 
--   '''Conta'''
+-   '''Compte'''
 
 -   '''Senha'''
 
@@ -91,7 +91,7 @@ poder instantâneo e aparente pode ser coletado mais
 freqüentemente dependendo do demônio.
 
 Clique no ícone à esquerda do nome do cartão na lista de
-Esquerda.
+gauche.
 
 Este plugin é gratuito para que todos possam simplesmente desfrutar. Se
 você ainda deseja doar para o desenvolvedor do plugin, obrigado

@@ -36,7 +36,7 @@ We will now configure a device. To do so, click
 on '' 'Plugins / Home automation protocol / Eco-device'''.
 
 Then click on the button at the top left "'' 'Add a
-Equipment'''".
+équipement'''".
 
 Then enter the name of the equipment (ex. Ecodevice 1).
 
@@ -55,7 +55,7 @@ Then define :
 
 -   '''Port'''
 
--   '''Account'''
+-   '''Compte'''
 
 -   '''Password'''
 
@@ -91,7 +91,7 @@ instantaneous and apparent power can be collected more
 frequently depending on the demon.
 
 Click on the icon to the left of the card name in the list of
-Left.
+gauche.
 
 This plugin is free so that everyone can simply enjoy it. Yes
 you still want to donate to the plugin developer, thank you
@@ -100,7 +100,7 @@ privé](https://www.jeedom.com/forum/memberlist.php?mode = viewprofile & u = 698
 on the forum.
 
 It is entirely possible via
-[Github](https://Github.com/guenneguezt/plugin-ecodevice)
+[Github](https://github.com/guenneguezt/plugin-ecodevice)
 
 To calculate the fuel flow in one hour of operation,
 know the marking of your fuel nozzle. For that, you
@@ -126,7 +126,7 @@ Changelog
 > **Warning**
 >
 > Full details of updates on [History
-> Commit](https://Github.com/guenneguezt/plugin-ecodevice/commits/master)
+> Commit](https://github.com/guenneguezt/plugin-ecodevice/commits/master)
 
 List of major changes in the current version :
 

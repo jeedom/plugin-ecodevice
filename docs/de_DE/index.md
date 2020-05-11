@@ -36,7 +36,7 @@ Wir werden jetzt ein Gerät konfigurieren. Klicken Sie dazu auf
 on '' 'Plugins / Hausautomationsprotokoll / Öko-Gerät'''.
 
 Klicken Sie dann oben links auf die Schaltfläche "'' 'Hinzufügen eines
-Gerät'''".
+équipement'''".
 
 Geben Sie dann den Namen des Geräts ein (z. Ecodevice 1).
 
@@ -53,9 +53,9 @@ Dann definieren :
 
 -   '''IP-Adresse'''
 
--   '''Hafen'''
+-   '''Port'''
 
--   '''Konto'''
+-   '''Compte'''
 
 -   '''Passwort'''
 
@@ -91,7 +91,7 @@ Momentane und scheinbare Kraft kann mehr gesammelt werden
 häufig abhängig vom Dämon.
 
 Klicken Sie auf das Symbol links neben dem Kartennamen in der Liste von
-Links.
+gauche.
 
 Dieses Plugin ist kostenlos, so dass jeder es einfach genießen kann. Wenn
 Sie möchten immer noch an den Plugin-Entwickler spenden, danke
@@ -100,7 +100,7 @@ privé](https://www.jeedom.com/forum/memberlist.php?mode = viewprofile & u = 698
 im Forum.
 
 Es ist durchaus möglich über
-[Github](https://Github.com/guenneguezt/plugin-ecodevice)
+[Github](https://github.com/guenneguezt/plugin-ecodevice)
 
 Um den Kraftstoffdurchfluss in einer Betriebsstunde zu berechnen,
 Kennen Sie die Markierung Ihrer Kraftstoffdüse. Dafür du
@@ -110,7 +110,7 @@ suivant](http://fr.cd.danfoss.com/PCMPDF/DKBDPD060A204.pdf).
 Der angegebene Wert ist in USgal / Stunde mit der Entsprechung in kg / h angegeben.
 
 Für die Dichte des Kraftstoffs können wir 820 kg / m³ und einen Druck von 7 nehmen
-Bar.
+bar.
 
 Wenn Sie also eine Düse mit der Markierung 0 haben.65S : 2,67 kg / h (abhängig von
 Danfoss Malerei). 2,67 x 0,82 = 2,1894 Liter pro Stunde. Dies gibt eine
@@ -126,7 +126,7 @@ Danke an den Herausgeber.
 > **Warnung**
 >
 > Ausführliche Informationen zu Aktualisierungen unter [Verlauf
-> Commit](https://Github.com/guenneguezt/plugin-ecodevice/commits/master)
+> Commit](https://github.com/guenneguezt/plugin-ecodevice/commits/master)
 
 Liste der wichtigsten Änderungen in der aktuellen Version :
 
