@@ -36,7 +36,7 @@ Wir werden jetzt ein Gerät konfigurieren. Klicken Sie dazu auf
 on '' 'Plugins / Hausautomationsprotokoll / Öko-Gerät'''.
 
 Klicken Sie dann oben links auf die Schaltfläche "'' 'Hinzufügen eines
-équipement'''".
+Gerät'''".
 
 Geben Sie dann den Namen des Geräts ein (z. Ecodevice 1).
 
@@ -46,16 +46,16 @@ Dann definieren :
 
 -   '''Kategorie '' '(optional)
 
--   '''Aktivieren Sie '' '(überprüfen Sie, ob das Gerät sonst nicht verwendet werden kann).
+-   '''Aktivieren Sie '' '(überprüfen Sie, ob das Gerät sonst nicht verwendet werden kann)
 
--   '''SichtBar '' '(optional, wenn Sie es nicht sichtBar machen möchten
+-   '''Sichtbar '' '(optional, wenn Sie es nicht sichtbar machen möchten
     das Dashboard)
 
 -   '''IP-Adresse'''
 
--   '''Port'''
+-   '''Hafen'''
 
--   '''Compte'''
+-   '''Konto'''
 
 -   '''Passwort'''
 
@@ -91,7 +91,7 @@ Momentane und scheinbare Kraft kann mehr gesammelt werden
 häufig abhängig vom Dämon.
 
 Klicken Sie auf das Symbol links neben dem Kartennamen in der Liste von
-gauche.
+Links.
 
 Dieses Plugin ist kostenlos, so dass jeder es einfach genießen kann. Wenn
 Sie möchten immer noch an den Plugin-Entwickler spenden, danke
@@ -100,7 +100,7 @@ privé](https://www.jeedom.com/forum/memberlist.php?mode = viewprofile & u = 698
 im Forum.
 
 Es ist durchaus möglich über
-[Github](https://github.com/guenneguezt/plugin-ecodevice)
+[Github](https://Github.com/guenneguezt/plugin-ecodevice)
 
 Um den Kraftstoffdurchfluss in einer Betriebsstunde zu berechnen,
 Kennen Sie die Markierung Ihrer Kraftstoffdüse. Dafür du
@@ -110,7 +110,7 @@ suivant](http://fr.cd.danfoss.com/PCMPDF/DKBDPD060A204.pdf).
 Der angegebene Wert ist in USgal / Stunde mit der Entsprechung in kg / h angegeben.
 
 Für die Dichte des Kraftstoffs können wir 820 kg / m³ und einen Druck von 7 nehmen
-bar.
+Bar.
 
 Wenn Sie also eine Düse mit der Markierung 0 haben.65S : 2,67 kg / h (abhängig von
 Danfoss Malerei). 2,67 x 0,82 = 2,1894 Liter pro Stunde. Dies gibt eine
@@ -123,10 +123,10 @@ Danke an den Herausgeber.
 Änderungsprotokoll 
 =========
 
-> **Warning**
+> **Warnung**
 >
 > Ausführliche Informationen zu Aktualisierungen unter [Verlauf
-> Commit](https://github.com/guenneguezt/plugin-ecodevice/commits/master)
+> Commit](https://Github.com/guenneguezt/plugin-ecodevice/commits/master)
 
 Liste der wichtigsten Änderungen in der aktuellen Version :
 
@@ -159,7 +159,7 @@ Alte Entwicklungen :
 
 -   Standard-Widget
 
--   Faq Verbesserung
+-   FAQ Verbesserung
 
 -   Befehl zum Neustart der Korrektur.
 

@@ -58,7 +58,7 @@
         "401 - Accès non autorisé": "401 - Akses tidak sah",
         "ecodevice eqLogic non trouvé : ": "",
         "Url de push sur ecodevice configuré": "",
-        "Aucune methode correspondante à : ": "Aucune methode correspondante à : "
+        "Aucune methode correspondante à : ": "Aucune methode correspondante à :"
     },
     "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
         "Eau": "",

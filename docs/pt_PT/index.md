@@ -36,9 +36,9 @@ Agora vamos configurar um dispositivo. Para fazer isso, clique em
 '' 'Plugins / Protocolo de automação residencial / Eco-device'''.
 
 Em seguida, clique no botão no canto superior esquerdo "'' 'Adicionar um
-équipement'''".
+Equipamento'''".
 
-Em seguida, digite o nome do equipamento (ex.. Ecodispositivo 1).
+Em seguida, digite o nome do equipamento (ex. Ecodispositivo 1).
 
 Então defina :
 
@@ -53,9 +53,9 @@ Então defina :
 
 -   '''Endereço IP'''
 
--   '''Port'''
+-   '''Porta'''
 
--   '''Compte'''
+-   '''Conta'''
 
 -   '''Senha'''
 
@@ -91,7 +91,7 @@ poder instantâneo e aparente pode ser coletado mais
 freqüentemente dependendo do demônio.
 
 Clique no ícone à esquerda do nome do cartão na lista de
-gauche.
+Esquerda.
 
 Este plugin é gratuito para que todos possam simplesmente desfrutar. Se
 você ainda deseja doar para o desenvolvedor do plugin, obrigado
@@ -123,7 +123,7 @@ Graças ao editor.
 Changelog 
 =========
 
-> **Warning**
+> **Aviso**
 >
 > Detalhes completos das atualizações em [Histórico
 > Commit](https://github.com/guenneguezt/plugin-ecodevice/commits/master)
@@ -201,7 +201,7 @@ Desenvolvimentos antigos :
 
 -   Adicionar link às opções de exibição.
 
--   Correção dupo de cron.
+-   Correção dupla de cron.
 
 -   Adição do número de pulsos por minuto.
 

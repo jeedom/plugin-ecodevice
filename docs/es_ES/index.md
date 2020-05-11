@@ -1,4 +1,4 @@
-Presentación  
+Presentación 
 ============
 
 Este complemento le permite administrar tarjetas GCE Ecodevice.
@@ -25,7 +25,7 @@ El complemento recupera los datos cada minuto para todos
 los contadores. No es posible tener una frecuencia más alta.
 
 Para caudales, consumo instantáneo y potencia aparente a
-el recolección es realizada por un demonio de acuerdo con el frecuencia establecida
+la recolección es realizada por un demonio de acuerdo con la frecuencia establecida
 nivel de complemento. Tenga en cuenta que una gran disminución genera una gran
 sobrecargando su servidor jeedom.
 
@@ -35,10 +35,10 @@ Instalación / Configuración
 Ahora configuraremos un dispositivo. Para hacerlo, haga clic en
 en '' 'Complementos / Protocolo de automatización del hogar / Eco-dispositivo'''.
 
-Luego haga clic en el botón en el esquina superior izquierda "'' 'Agregar un
-équipement'''".
+Luego haga clic en el botón en la esquina superior izquierda "'' 'Agregar un
+Dispositivos'''".
 
-Luego ingrese el nombre del equipo (ej.. Ecodispositivo 1).
+Luego ingrese el nombre del equipo (ej. Ecodispositivo 1).
 
 Luego defina :
 
@@ -53,23 +53,23 @@ Luego defina :
 
 -   '''Dirección IP'''
 
--   '''Port'''
+-   '''Puerto'''
 
--   '''Compte'''
+-   '''Cuenta'''
 
 -   '''Contraseña'''
 
 ![ecodevice screenshot1](../images/ecodevice_screenshot1.jpg)
 
-Encontrará todos los elementos de el tarjeta en el menú en
+Encontrará todos los elementos de la tarjeta en el menú en
 izquierda haciendo clic en el icono.
 
-Aquí está el página de configuración del contador. Mientras el tipo de contador
+Aquí está la página de configuración del contador. Mientras el tipo de contador
 no está definido, no se crean comandos.
 
 ![ecodevice screenshot4](../images/ecodevice_screenshot4.jpg)
 
-Aquí está el página de configuración para una entrada de teleinformación. Mientras el
+Aquí está la página de configuración para una entrada de teleinformación. Mientras el
 tipo de contrato no está definido, no se crean pedidos.
 
 ![ecodevice screenshot5](../images/ecodevice_screenshot5.jpg)
@@ -82,7 +82,7 @@ Este complemento no requiere ningún requisito previo de instalación.
 Preguntas frecuentes 
 ===
 
-En el menú de el izquierda, haga clic en el siguiente icono para tener
+En el menú de la izquierda, haga clic en el siguiente icono para tener
 acceso : ![el](../images/acces_sous_indicateur.jpg)
 
 Por defecto es cada minuto. Es posible configurar
@@ -90,8 +90,8 @@ empujar manualmente el dispositivo ecológico. Para débitos, consumo
 el poder instantáneo y aparente se puede recoger más
 con frecuencia dependiendo del demonio.
 
-Haga clic en el icono a el izquierda del nombre de el tarjeta en el lista de
-gauche.
+Haga clic en el icono a la izquierda del nombre de la tarjeta en la lista de
+Izquierda.
 
 Este complemento es gratuito para que todos puedan simplemente disfrutarlo. Si
 aún quieres donar al desarrollador del complemento, gracias
@@ -100,19 +100,19 @@ privé](https://www.jeedom.com/forum/memberlist.php?mode = viewprofile & u = 698
 en el foro.
 
 Es completamente posible a través de
-[Github](https://github.com/guenneguezt/plugin-ecodevice)
+[Github](https://Github.com/guenneguezt/plugin-ecodevice)
 
 Para calcular el flujo de combustible en una hora de operación,
-saber el marca de su inyector de combustible. Por eso, tu
-encuentre el información en [el documento
+saber la marca de su inyector de combustible. Por eso, tu
+encuentre la información en [el documento
 suivant](http://fr.cd.danfoss.com/PCMPDF/DKBDPD060A204.pdf).
 
-El valor dado está en USgal / Hora con el correspondencia en Kg / H.
+El valor dado está en USgal / Hora con la correspondencia en Kg / H.
 
-Para el densidad del combustible, podemos tomar 820 Kg / m³ y una presión de 7
+Para la densidad del combustible, podemos tomar 820 Kg / m³ y una presión de 7
 bar.
 
-Entonces, si tiene una boquilel marcada 0.65S : 2,67 kg / h (dependiendo de
+Entonces, si tiene una boquilla marcada 0.65S : 2,67 kg / h (dependiendo de
 Pintura de Danfoss). 2.67x0.82 = 2.1894 litros por hora. Esto le da un
 Indicación "aproximada" de su consumo.
 
@@ -123,12 +123,12 @@ Gracias al editor.
 Cambios 
 =========
 
-> **Warning**
+> **Advertencia**
 >
 > Detalles completos de las actualizaciones en [Historial
-> Commit](https://github.com/guenneguezt/plugin-ecodevice/commits/master)
+> Commit](https://Github.com/guenneguezt/plugin-ecodevice/commits/master)
 
-Lista de cambios importantes en el versión actual :
+Lista de cambios importantes en la versión actual :
 
 -   Eliminación del enlace de Paypal para cumplir con Jeedom V3.1
 
@@ -146,10 +146,10 @@ Desarrollos antiguos :
 
 -   Demonio
 
--   Adición de el generación automática e inteligente de los comandos de
+-   Adición de la generación automática e inteligente de los comandos de
     Teleinfo
 
--   Cambiar el unidad de amperios a A
+-   Cambiar la unidad de amperios a A
 
 -   Agregar demonio para un valor rápidamente variable
 
@@ -181,18 +181,18 @@ Desarrollos antiguos :
 
 -   Adición del contador diario en el mundo sin combustible.
 
--   Modificación de Cron para mayor autonomía..
+-   Modificación de Cron para mayor autonomía.
 
--   Modificación de el extensión del logo..
+-   Modificación de la extensión del logo.
 
 -   Compatibilidad Imperihome
 
--   Retiro del retiro del equipo durante el desactivación
+-   Retiro del retiro del equipo durante la desactivación
     plugin
 
 -   Corrección en comparación con el nuevo núcleo.
 
--   Eliminación de el información `updatetime`.
+-   Eliminación de la información `updatetime`.
 
 -   Adición de datos de evolución (variación por minuto).
 
@@ -203,7 +203,7 @@ Desarrollos antiguos :
 
 -   Corrección cron doble.
 
--   Suma del número de pulsos por minuto..
+-   Suma del número de pulsos por minuto.
 
 -   Reactivar hasta 3 veces en caso de indisponibilidad
     del ecodispositivo.
