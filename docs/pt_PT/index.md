@@ -38,7 +38,7 @@ Agora vamos configurar um dispositivo. Para fazer isso, clique em
 Em seguida, clique no botão no canto superior esquerdo "'' 'Adicionar um
 équipement'''".
 
-Em seguida, digite o nome do equipamento (ex. Ecodispositivo 1).
+Em seguida, digite o nome do equipamento (ex. Ecodevice 1).
 
 Então defina :
 
@@ -49,7 +49,7 @@ Então defina :
 -   '''Ative '' '(marque, caso contrário, o equipamento não será utilizável)
 
 -   '''Visível '' '(opcional se você não quiser torná-lo visível em
-    o painel)
+    O painel)
 
 -   '''Endereço IP'''
 
@@ -113,7 +113,7 @@ Para a densidade do combustível, podemos suportar 820Kg / m³ e uma pressão de
 bar.
 
 Portanto, se você tiver um bico marcado como 0.65S : 2,67 kg / h (dependendo da
-Pintura Danfoss). 2,67x0,82 = 2,1894 litros por hora. Isso dá uma
+Mesa Danfoss). 2,67x0,82 = 2,1894 litros por hora. Isso dá uma
 indicação "aproximada" do seu consumo.
 
 Sim, não foi escrito por mim, mas tem o mérito de existir.
@@ -153,7 +153,7 @@ Desenvolvimentos antigos :
 
 -   Adicionando daemon para valores que variam rapidamente
 
--   Controle por tipo de medidor (água, gás, eletricidade, combustível)
+-   Ordenar por tipo de medidor (água, gás, eletricidade, combustível)
 
 -   Adição de max e min para o widget
 

@@ -38,7 +38,7 @@ en '' 'Complementos / Protocolo de automatización del hogar / Eco-dispositivo''
 Luego haga clic en el botón en la esquina superior izquierda "'' 'Agregar un
 équipement'''".
 
-Luego ingrese el nombre del equipo (ej. Ecodispositivo 1).
+Luego ingrese el nombre del equipo (ej. Ecodevice 1).
 
 Luego defina :
 
@@ -113,7 +113,7 @@ Para la densidad del combustible, podemos tomar 820 Kg / m³ y una presión de 7
 bar.
 
 Entonces, si tiene una boquilla marcada 0.65S : 2,67 kg / h (dependiendo de
-Pintura de Danfoss). 2.67x0.82 = 2.1894 litros por hora. Esto le da un
+Mesa Danfoss). 2.67x0.82 = 2.1894 litros por hora. Esto le da un
 Indicación "aproximada" de su consumo.
 
 Sí, no fue escrito por mí, pero tiene el mérito de existir.
@@ -153,7 +153,7 @@ Desarrollos antiguos :
 
 -   Agregar demonio para un valor rápidamente variable
 
--   Control por tipo de medidor (agua, gas, electricidad, combustible)
+-   Ordenar por tipo de medidor (agua, gas, electricidad, combustible)
 
 -   Adición de max y min para widget
 

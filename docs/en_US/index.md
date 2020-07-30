@@ -49,7 +49,7 @@ Then define :
 -   '''Activate '' '(check, otherwise the equipment will not be usable)
 
 -   '''Visible '' '(optional if you don't want to make it visible on
-    the Dashboard)
+    the dashboard)
 
 -   '''IP adress'''
 
@@ -113,7 +113,7 @@ For the density of the fuel, we can take 820Kg / m³ and a pressure of 7
 bar.
 
 So if you have a nozzle marked 0.65S : 2.67 kg / h (depending on
-Danfoss painting). 2.67x0.82 = 2.1894 liters per hour. This gives a
+Danfoss table). 2.67x0.82 = 2.1894 liters per hour. This gives a
 "approximate" indication of your consumption.
 
 Yes, it was not written by me, but has the merit of existing.
@@ -153,7 +153,7 @@ Old developments :
 
 -   Adding daemon for rapidly varying value
 
--   Control by type of meter (water, gas, electricity, fuel)
+-   Order by type of meter (water, gas, electricity, fuel)
 
 -   Addition of max and min for widget
 

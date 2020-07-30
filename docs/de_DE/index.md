@@ -113,7 +113,7 @@ Für die Dichte des Kraftstoffs können wir 820 kg / m³ und einen Druck von 7 n
 bar.
 
 Wenn Sie also eine Düse mit der Markierung 0 haben.65S : 2,67 kg / h (abhängig von
-Danfoss Malerei). 2,67 x 0,82 = 2,1894 Liter pro Stunde. Dies gibt eine
+Danfoss Tisch). 2,67 x 0,82 = 2,1894 Liter pro Stunde. Dies gibt eine
 "ungefähre" Angabe Ihres Verbrauchs.
 
 Ja, es wurde nicht von mir geschrieben, hat aber den Verdienst zu existieren.
@@ -153,7 +153,7 @@ Alte Entwicklungen :
 
 -   Hinzufügen eines Daemons für sich schnell ändernde Werte
 
--   Steuerung nach Zählertyp (Wasser, Gas, Strom, Kraftstoff)
+-   Bestellung nach Zählertyp (Wasser, Gas, Strom, Kraftstoff)
 
 -   Hinzufügen von max und min für das Widget
 
