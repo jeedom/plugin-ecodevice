@@ -1,101 +1,79 @@
 {
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_compteur.php": {
-        "Général": "Allgemein",
-        "Nom du compteur": "Zählername",
-        "Nom de l'ecodevice": "Ecodevice Name",
-        "Objet parent": "Eltern-Objekt",
-        "Aucun": "Ohne",
-        "Catégorie": "Kategorie",
-        "Activer": "aktivieren",
-        "Visible": "Sichtbar",
-        "Indicateurs": "Indikatoren",
-        "Nom": "Name",
-        "Sous-Type": "Untertyp",
-        "Valeur": "Wert",
-        "Unité": "Unit",
-        "Paramètres": "Parameter",
-        "Sauvegarder": "Speichern",
-        "Type": "Typ",
-        "Sans": "Ohne",
-        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
-        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde."
+    "plugins\/ecodevice\/plugin_info\/configuration.php": {
+        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Minimale Verzögerung zwischen zwei Ablesungen in Sekunden für sofortige Durchflüsse und Verbrauch",
+        "Trop diminuer cette valeur peut rendre instable votre serveur": "Wenn Sie diesen Wert zu stark verringern, kann Ihr Server instabil werden"
     },
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_teleinfo.php": {
-        "Général": "Allgemein",
-        "Nom du teleinfo": "Teleinfo Name",
-        "Nom de l'ecodevice": "Ecodevice Name",
-        "Objet parent": "Eltern-Objekt",
-        "Aucun": "Ohne",
-        "Catégorie": "Kategorie",
-        "Activer": "aktivieren",
-        "Visible": "Sichtbar",
-        "Tarification :": "Preise:",
-        "Indicateurs": "Indikatoren",
-        "Nom": "Name",
-        "Sous-Type": "Untertyp",
-        "Valeur": "Wert",
-        "Unité": "Unit",
-        "Paramètres": "Parameter",
-        "Sauvegarder": "Speichern",
-        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde."
+    "plugins\/ecodevice\/desktop\/modal\/help.ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff",
+        "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# ": "URL: # IP_JEEDOM # \/ core \/ api \/ jeeApi.php? Apikey = <?php echo jeedom::getApiKey('ecodevice'); ?> & type = script & id = # id # & value = # value #"
     },
     "plugins\/ecodevice\/desktop\/php\/ecodevice.php": {
-        "Ajouter un Ecodev": "Ecodev hinzufügen",
+        "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff",
+        "Ajouter un Ecodev": "Fügen Sie einen Ecodev hinzu",
         "Compteur": "Zähler",
         "Téléinfo": "Teleinfo",
+        "Gestion": "Verwaltung",
+        "Configuration": "Konfiguration",
         "Mes Ecodevices": "Meine Ecodevices",
+        "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer": "Sie haben noch kein Ecodevice. Klicken Sie zum Starten auf Gerät hinzufügen",
         "Général": "Allgemein",
-        "Nom de l'ecodevice": "Ecodevice Name",
-        "Objet parent": "Eltern-Objekt",
+        "Nom de l'ecodevice": "Name des Ökogeräts",
+        "Objet parent": "Übergeordnetes Objekt",
         "Aucun": "Ohne",
         "Catégorie": "Kategorie",
-        "Activer": "aktivieren",
-        "Configurer push": "Konfigurieren drücken",
+        "Activer": "Aktivieren",
         "Visible": "Sichtbar",
-        "IP de l'ecodevice": "ecodevice IP",
-        "Port de l'ecodevice": "ecodevice Port",
-        "Compte de l'ecodevice": "ecodevice Benutzername",
-        "Password de l'ecodevice": "ecodevice Password",
+        "Accéder à la carte": "Auf die Karte zugreifen",
+        "IP de l'ecodevice": "Ecodevice IP",
+        "Port de l'ecodevice": "Hafen des Ökogeräts",
+        "Compte de l'ecodevice": "Ecodevice-Konto",
+        "Password de l'ecodevice": "Ecodevice Passwort",
+        "Type": "Typ",
+        "Sans": "Ohne",
+        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Schalten Sie das Messgerät in den Kraftstoffmodus und 1 in den Düsendurchfluss am Ecodevice",
+        "Les indicateurs sont regénérés après sauvegarde.": "Die Anzeigen werden nach dem Speichern neu generiert",
+        "Tarification :": "Preisgestaltung:",
+        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Die Indikatoren werden im Falle einer Tarifänderung nach dem Speichern neu generiert",
         "Indicateurs": "Indikatoren",
         "Nom": "Name",
         "Sous-Type": "Untertyp",
-        "Valeur": "Wert",
         "Unité": "Unit",
-        "Paramètres": "Parameter",
+        "Paramètres": "Einstellungen",
         "Supprimer": "Löschen",
         "Sauvegarder": "Speichern",
         "Sauvegarde effectuée avec succès": "Speichern erfolgreich abgeschlossen",
-        "Utilisez sur l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez sur l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>",
-        "Gestion": "Verwaltung",
-        "Configuration": "Konfiguration",
-        "Accéder à la carte": "auf die Karte zugreifen",
-        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
-    },
-    "plugins\/ecodevice\/plugin_info\/info.json": {
-        "Nécessite firmware 1.04.82 minimum": "Mindestens Firmware 1.04.82 benötigt"
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
-        "L'ecodevice ne repond pas.": "Ecodevice antwortet nicht"
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice_compteur.class.php": {
-        "Eau": "Wasser",
-        "Fuel": "Fuel",
-        "Gaz": "Gas",
-        "Electricité": "Elektrizität",
-        "Autre": "Andere"
+        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Verwenden Sie das folgende Symbol, um die Details des Elements anzuzeigen <i class=\"fa fa-sitemap\"><\/i>"
     },
     "plugins\/ecodevice\/desktop\/js\/ecodevice.js": {
         "Nom": "Name",
         "Unite": "Unit",
-        "Min": "Min",
+        "Min": "Niedrig",
         "Max": "Max",
         "Historiser": "Chronik",
-        "Afficher": "anzeigen",
+        "Afficher": "Anzeige",
         "Tester": "Test",
-        "Accèder à l'interface de l'Ecodevice": "Accéder à l'interface de l'Ecodevice"
+        "Accèder à l'interface de l'Ecodevice": "Greifen Sie auf die Ecodevice-Schnittstelle zu"
     },
-    "plugins\/ecodevice\/plugin_info\/configuration.php": {
-        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
-        "Trop diminuer cette valeur peut rendre instable votre serveur": "Diesen Wert zu sehr verringern, kann Ihren Server instabil machen"
+    "plugins\/ecodevice\/core\/ajax\/ecodevice.ajax.php": {
+        "401 - Accès non autorisé": "401 - Nicht autorisierter Zugriff",
+        "ecodevice eqLogic non trouvé : ": "ecodevice eqLogic nicht gefunden:",
+        "Url de push sur ecodevice configuré": "URL auf konfiguriertem ecodevice drücken",
+        "Aucune methode correspondante à : ": "Keine Methode entsprechend:"
+    },
+    "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
+        "Eau": "Wasser",
+        "Fuel": "Kraftstoff",
+        "Gaz": "Gas",
+        "Electricité": "Strom",
+        "Autre": "Andere",
+        "L\\'ecodevice ne repond pas.": "Das ecodevice reagiert nicht",
+        "Le type de compteur est introuvable. Vérifier la communication entre l\\'ecodevice et votre compteur.": "Der Zählertyp wurde nicht gefunden. Überprüfen Sie die Kommunikation zwischen dem ecodevice und Ihrem Messgerät",
+        "Le type de compteur doit être défini.": "Der Zählertyp muss definiert werden",
+        "Le compteur ' . $eqLogic->getName() . ' ne doit pas être configuré en mode fuel dans l\\'ecodevice.": "Der Zähler '. $ eqLogic-> getName (). 'darf im ecodevice nicht im kraftstoffmodus konfiguriert werden",
+        "L\\'adresse IP du serveur Jeedom doit être renseignée.<br>Général -> Administration -> Configuration.<br>Configuration réseaux -> Adresse interne": "Die IP-Adresse des Jeedom-Servers muss eingegeben werden. <br> Allgemein -> Administration -> Konfiguration. <br> Netzwerkkonfiguration -> Interne Adresse",
+        "Le compteur ' . $eqLogic->getName() . ' doit être configuré en mode fuel dans l\\'ecodevice.": "Der Zähler '. $ eqLogic-> getName (). 'muss im ecodevice im kraftstoffmodus konfiguriert werden",
+        "Veuillez vérifier la configuration": "Bitte überprüfen Sie die Konfiguration",
+        "Tâche cron introuvable": "Cron-Aufgabe nicht gefunden",
+        "Equipement desactivé impossible d\\éxecuter la commande : ' . $this->getHumanName()": "Geräte deaktiviert unmöglich, um den Befehl auszuführen: '. $ this-> getHumanName ()"
     }
 }

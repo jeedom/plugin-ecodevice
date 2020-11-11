@@ -104,14 +104,16 @@ sendVarToJS('eqType', 'ecodevice');
                 <div class="form-group">
                     <label class="col-lg-2 control-label" >{{Objet parent}}</label>
                     <div class="col-lg-3">
-                        <select class="form-control eqLogicAttr" data-l1key="object_id">
-                            <option value="">{{Aucun}}</option>
-                            <?php
-                            foreach (jeeObject::all() as $object) {
-                                echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
-                            }
-                            ?>
-                        </select>
+                      <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
+  											<option value="">{{Aucun}}</option>
+  											<?php
+  											$options = '';
+  											foreach ((jeeObject::buildTree(null, false)) as $object) {
+  												$options .= '<option value="' . $object->getId() . '">' . str_repeat('&nbsp;&nbsp;', $object->getConfiguration('parentNumber')) . $object->getName() . '</option>';
+  											}
+  											echo $options;
+  											?>
+  										</select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -187,7 +189,7 @@ sendVarToJS('eqType', 'ecodevice');
 						<label>{{Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.}}</label>
 					</div>
 				</div>
-            </fieldset> 
+            </fieldset>
         </form>
 
         <legend>{{Indicateurs}}</legend>

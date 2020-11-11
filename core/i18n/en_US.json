@@ -1,88 +1,48 @@
 {
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_compteur.php": {
-        "Général": "Main",
-        "Nom du compteur": "Sensor name",
-        "Nom de l'ecodevice": "Name ecodevice",
-        "Objet parent": "Parent object",
-        "Aucun": "None",
-        "Catégorie": "Category",
-        "Activer": "Activate",
-        "Visible": "Visible",
-        "Indicateurs": "Indicators",
-        "Nom": "Name",
-        "Sous-Type": "Sub-Type",
-        "Valeur": "Value",
-        "Unité": "Unit",
-        "Paramètres": "Settings",
-        "Sauvegarder": "Save",
-        "Type": "Type",
-        "Sans": "Without",
-        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.",
-        "Les indicateurs sont regénérés après sauvegarde.": "The indicators are regenerated after saving."
+    "plugins\/ecodevice\/plugin_info\/configuration.php": {
+        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Minimum delay between two readings in seconds for instantaneous flows and consumption",
+        "Trop diminuer cette valeur peut rendre instable votre serveur": "Decreasing this value too much can make your server unstable"
     },
-    "plugins\/ecodevice\/desktop\/php\/ecodevice_teleinfo.php": {
-        "Général": "Main",
-        "Nom du teleinfo": "Teleinfo name",
-        "Nom de l'ecodevice": "Name ecodevice",
-        "Objet parent": "Parent object",
-        "Aucun": "None",
-        "Catégorie": "Category",
-        "Activer": "Activate",
-        "Visible": "Visible",
-        "Tarification :": "Pricing:",
-        "Indicateurs": "Indicators",
-        "Nom": "Name",
-        "Sous-Type": "Sub-Type",
-        "Valeur": "Value",
-        "Unité": "Unit",
-        "Paramètres": "Settings",
-        "Sauvegarder": "Save",
-        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde."
+    "plugins\/ecodevice\/desktop\/modal\/help.ecodevice.php": {
+        "401 - Accès non autorisé": "401 - Unauthorized access",
+        "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# ": "URL: # IP_JEEDOM # \/ core \/ api \/ jeeApi.php? Apikey = <?php echo jeedom::getApiKey('ecodevice'); ?> & type = script & id = # id # & value = # value #"
     },
     "plugins\/ecodevice\/desktop\/php\/ecodevice.php": {
-        "Ajouter un Ecodev": "Add Ecodev",
-        "Compteur": "Meter",
+        "401 - Accès non autorisé": "401 - Unauthorized access",
+        "Ajouter un Ecodev": "Add an Ecodev",
+        "Compteur": "Counter",
         "Téléinfo": "Teleinfo",
+        "Gestion": "Management",
+        "Configuration": "Setup",
         "Mes Ecodevices": "My Ecodevices",
+        "Vous n'avez pas encore d'ecodevice, cliquez sur Ajouter un équipement pour commencer": "You don't have an ecodevice yet, click on Add a device to start",
         "Général": "Main",
-        "Nom de l'ecodevice": "Name ecodevice",
+        "Nom de l'ecodevice": "Name of the ecodevice",
         "Objet parent": "Parent object",
         "Aucun": "None",
         "Catégorie": "Category",
         "Activer": "Activate",
-        "Configurer push": "Configure push",
         "Visible": "Visible",
+        "Accéder à la carte": "Access the map",
         "IP de l'ecodevice": "Ecodevice IP",
-        "Port de l'ecodevice": "Ecodevice port",
-        "Compte de l'ecodevice": "Ecodevice account:",
+        "Port de l'ecodevice": "Port of the ecodevice",
+        "Compte de l'ecodevice": "Ecodevice account",
         "Password de l'ecodevice": "Ecodevice password",
+        "Type": "Type",
+        "Sans": "Without",
+        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Put the meter in fuel mode and 1 in the nozzle flow rate on the ecodevice",
+        "Les indicateurs sont regénérés après sauvegarde.": "The indicators are regenerated after saving",
+        "Tarification :": "Pricing:",
+        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "The indicators are regenerated in the event of a tariff change after saving",
         "Indicateurs": "Indicators",
         "Nom": "Name",
-        "Sous-Type": "Sub-Type",
-        "Valeur": "Value",
+        "Sous-Type": "Sub-type",
         "Unité": "Unit",
         "Paramètres": "Settings",
         "Supprimer": "Delete",
         "Sauvegarder": "Save",
-        "Sauvegarde effectuée avec succès": "Backup successfully completed",
-        "Utilisez sur l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez sur l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>",
-        "Gestion": "Management",
-        "Configuration": "Configuration",
-        "Accéder à la carte": "Access the map",
-        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Cliquez l\\icône suivante pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
-    },
-    "plugins\/ecodevice\/plugin_info\/info.json": {
-        "Nécessite firmware 1.04.82 minimum": "Nécessite firmware 1.04.82 minimum"
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
-        "L'ecodevice ne repond pas.": "L'ecodevice ne repond pas."
-    },
-    "plugins\/ecodevice\/core\/class\/ecodevice_compteur.class.php": {
-        "Eau": "Water",
-        "Fuel": "Fuel",
-        "Gaz": "Gas",
-        "Electricité": "Electricity",
-        "Autre": "Other"
+        "Sauvegarde effectuée avec succès": "Successfully saved",
+        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Use the following icon to see the detail of the element <i class=\"fa fa-sitemap\"><\/i>"
     },
     "plugins\/ecodevice\/desktop\/js\/ecodevice.js": {
         "Nom": "Name",
@@ -90,12 +50,30 @@
         "Min": "Min",
         "Max": "Max",
         "Historiser": "Historize",
-        "Afficher": "Display",
+        "Afficher": "Show",
         "Tester": "Test",
-        "Accèder à l'interface de l'Ecodevice": "Accéder à l'interface de l'Ecodevice"
+        "Accèder à l'interface de l'Ecodevice": "Access the Ecodevice interface"
     },
-    "plugins\/ecodevice\/plugin_info\/configuration.php": {
-        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
-        "Trop diminuer cette valeur peut rendre instable votre serveur": "Trop diminuer cette valeur peut rendre instable votre serveur"
+    "plugins\/ecodevice\/core\/ajax\/ecodevice.ajax.php": {
+        "401 - Accès non autorisé": "401 - Unauthorized access",
+        "ecodevice eqLogic non trouvé : ": "ecodevice eqLogic not found:",
+        "Url de push sur ecodevice configuré": "Push url on configured ecodevice",
+        "Aucune methode correspondante à : ": "No method corresponding to:"
+    },
+    "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
+        "Eau": "Water",
+        "Fuel": "Fuel",
+        "Gaz": "Gas",
+        "Electricité": "Electricity",
+        "Autre": "Other",
+        "L\\'ecodevice ne repond pas.": "The ecodevice does not respond",
+        "Le type de compteur est introuvable. Vérifier la communication entre l\\'ecodevice et votre compteur.": "The counter type was not found. Check the communication between the ecodevice and your meter",
+        "Le type de compteur doit être défini.": "The type of counter must be defined",
+        "Le compteur ' . $eqLogic->getName() . ' ne doit pas être configuré en mode fuel dans l\\'ecodevice.": "The counter ' . $ eqLogic-> getName (). 'must not be configured in fuel mode in the ecodevice",
+        "L\\'adresse IP du serveur Jeedom doit être renseignée.<br>Général -> Administration -> Configuration.<br>Configuration réseaux -> Adresse interne": "The Jeedom server IP address must be entered. <br> General -> Administration -> Configuration. <br> Network configuration -> Internal address",
+        "Le compteur ' . $eqLogic->getName() . ' doit être configuré en mode fuel dans l\\'ecodevice.": "The counter ' . $ eqLogic-> getName (). 'must be configured in fuel mode in the ecodevice",
+        "Veuillez vérifier la configuration": "Please check the configuration",
+        "Tâche cron introuvable": "Cron task not found",
+        "Equipement desactivé impossible d\\éxecuter la commande : ' . $this->getHumanName()": "Equipment deactivated impossible to execute the command: '. $ this-> getHumanName ()"
     }
 }
