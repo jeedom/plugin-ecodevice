@@ -3,6 +3,7 @@
 # 16/11/2020
 
 - Interface update
+- Update plugin icon
 
 # 11/11/2020
 

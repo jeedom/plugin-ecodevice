@@ -3,6 +3,7 @@
 # 16/11/2020
 
 - Actualización de la interfaz
+- Actualizar el icono del complemento
 
 # 11/11/2020
 

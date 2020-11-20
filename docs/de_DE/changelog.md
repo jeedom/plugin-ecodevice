@@ -3,6 +3,7 @@
 # 16/11/2020
 
 - Schnittstellenaktualisierung
+- Plugin-Symbol aktualisieren
 
 # 11/11/2020
 
