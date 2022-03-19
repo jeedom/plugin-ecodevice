@@ -185,7 +185,6 @@ class ecodevice extends eqLogic{
         $cmd->setSubType('binary');
         $cmd->setLogicalId('status');
         $cmd->setIsVisible(1);
-        $cmd->setEventOnly(1);
         $cmd->setDisplay('generic_type', 'GENERIC_INFO');
         $cmd->save();
       }
@@ -197,7 +196,6 @@ class ecodevice extends eqLogic{
         $reboot->setType('action');
         $reboot->setSubType('other');
         $reboot->setLogicalId('reboot');
-        $reboot->setEventOnly(1);
         $reboot->setIsVisible(0);
         $reboot->setDisplay('generic_type', 'GENERIC_ACTION');
         $reboot->save();
@@ -241,7 +239,6 @@ class ecodevice extends eqLogic{
         $consommationjour->setType('info');
         $consommationjour->setSubType('numeric');
         $consommationjour->setLogicalId('consommationjour');
-        $consommationjour->setEventOnly(1);
         $consommationjour->setIsVisible(1);
         $consommationjour->setDisplay('generic_type', 'GENERIC_INFO');
         $consommationjour->setTemplate('dashboard', 'badge');
@@ -257,7 +254,6 @@ class ecodevice extends eqLogic{
         $consommationtotal->setType('info');
         $consommationtotal->setSubType('numeric');
         $consommationtotal->setLogicalId('consommationtotal');
-        $consommationtotal->setEventOnly(1);
         $consommationtotal->setIsVisible(1);
         $consommationtotal->setDisplay('generic_type', 'GENERIC_INFO');
         $consommationtotal->setTemplate('dashboard', 'badge');
@@ -273,7 +269,6 @@ class ecodevice extends eqLogic{
         $debitinstantane->setType('info');
         $debitinstantane->setSubType('numeric');
         $debitinstantane->setLogicalId('debitinstantane');
-        $debitinstantane->setEventOnly(1);
         $debitinstantane->setIsVisible(1);
         $debitinstantane->setDisplay('generic_type', 'GENERIC_INFO');
         $debitinstantane->setUnite("l/min");
@@ -296,7 +291,6 @@ class ecodevice extends eqLogic{
         $cmd->setSubType('binary');
         $cmd->setLogicalId('status');
         $cmd->setIsVisible(1);
-        $cmd->setEventOnly(1);
         $cmd->setDisplay('generic_type', 'GENERIC_INFO');
         $cmd->save();
       } else {
@@ -318,7 +312,6 @@ class ecodevice extends eqLogic{
         $reboot->setType('action');
         $reboot->setSubType('other');
         $reboot->setLogicalId('reboot');
-        $reboot->setEventOnly(1);
         $reboot->setIsVisible(0);
         $reboot->setDisplay('generic_type', 'GENERIC_ACTION');
         $reboot->save();
@@ -414,7 +407,6 @@ class ecodevice extends eqLogic{
               $cmd->setLogicalId($label);
               $cmd->setUnite($data[2]);
               $cmd->setIsVisible($data[3]);
-              $cmd->setEventOnly(1);
               $cmd->setDisplay('generic_type', $data[5]);
               $cmd->setTemplate('dashboard', $data[6]);
               $cmd->setTemplate('mobile', $data[6]);
@@ -467,7 +459,6 @@ class ecodevice extends eqLogic{
             $tempsfonctionnement->setSubType('numeric');
             $tempsfonctionnement->setLogicalId('tempsfonctionnement');
             $tempsfonctionnement->setUnite("min");
-            $tempsfonctionnement->setEventOnly(1);
             $tempsfonctionnement->setIsVisible(1);
             $tempsfonctionnement->setDisplay('generic_type', 'GENERIC_INFO');
             $tempsfonctionnement->save();
@@ -481,7 +472,6 @@ class ecodevice extends eqLogic{
             $tempsfonctionnementminute->setSubType('numeric');
             $tempsfonctionnementminute->setLogicalId('tempsfonctionnementminute');
             $tempsfonctionnementminute->setUnite("min/min");
-            $tempsfonctionnementminute->setEventOnly(1);
             $tempsfonctionnementminute->setIsVisible(1);
             $tempsfonctionnementminute->setDisplay('generic_type', 'GENERIC_INFO');
             $tempsfonctionnementminute->save();
@@ -495,7 +485,6 @@ class ecodevice extends eqLogic{
             $nbimpulsiontotal->setType('info');
             $nbimpulsiontotal->setSubType('numeric');
             $nbimpulsiontotal->setLogicalId('nbimpulsiontotal');
-            $nbimpulsiontotal->setEventOnly(1);
             $nbimpulsiontotal->setIsVisible(1);
             $nbimpulsiontotal->setDisplay('generic_type', 'GENERIC_INFO');
             $nbimpulsiontotal->save();
@@ -509,7 +498,6 @@ class ecodevice extends eqLogic{
             $nbimpulsionminute->setSubType('numeric');
             $nbimpulsionminute->setLogicalId('nbimpulsionminute');
             $nbimpulsionminute->setUnite("Imp/min");
-            $nbimpulsionminute->setEventOnly(1);
             $nbimpulsionminute->setIsVisible(1);
             $nbimpulsionminute->setDisplay('generic_type', 'GENERIC_INFO');
             $nbimpulsionminute->save();
@@ -522,7 +510,6 @@ class ecodevice extends eqLogic{
             $nbimpulsionjour->setType('info');
             $nbimpulsionjour->setSubType('numeric');
             $nbimpulsionjour->setLogicalId('nbimpulsionjour');
-            $nbimpulsionjour->setEventOnly(1);
             $nbimpulsionjour->setIsVisible(1);
             $nbimpulsionjour->setDisplay('generic_type', 'GENERIC_INFO');
             $nbimpulsionjour->save();
@@ -561,7 +548,6 @@ class ecodevice extends eqLogic{
             $consommationinstantane->setSubType('numeric');
             $consommationinstantane->setLogicalId('consommationinstantane');
             $consommationinstantane->setUnite("ml/h");
-            $consommationinstantane->setEventOnly(1);
             $consommationinstantane->setIsVisible(1);
             $consommationinstantane->setDisplay('generic_type', 'GENERIC_INFO');
             $consommationinstantane->save();
@@ -575,7 +561,6 @@ class ecodevice extends eqLogic{
             $consommationtotal->setSubType('numeric');
             $consommationtotal->setLogicalId('consommationtotal');
             $consommationtotal->setUnite("ml");
-            $consommationtotal->setEventOnly(1);
             $consommationtotal->setIsVisible(1);
             $consommationtotal->setDisplay('generic_type', 'GENERIC_INFO');
             $consommationtotal->setTemplate('dashboard', 'badge');
@@ -591,7 +576,6 @@ class ecodevice extends eqLogic{
             $consommationjour->setSubType('numeric');
             $consommationjour->setLogicalId('consommationjour');
             $consommationjour->setUnite("ml");
-            $consommationjour->setEventOnly(1);
             $consommationjour->setIsVisible(1);
             $consommationjour->setDisplay('generic_type', 'GENERIC_INFO');
             $consommationjour->setTemplate('dashboard', 'badge');
@@ -631,7 +615,6 @@ class ecodevice extends eqLogic{
             $consommationjour->setType('info');
             $consommationjour->setSubType('numeric');
             $consommationjour->setLogicalId('consommationjour');
-            $consommationjour->setEventOnly(1);
             $consommationjour->setIsVisible(1);
             $consommationjour->setDisplay('generic_type', 'GENERIC_INFO');
             $consommationjour->setTemplate('dashboard', 'badge');
@@ -647,7 +630,6 @@ class ecodevice extends eqLogic{
             $consommationtotal->setType('info');
             $consommationtotal->setSubType('numeric');
             $consommationtotal->setLogicalId('consommationtotal');
-            $consommationtotal->setEventOnly(1);
             $consommationtotal->setIsVisible(1);
             $consommationtotal->setDisplay('generic_type', 'GENERIC_INFO');
             $consommationtotal->setTemplate('dashboard', 'badge');
@@ -663,7 +645,6 @@ class ecodevice extends eqLogic{
             $debitinstantane->setType('info');
             $debitinstantane->setSubType('numeric');
             $debitinstantane->setLogicalId('debitinstantane');
-            $debitinstantane->setEventOnly(1);
             $debitinstantane->setIsVisible(1);
             $debitinstantane->setDisplay('generic_type', 'GENERIC_INFO');
             $debitinstantane->setUnite("l/min");
@@ -703,7 +684,6 @@ class ecodevice extends eqLogic{
             $consommationjour->setType('info');
             $consommationjour->setSubType('numeric');
             $consommationjour->setLogicalId('consommationjour');
-            $consommationjour->setEventOnly(1);
             $consommationjour->setIsVisible(1);
             $consommationjour->setDisplay('generic_type', 'GENERIC_INFO');
             $consommationjour->setTemplate('dashboard', 'badge');
@@ -719,7 +699,6 @@ class ecodevice extends eqLogic{
             $consommationtotal->setType('info');
             $consommationtotal->setSubType('numeric');
             $consommationtotal->setLogicalId('consommationtotal');
-            $consommationtotal->setEventOnly(1);
             $consommationtotal->setIsVisible(1);
             $consommationtotal->setDisplay('generic_type', 'GENERIC_INFO');
             $consommationtotal->setTemplate('dashboard', 'badge');
@@ -735,7 +714,6 @@ class ecodevice extends eqLogic{
             $debitinstantane->setType('info');
             $debitinstantane->setSubType('numeric');
             $debitinstantane->setLogicalId('debitinstantane');
-            $debitinstantane->setEventOnly(1);
             $debitinstantane->setIsVisible(1);
             $debitinstantane->setDisplay('generic_type', 'GENERIC_INFO');
             $debitinstantane->setUnite("dm³/min");
@@ -775,7 +753,6 @@ class ecodevice extends eqLogic{
             $consommationjour->setType('info');
             $consommationjour->setSubType('numeric');
             $consommationjour->setLogicalId('consommationjour');
-            $consommationjour->setEventOnly(1);
             $consommationjour->setIsVisible(1);
             $consommationjour->setDisplay('generic_type', 'GENERIC_INFO');
             $consommationjour->setTemplate('dashboard', 'badge');
@@ -791,7 +768,6 @@ class ecodevice extends eqLogic{
             $consommationtotal->setType('info');
             $consommationtotal->setSubType('numeric');
             $consommationtotal->setLogicalId('consommationtotal');
-            $consommationtotal->setEventOnly(1);
             $consommationtotal->setIsVisible(1);
             $consommationtotal->setDisplay('generic_type', 'GENERIC_INFO');
             $consommationtotal->setTemplate('dashboard', 'badge');
@@ -807,7 +783,6 @@ class ecodevice extends eqLogic{
             $debitinstantane->setType('info');
             $debitinstantane->setSubType('numeric');
             $debitinstantane->setLogicalId('debitinstantane');
-            $debitinstantane->setEventOnly(1);
             $debitinstantane->setIsVisible(1);
             $debitinstantane->setDisplay('generic_type', 'GENERIC_INFO');
             $debitinstantane->setUnite("Wh");
