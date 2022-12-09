@@ -1,74 +1,74 @@
 {
     "plugins\/ecodevice\/plugin_info\/configuration.php": {
-        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "",
-        "Trop diminuer cette valeur peut rendre instable votre serveur": ""
+        "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées": "Temporisation minumum entre deux lectures en secondes pour les débits et consommations instantanées",
+        "Trop diminuer cette valeur peut rendre instable votre serveur": "Trop diminuer cette valeur peut rendre instable votre serveur"
     },
     "plugins\/ecodevice\/desktop\/modal\/help.ecodevice.php": {
         "401 - Accès non autorisé": "401 - Yetkisiz erişim",
-        "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# ": ""
+        "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value# ": "URL : #IP_JEEDOM#\/core\/api\/jeeApi.php?apikey=<?php echo jeedom::getApiKey('ecodevice'); ?>&type=script&id=#id#&value=#value#"
     },
     "plugins\/ecodevice\/desktop\/php\/ecodevice.php": {
         "401 - Accès non autorisé": "401 - Yetkisiz erişim",
         "Gestion": "Idare",
         "Ajouter": "Ekle",
         "Configuration": "Ayar",
-        "Mes Ecodevices": "",
+        "Mes Ecodevices": "Mes Ecodevices",
         "Rechercher": "Arayın",
         "Configuration avancée": "Gelişmiş ayarlar",
         "Sauvegarder": "Kaydet",
         "Supprimer": "Sil",
         "Equipement": "Cihaz",
         "Commandes": "Komutalar",
-        "Nom de l'ecodevice": "",
+        "Nom de l'ecodevice": "Nom de l'ecodevice",
         "Objet parent": "Üst nesne",
         "Aucun": "Hiçbir",
         "Catégorie": "Kategori",
         "Activer": "Etkinleştir",
         "Visible": "Görülebilir",
         "Accéder à la carte": "Karta el koy",
-        "IP de l'ecodevice": "",
-        "Port de l'ecodevice": "",
-        "Compte de l'ecodevice": "",
-        "Password de l'ecodevice": "",
+        "IP de l'ecodevice": "IP de l'ecodevice",
+        "Port de l'ecodevice": "Port de l'ecodevice",
+        "Compte de l'ecodevice": "Compte de l'ecodevice",
+        "Password de l'ecodevice": "Password de l'ecodevice",
         "Type": "Çeşit",
-        "Sans": "",
-        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "",
-        "Les indicateurs sont regénérés après sauvegarde.": "",
-        "Tarification :": "",
-        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "",
+        "Sans": "Sans",
+        "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice.": "Mettre le compteur en mode fuel et 1 dans le débit du gicleur sur l'ecodevice",
+        "Les indicateurs sont regénérés après sauvegarde.": "Les indicateurs sont regénérés après sauvegarde",
+        "Tarification :": "Tarification :",
+        "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde.": "Les indicateurs sont regénérés en cas de changement de tarif après sauvegarde",
         "Nom": "İsim",
         "Paramètres": "Ayarlar ( Séçenekler )",
         "Action": "Eylem",
         "Sauvegarde effectuée avec succès": "Kayıt başarıyla sonuçlandı",
-        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": ""
+        "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>": "Utilisez l\\icône suivant pour voir le détail de l\\'élément <i class=\"fa fa-sitemap\"><\/i>"
     },
     "plugins\/ecodevice\/desktop\/js\/ecodevice.js": {
         "Nom": "İsim",
         "Afficher": "Göster",
         "Historiser": "Tarihe göre sırala",
         "Tester": "Test et",
-        "Accèder à l'interface de l'Ecodevice": ""
+        "Accèder à l'interface de l'Ecodevice": "Accèder à l'interface de l'Ecodevice"
     },
     "plugins\/ecodevice\/core\/ajax\/ecodevice.ajax.php": {
         "401 - Accès non autorisé": "401 - Yetkisiz erişim",
-        "ecodevice eqLogic non trouvé : ": "",
-        "Url de push sur ecodevice configuré": "",
+        "ecodevice eqLogic non trouvé : ": "ecodevice eqLogic non trouvé :",
+        "Url de push sur ecodevice configuré": "Url de push sur ecodevice configuré",
         "Aucune methode correspondante à : ": "Aşağıdakilere karşılık gelen bir yöntem yok:"
     },
     "plugins\/ecodevice\/core\/class\/ecodevice.class.php": {
-        "Eau": "",
-        "Fuel": "",
-        "Gaz": "",
-        "Electricité": "",
+        "Eau": "Eau",
+        "Fuel": "Fuel",
+        "Gaz": "Gaz",
+        "Electricité": "Electricité",
         "Autre": "Başka",
-        "L\\'ecodevice ne repond pas.": "",
-        "Le type de compteur est introuvable. Vérifier la communication entre l\\'ecodevice et votre compteur.": "",
-        "Le type de compteur doit être défini.": "",
-        "Le compteur ' . $eqLogic->getName() . ' ne doit pas être configuré en mode fuel dans l\\'ecodevice.": "",
-        "L\\'adresse IP du serveur Jeedom doit être renseignée.<br>Général -> Administration -> Configuration.<br>Configuration réseaux -> Adresse interne": "",
-        "Le compteur ' . $eqLogic->getName() . ' doit être configuré en mode fuel dans l\\'ecodevice.": "",
-        "Veuillez vérifier la configuration": "",
-        "Tâche cron introuvable": "",
-        "Equipement desactivé impossible d\\éxecuter la commande : ' . $this->getHumanName()": ""
+        "L\\'ecodevice ne repond pas.": "L\\'ecodevice ne repond pas",
+        "Le type de compteur est introuvable. Vérifier la communication entre l\\'ecodevice et votre compteur.": "Le type de compteur est introuvable. Vérifier la communication entre l\\'ecodevice et votre compteur",
+        "Le type de compteur doit être défini.": "Le type de compteur doit être défini",
+        "Le compteur ' . $eqLogic->getName() . ' ne doit pas être configuré en mode fuel dans l\\'ecodevice.": "Le compteur ' . $eqLogic->getName() . ' ne doit pas être configuré en mode fuel dans l\\'ecodevice",
+        "L\\'adresse IP du serveur Jeedom doit être renseignée.<br>Général -> Administration -> Configuration.<br>Configuration réseaux -> Adresse interne": "L\\'adresse IP du serveur Jeedom doit être renseignée.<br>Général -> Administration -> Configuration.<br>Configuration réseaux -> Adresse interne",
+        "Le compteur ' . $eqLogic->getName() . ' doit être configuré en mode fuel dans l\\'ecodevice.": "Le compteur ' . $eqLogic->getName() . ' doit être configuré en mode fuel dans l\\'ecodevice",
+        "Veuillez vérifier la configuration": "Veuillez vérifier la configuration",
+        "Tâche cron introuvable": "Tâche cron introuvable",
+        "Equipement desactivé impossible d\\éxecuter la commande : ' . $this->getHumanName()": "Equipement desactivé impossible d\\éxecuter la commande : ' . $this->getHumanName()"
     }
 }
